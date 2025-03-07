@@ -50,10 +50,10 @@ find_and_open_projects() {
             # Extract the actual path by removing the "vm: " prefix
             remote_path=${selected#vm: }
             # Use zed with ssh:// protocol
-            zed --wait "ssh://vm$remote_path"
+            zed "ssh://vm$remote_path"
         else
             # Local project
-            zed --wait "$selected"
+            zed "$selected"
         fi
     fi
 }
