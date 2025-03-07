@@ -23,10 +23,6 @@ set -gx XDG_DATA_HOME $HOME/.local/share
 set -gx XDG_STATE_HOME $HOME/.local/state
 
 
-# FZF
-# --height 40% --layout reverse --border
-set -gx FZF_DEFAULT_OPTS "--height 40% --layout reverse --border"
-
 # Brew luarocks
 # set -gx DYLD_LIBRARY_PATH "$(brew --prefix)/lib" $DYLD_LIBRARY_PATH
 
