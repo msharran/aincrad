@@ -1,7 +1,7 @@
 font-size = 15
 window-save-state = always
 font-family = BlexMono Nerd Font
-theme = ayu
+theme = GruvboxDarkHard
 
 # Keybindings
 keybind = super+shift+j=goto_split:bottom
