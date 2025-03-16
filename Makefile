@@ -1,7 +1,7 @@
 SHELL := /bin/bash
 
-.PHONY: install
-install:
+.PHONY: aincrad
+aincrad:
 	git crypt unlock
 	stow -v .
 
@@ -16,3 +16,7 @@ dryrun:
 .PHONY: clean
 clean:
 	stow -v -D .
+
+.PHONY: host/bootstrap
+host/bootstrap:
+	brew install git-crypt
