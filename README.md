@@ -1,11 +1,14 @@
 # Aincrad - My Dotfiles
 
-# Architecture
+This repository contains system configurations for Ubuntu VM on my Apple Silicon Mac with Zed and UTM. It is inspired from [Mitchel's NixOS setup on Mac](https://x.com/mitchellh/status/1346136404682625024?s=46) and [Liz's Linux VMs on an M1-based Mac with VScode and UTM](https://medium.com/@lizrice/linux-vms-on-an-m1-based-mac-with-vscode-and-utm-d73e7cb06133)
+
+
+# How I Work
 
 ## Linux as a Subsystem on MacOS
-- MacOS as Host
+- MacOS as HostOS
 - [UTM as a Virtual Machine Runtime](https://mac.getutm.app/)
-- Linux (Ubuntu ARM Server) as Guest
+- Linux (Ubuntu ARM Server) as GuestOS
 
 
 ## Connectivity
@@ -50,7 +53,7 @@ I wrote, lists down my git projects in my Host and Guest, opens them in Zed. It 
 export EXPORTED_GPG_ZIP=~/Downloads/sharran-gpg-20250316T104202Z-001.zip
 ```
 
-Run the following in Host's $HOME dir after setting up SSH connection,
+2. Run the following in Host's $HOME dir after setting up SSH connection,
 
 ```bash
 git clone https://github.com/msharran/aincrad.git
