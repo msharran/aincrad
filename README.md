@@ -1,4 +1,4 @@
-# Aincrad - My Virtual Castle for all my computer configurations
+# Aincrad - My Computer Configurations
 
 # Architecture
 
