@@ -10,4 +10,4 @@ Installfile
 .*\.bkp
 .tmux/plugins
 aincrad/.gitmodules
-docs/**
+docs/*
