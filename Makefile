@@ -4,6 +4,7 @@ SHELL := /bin/bash
 aincrad/install:
 	git crypt unlock
 	stow -v .
+	chmod 400 $(HOME)/.ssh/id*
 
 .PHONY: aincrad/ls
 aincrad/ls:
