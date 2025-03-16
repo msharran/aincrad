@@ -4,7 +4,7 @@ SHELL := /bin/bash
 aincrad/install:
 	git crypt unlock
 	stow -v .
-	chmod 400 $(HOME)/.ssh/id*
+	chmod 400 .ssh/id*
 
 .PHONY: aincrad/ls
 aincrad/ls:
@@ -54,4 +54,4 @@ ifeq ($(EXPORTED_GPG_ZIP), undefined)
 	@exit 1
 endif
 	rsync -arvP $(EXPORTED_GPG_ZIP) $(VM_SSH_HOST):~/$(BOOTSTRAP_VM_DIR)
-	ssh -t $(VM_SSH_HOST) "export EXPORTED_GPG_ZIP=$(shell basename $(EXPORTED_GPG_ZIP)); cd ~/bootstrap; bash -xe import_gpg.sh"
+	ssh -t $(VM_SSH_HOST) "export EXPORTED_GPG_ZIP=$(shell basename $(EXPORTED_GPG_ZIP)); cd ~/$(BOOTSTRAP_VM_DIR); bash -xe import_gpg.sh"
