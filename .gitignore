@@ -22,3 +22,4 @@ auth.json
 .local/share/nvim/site/*
 !.local/share/nvim/site/autoload
 .DS_Store
+*.log

@@ -9,6 +9,4 @@ Installfile
 .*\.terminfo
 .*\.bkp
 .tmux/plugins
-.dotfiles/.gitmodules
-linux
-install.sh
+aincrad/.gitmodules

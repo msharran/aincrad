@@ -5,8 +5,7 @@
 # forces me to not edit and leave one uncommitted.
 
 list_projects() {
-    echo "$HOME/.dotfiles"
-    echo "$HOME/.dotfiles-private"
+    echo "$HOME/aincrad"
 }
 
 list_remote_projects() {
@@ -37,8 +36,8 @@ find_and_open_projects() {
     selected_basename=$(basename "$selected")
     aerospace_window_id=$(aerospace list-windows --all | grep -w Zed | grep -w "$selected_basename —" | head -n 1 | awk '{print $1}')
     # Example command output looks like
-    # ❯ aerospace list-windows --all | grep -w Zed | grep -w .dotfiles
-    # 5277 | Zed       | .dotfiles — e
+    # ❯ aerospace list-windows --all | grep -w Zed | grep -w aincrad
+    # 5277 | Zed       | aincrad — e
     # 5302 | Zed       | .dotfiles-private — config
 
     # If Zed window already exists, focus it

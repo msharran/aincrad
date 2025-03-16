@@ -27,7 +27,7 @@
       "host": "vm",
       "projects": [
         {
-          "paths": ["~/.dotfiles"]
+          "paths": ["~/aincrad"]
         },
         {
           "paths": ["~/.dotfiles-private"]

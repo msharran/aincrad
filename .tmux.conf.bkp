@@ -154,7 +154,7 @@ set -g @plugin 'tmux-plugins/tpm'
 
 # Custom tmux session manager
 bind-key -n 'C-f' run-shell "tmux neww t"
-bind-key -r . run-shell "tmux neww t ~/.dotfiles"
+bind-key -r . run-shell "tmux neww t ~/aincrad"
 
 # Install plugins at the end
 run -b '~/.tmux/plugins/tpm/tpm'

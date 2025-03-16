@@ -23,24 +23,16 @@
       "host": "vm",
       "projects": [
         {
-          "paths": [
-            "~/.dotfiles"
-          ]
+          "paths": ["~/aincrad"]
         },
         {
-          "paths": [
-            "~/.dotfiles-private"
-          ]
+          "paths": ["~/.dotfiles-private"]
         },
         {
-          "paths": [
-            "~/projects"
-          ]
+          "paths": ["~/projects"]
         },
         {
-          "paths": [
-            "~/projects/play/codingchallenges.fyi"
-          ]
+          "paths": ["~/projects/play/codingchallenges.fyi"]
         },
         {
           "paths": [
@@ -48,39 +40,25 @@
           ]
         },
         {
-          "paths": [
-            "~/projects/play/ingress-nginx"
-          ]
+          "paths": ["~/projects/play/ingress-nginx"]
         },
         {
-          "paths": [
-            "~/projects/play/labs"
-          ]
+          "paths": ["~/projects/play/labs"]
         },
         {
-          "paths": [
-            "~/projects/work/acropolis/codepipeline"
-          ]
+          "paths": ["~/projects/work/acropolis/codepipeline"]
         },
         {
-          "paths": [
-            "~/projects/work/caterpillar"
-          ]
+          "paths": ["~/projects/work/caterpillar"]
         },
         {
-          "paths": [
-            "~/projects/work/caterpillar-cli"
-          ]
+          "paths": ["~/projects/work/caterpillar-cli"]
         },
         {
-          "paths": [
-            "~/projects/work/caterpillar-ops-configs"
-          ]
+          "paths": ["~/projects/work/caterpillar-ops-configs"]
         },
         {
-          "paths": [
-            "~/projects/work/caterpillar/master"
-          ]
+          "paths": ["~/projects/work/caterpillar/master"]
         }
       ],
       "nickname": "vm"
