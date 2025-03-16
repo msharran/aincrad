@@ -14,3 +14,4 @@ docs/*
 .gitattributes
 .git-crypt
 .gitmodules
+vm-bootstrap

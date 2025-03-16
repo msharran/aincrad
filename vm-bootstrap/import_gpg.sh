@@ -2,7 +2,7 @@
 
 set -e
 
-if [ "${EXPORTED_GPG_ZIP}" -eq "undefined" ]; then
+if [[ "${EXPORTED_GPG_ZIP}" == "undefined" ]]; then
     echo "EXPORTED_GPG_ZIP is not set"
     exit 1
 fi

@@ -13,7 +13,8 @@ sudo apt-get install -y \
     git-crypt
 
 echo "*Installing starship"
-curl -sS https://starship.rs/install.sh | sh
+mkdir -p $HOME/.local/bin
+curl -sS https://starship.rs/install.sh | BIN_DIR=$HOME/.local/bin sh
 
 echo "*Setting fish as default shell"
 sudo chsh -s /usr/bin/fish msharran
