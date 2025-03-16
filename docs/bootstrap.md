@@ -13,7 +13,6 @@ cd aincrad
 
 ```bash
 make host/bootstrap
-make aincrad
 ```
 
 ###
