@@ -5,7 +5,7 @@
 Install aincrad by running the following command in your home directory:
 
 ```bash
-git clone git@github.com:msharran/aincrad.git
+git clone https://github.com/msharran/aincrad.git
 cd aincrad
 make
 ```
