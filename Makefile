@@ -36,6 +36,7 @@ vm/bootstrap:
 vm/copy-secrets:
 ifeq ($(EXPORTED_GPG_ZIP), undefined)
 	@echo "EXPORTED_GPG_ZIP is not defined"
+	@exit 1
 endif
-	rsync -arP $(EXPORTED_GPG_ZIP) ./sbin/export_gpg.sh $(VM_SSH_HOST):~/export_gpg.sh
+	rsync -arvP $(EXPORTED_GPG_ZIP) ./sbin/export_gpg.sh $(VM_SSH_HOST):~/export_gpg.sh
 	ssh $(VM_SSH_HOST) "bash ~/export_gpg.sh"
