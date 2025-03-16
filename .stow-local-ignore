@@ -11,3 +11,6 @@ Installfile
 .tmux/plugins
 aincrad/.gitmodules
 docs/*
+.gitattributes
+.git-crypt
+.gitmodules
