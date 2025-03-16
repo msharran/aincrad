@@ -1,4 +1,4 @@
-# Aincrad - My Computer Configurations
+# Aincrad - My Dotfiles
 
 # Architecture
 
