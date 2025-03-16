@@ -34,6 +34,7 @@ I have added few other configurations to connect via a simple
 
 - Zed as Code Editor
 - Ghostty as Terminal Emulator
+- Aerospace as Tiling Window Manager
 
 I use Zed's remote development feature which allows me to edit files on the guest system directly from my host system.
 See [here](https://zed.dev/docs/remote-development) for more information.
