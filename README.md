@@ -44,17 +44,23 @@ The custom [zed-fzf](./sbin/zed-fzf) script I created lists git projects from bo
 
 ## Getting Started
 
-1. Export the environment variable for GPG files:
-   ```bash
-   export EXPORTED_GPG_ZIP=~/Downloads/sharran-gpg-20250316T104202Z-001.zip
-   ```
+Run the following in Host's `$HOME` directory.
 
-2. Run the following in Host's $HOME directory after setting up SSH connection:
-   ```bash
-   git clone https://github.com/msharran/aincrad.git
-   cd aincrad
-   make host/bootstrap
-   make vm/bootstrap
-   ```
+> Note: My SSH keys are encrypted by `git-crypt` using my GPG key.
+   
+```bash
+# Path to my GPG keys
+export EXPORTED_GPG_ZIP=~/Downloads/sharran-gpg-20250316T104202Z-001.zip
+
+# Clone Aincrad
+git clone https://github.com/msharran/aincrad.git
+cd aincrad
+
+# Bootstrap HostOS
+make host/bootstrap
+
+# Bootstrap GuestOS
+make vm/bootstrap
+```
 
 This setup is inspired by [Mitchell's NixOS setup on Mac](https://x.com/mitchellh/status/1346136404682625024?s=46) and [Liz's Linux VMs article](https://medium.com/@lizrice/linux-vms-on-an-m1-based-mac-with-vscode-and-utm-d73e7cb06133).
