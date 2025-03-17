@@ -1,0 +1,9 @@
+[core]
+    excludesfile = /Users/sharranm/.gitignore_global
+[user]
+    name = Sharran
+    email = sharran.murali@gmail.com
+[url "git@bitbucket.org:"]
+    insteadOf = https://bitbucket.org/
+[includeIf "gitdir:~/projects/work/"]
+    path = .gitconfig-work
