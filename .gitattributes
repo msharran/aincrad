@@ -2,3 +2,4 @@
 
 .ssh/id* filter=git-crypt diff=git-crypt
 .ssh/*pem filter=git-crypt diff=git-crypt
+.gitconfig-work filter=git-crypt diff=git-crypt
