@@ -5,6 +5,7 @@
 # forces me to not edit and leave one uncommitted.
 
 list_projects() {
+    echo "$HOME/.ssh"
     echo "$HOME/aincrad"
 }
 
@@ -13,6 +14,7 @@ list_remote_projects() {
     ssh vm "fd . $vm_home/projects/work $vm_home/projects/play -d 1 -t d; \
         fd . $vm_home/projects/play/labs $vm_home/projects/play/codingchallenges.fyi -d 2 -t d"
     echo "$vm_home/.ssh"
+    echo "$vm_home/.ssh_keys"
 }
 
 find_and_open_projects() {
