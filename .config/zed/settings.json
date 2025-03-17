@@ -10,13 +10,13 @@
   "theme": "Gruvbox Dark Hard",
   "assistant": {
     "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-3-7-sonnet-latest"
+      "provider": "copilot_chat",
+      "model": "claude-3-7-sonnet"
     },
     "version": "2"
   },
   "features": {
-    "edit_prediction_provider": "zed"
+    "edit_prediction_provider": "copilot"
   },
   "vim_mode": true,
   "relative_line_numbers": true,

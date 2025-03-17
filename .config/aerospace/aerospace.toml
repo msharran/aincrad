@@ -193,7 +193,7 @@ run = 'move-node-to-workspace equal'
 
 [[on-window-detected]]
 if.app-id = 'com.tinyspeck.slackmacgap'
-run = 'move-node-to-workspace 5'
+run = 'move-node-to-workspace 4'
 
 [[on-window-detected]]
 if.app-id = 'us.zoom.xos'
@@ -206,6 +206,10 @@ run = 'move-node-to-workspace 3'
 [[on-window-detected]]
 if.app-id = 'com.apple.Notes'
 run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
+if.app-id = 'com.spotify.client'
+run = 'move-node-to-workspace 5'
 
 # [workspace-to-monitor-force-assignment]
 # Z = 'built-in'                   # Case insensitive regex substring
