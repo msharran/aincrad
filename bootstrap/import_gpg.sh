@@ -7,6 +7,11 @@ if [[ "${EXPORTED_GPG_ZIP}" == "undefined" ]]; then
     exit 1
 fi
 
+if [[ ! -f "${EXPORTED_GPG_ZIP}" ]]; then
+    echo "File ${EXPORTED_GPG_ZIP} does not exist"
+    exit 1
+fi
+
 TMP_DIR=$(mktemp -d)
 pushd "${TMP_DIR}"
 
