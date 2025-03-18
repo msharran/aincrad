@@ -35,10 +35,10 @@ BOOTSTRAP_DIR = bootstrap
 
 .PHONY: host/bootstrap
 host/bootstrap:
-	if ! command -v git-crypt &> /dev/null; then \
+	@if ! command -v git-crypt &> /dev/null; then \
 		brew install git-crypt; \
 	fi
-	bash -xe ./$(BOOTSTRAP_DIR)/import_gpg.sh
+	bash -e ./$(BOOTSTRAP_DIR)/import_gpg.sh
 	make
 
 .PHONY: vm/bootstrap
