@@ -45,7 +45,7 @@ host/bootstrap:
 vm/bootstrap:
 	rsync -arP $(BOOTSTRAP_DIR) $(VM_SSH_HOST):~/
 	make vm/copy-secrets
-	ssh -t $(VM_SSH_HOST) "bash -xe ~/$(BOOTSTRAP_DIR)/vm.sh"
+	ssh -t $(VM_SSH_HOST) "bash -e ~/$(BOOTSTRAP_DIR)/vm.sh"
 
 .PHONY: vm/copy-secrets
 vm/copy-secrets:
@@ -54,4 +54,4 @@ ifeq ($(EXPORTED_GPG_ZIP), undefined)
 	@exit 1
 endif
 	rsync -arvP $(EXPORTED_GPG_ZIP) $(VM_SSH_HOST):~/$(BOOTSTRAP_DIR)
-	ssh -t $(VM_SSH_HOST) "export EXPORTED_GPG_ZIP=$(shell basename $(EXPORTED_GPG_ZIP)); cd ~/$(BOOTSTRAP_DIR); bash -xe import_gpg.sh"
+	ssh -t $(VM_SSH_HOST) "export EXPORTED_GPG_ZIP=$(shell basename $(EXPORTED_GPG_ZIP)); cd ~/$(BOOTSTRAP_DIR); bash -e import_gpg.sh"
