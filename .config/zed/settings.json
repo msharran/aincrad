@@ -7,7 +7,7 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "theme": "Kanagawa Wave",
+  "theme": "One Dark",
   "assistant": {
     "default_model": {
       "provider": "zed.dev",

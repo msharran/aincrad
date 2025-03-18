@@ -1,7 +1,7 @@
 font-size = 16
 window-save-state = always
 font-family = BlexMono Nerd Font
-theme = Kanagawa Wave
+theme = Ghostty Default StyleDark
 
 # Keybindings
 keybind = super+shift+j=goto_split:bottom

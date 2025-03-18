@@ -8,7 +8,7 @@ list_projects() {
     echo "$HOME/aincrad"
     echo "$HOME/.ssh"
     echo "$HOME/.aws"
-    fd . $HOME/projects/work $HOME/projects/play -d 1 -t d
+    # fd . $HOME/projects/work $HOME/projects/play -d 1 -t d
 }
 
 list_remote_projects() {
