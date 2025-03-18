@@ -31,21 +31,21 @@ EXPORTED_GPG_ZIP ?= undefined
 # If 'VM_SSH_HOST' is not defined or empty, use 'vm' as the default value
 VM_SSH_HOST ?= vm
 
-# Path to the bootstrap script for Ubuntu ARM64 VMs.
-# This script will be copied to the VM and executed during bootstrapping.
-BOOTSTRAP_VM_SCRIPT = ./sbin/bootstrap_vm_ubuntu_arm64.sh
-BOOTSTRAP_VM_DIR = vm-bootstrap
+BOOTSTRAP_DIR = bootstrap
 
 .PHONY: host/bootstrap
 host/bootstrap:
-	brew install git-crypt
+	if ! command -v git-crypt &> /dev/null; then \
+		brew install git-crypt; \
+	fi
+	bash -xe ./$(BOOTSTRAP_DIR)/import_gpg.sh
 	make
 
 .PHONY: vm/bootstrap
 vm/bootstrap:
-	rsync -arP $(BOOTSTRAP_VM_DIR) $(VM_SSH_HOST):~/
+	rsync -arP $(BOOTSTRAP_DIR) $(VM_SSH_HOST):~/
 	make vm/copy-secrets
-	ssh -t $(VM_SSH_HOST) "bash -xe ~/$(BOOTSTRAP_VM_DIR)/bootstrap.sh"
+	ssh -t $(VM_SSH_HOST) "bash -xe ~/$(BOOTSTRAP_DIR)/vm.sh"
 
 .PHONY: vm/copy-secrets
 vm/copy-secrets:
@@ -53,5 +53,5 @@ ifeq ($(EXPORTED_GPG_ZIP), undefined)
 	@echo "EXPORTED_GPG_ZIP is not defined"
 	@exit 1
 endif
-	rsync -arvP $(EXPORTED_GPG_ZIP) $(VM_SSH_HOST):~/$(BOOTSTRAP_VM_DIR)
-	ssh -t $(VM_SSH_HOST) "export EXPORTED_GPG_ZIP=$(shell basename $(EXPORTED_GPG_ZIP)); cd ~/$(BOOTSTRAP_VM_DIR); bash -xe import_gpg.sh"
+	rsync -arvP $(EXPORTED_GPG_ZIP) $(VM_SSH_HOST):~/$(BOOTSTRAP_DIR)
+	ssh -t $(VM_SSH_HOST) "export EXPORTED_GPG_ZIP=$(shell basename $(EXPORTED_GPG_ZIP)); cd ~/$(BOOTSTRAP_DIR); bash -xe import_gpg.sh"
