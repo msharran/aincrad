@@ -8,7 +8,7 @@ if [[ "${EXPORTED_GPG_ZIP}" == "undefined" ]]; then
 fi
 
 if [[ ! -f "${EXPORTED_GPG_ZIP}" ]]; then
-    echo "File ${EXPORTED_GPG_ZIP} does not exist"
+    echo "File does not exist. EXPORTED_GPG_ZIP=${EXPORTED_GPG_ZIP}"
     exit 1
 fi
 
