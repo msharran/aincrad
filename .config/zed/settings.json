@@ -28,5 +28,10 @@
       "projects": [],
       "nickname": "vm"
     }
-  ]
+  ],
+  "languages": {
+    "Python": {
+      "language_servers": ["pyright", "!pylsp", "..."]
+    }
+  }
 }

@@ -17,13 +17,7 @@
       "cmd-}": "pane::ActivateNextItem",
 
       // pane
-      "cmd-k v": "pane::SplitRight",
-      "cmd-k s": "pane::SplitDown",
       "cmd-k enter": "workspace::ToggleZoom",
-      "cmd-k e": ["pane::CloseItemsToTheLeft", { "close_pinned": false }],
-      "cmd-k y": ["pane::CloseItemsToTheRight", { "close_pinned": false }],
-      "cmd-k w": ["pane::CloseAllItems", { "close_pinned": false }],
-      "cmd-k o": ["pane::CloseInactiveItems", { "close_pinned": false }],
       "shift-escape": null,
       "cmd-alt-j": "vim::ResizePaneDown",
       "cmd-alt-k": "vim::ResizePaneUp",
@@ -31,23 +25,11 @@
       "cmd-alt-l": "vim::ResizePaneRight",
       "cmd-alt-0": "vim::ResetPaneSizes",
 
-      // copy
-      "cmd-k c p": "workspace::CopyPath",
-      "cmd-k c r": "workspace::CopyRelativePath",
-      "cmd-k c %": "editor::CopyFileName",
-      "cmd-k c l": "editor::CopyPermalinkToLine",
-
-      // open
-      "cmd-k o l": "editor::OpenPermalinkToLine",
-      "cmd-k o k": "zed::OpenKeymap",
-      "cmd-k o m": "markdown::OpenPreviewToTheSide",
-      "cmd-k o M": "markdown::OpenPreview",
-
       // panel toggles
-      "cmd-shift-o": "outline_panel::ToggleFocus",
-      "cmd-shift-s": "outline::Toggle",
-      "cmd-shift-e": "project_panel::ToggleFocus",
-      "cmd-shift-g": "git_panel::ToggleFocus"
+      "cmd-k o": "outline_panel::ToggleFocus",
+      "cmd-k s": "outline::Toggle",
+      "cmd-k e": "project_panel::ToggleFocus",
+      "cmd-k g": "git_panel::ToggleFocus"
     }
   },
   {
@@ -65,9 +47,9 @@
     "context": "VimControl",
     "bindings": {
       "g E": "diagnostics::Deploy",
-      "g w": "vim::NextSubwordStart",
-      "g b": "vim::PreviousSubwordStart",
-      "g e": "vim::NextSubwordEnd",
+      "W": "vim::NextSubwordStart",
+      "B": "vim::PreviousSubwordStart",
+      "E": "vim::NextSubwordEnd",
       "s": "vim::PushSneak",
       "S": "vim::PushSneakBackward"
     }
