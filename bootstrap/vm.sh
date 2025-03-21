@@ -8,9 +8,19 @@ set -e
 echo "*Installing dependencies"
 sudo apt-get -y update
 sudo apt-get install -y \
-    wget git bat fzf zoxide eza ripgrep neovim make curl stow fish btop \
+    wget git bat fzf zoxide eza ripgrep make curl stow fish btop \
     libssl-dev:arm64 \
     git-crypt
+
+cd $HOME/opt \
+    && sudo apt-get -y update \
+    && sudo apt-get -y install ninja-build gettext cmake unzip curl build-essential \
+    && git clone https://github.com/neovim/neovim \
+    && cd neovim \
+    && make CMAKE_BUILD_TYPE=Release \
+    && ln -s $HOME/opt/neovim/build/bin/nvim $HOME/.local/bin/nvim \
+    && nvim --version
+
 
 echo "*Installing starship"
 mkdir -p $HOME/.local/bin
