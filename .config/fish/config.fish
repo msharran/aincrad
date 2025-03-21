@@ -38,6 +38,10 @@ if type -q direnv
 end
 
 if type -q pyenv
+     set -gx PYENV_ROOT "$HOME/.pyenv"
+  if test -d $PYENV_ROOT/bin 
+      set -gx PATH $PYENV_ROOT/bin $PATH
+  end
     pyenv init - fish | source
 end
 
