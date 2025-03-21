@@ -8,8 +8,9 @@ Plug 'tpope/vim-surround'    " Surround text with brackets, quotes, etc.
 Plug 'tpope/vim-unimpaired'  " Pairs of useful mappings
 Plug 'tpope/vim-sensible'    " Sensible defaults
 Plug 'numToStr/Comment.nvim' " Comment lines
-Plug 'ctrlpvim/ctrlp.vim'    " Fuzzy file finder
+Plug 'ibhagwan/fzf-lua'    " Fuzzy file finder
 Plug 'nvim-tree/nvim-tree.lua' " File explorer
+Plug 'christoomey/vim-tmux-navigator' 
 
 " Looks
 Plug 'navarasu/onedark.nvim'
