@@ -31,6 +31,7 @@ Plug 'folke/neodev.nvim'                                           " Nvim config
 Plug 'fatih/vim-go'                                                " Adds go specific features like :GoAddStructTags, :GoBuild (quickfix support)
 Plug 'neovim/nvim-lspconfig'                                       " Neovim LSP
 Plug 'olimorris/codecompanion.nvim'
+Plug 'github/copilot.vim'
 
 " Completion plugins
 Plug 'hrsh7th/cmp-nvim-lsp' " LSP completion

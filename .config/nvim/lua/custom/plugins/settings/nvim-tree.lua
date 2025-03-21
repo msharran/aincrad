@@ -8,6 +8,9 @@ require("nvim-tree").setup({
     renderer = {
         group_empty = true,
     },
+    filters = {
+        git_ignored = false,
+    }
 })
 
 vim.cmd [[
