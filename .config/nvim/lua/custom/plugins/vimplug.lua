@@ -29,7 +29,7 @@ Plug 'j-hui/fidget.nvim'                                           " Loading spi
 Plug 'folke/neodev.nvim'                                           " Nvim configs autocompletion
 Plug 'fatih/vim-go'                                                " Adds go specific features like :GoAddStructTags, :GoBuild (quickfix support)
 Plug 'neovim/nvim-lspconfig'                                       " Neovim LSP
-Plug 'zbirenbaum/copilot.lua'                                      " Github Copilot
+Plug 'olimorris/codecompanion.nvim'
 
 " Completion plugins
 Plug 'hrsh7th/cmp-nvim-lsp' " LSP completion
