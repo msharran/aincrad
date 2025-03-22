@@ -17,6 +17,8 @@ Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-tree/nvim-web-devicons' " Icons for plugins
 Plug 'folke/which-key.nvim'        " Keybindings helper
+Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'Bekaboo/dropbar.nvim'
 
 " Git plugins
 Plug 'ruifm/gitlinker.nvim'    " Open github links
