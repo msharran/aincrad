@@ -13,7 +13,7 @@ Plug 'nvim-tree/nvim-tree.lua' " File explorer
 Plug 'christoomey/vim-tmux-navigator' 
 
 " Looks
-Plug 'navarasu/onedark.nvim'
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-tree/nvim-web-devicons' " Icons for plugins
 Plug 'folke/which-key.nvim'        " Keybindings helper
