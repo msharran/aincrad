@@ -12,6 +12,17 @@ auth.json
 /.config/gh
 /.config/zed/conversations
 /.config/zed/prompts
+/.config/ibus
+/.config/gtk-3.0
+/.config/evolution
+/.config/dconf
+/.config/uv
+
+
+# This gitignore file:
+# 1. Ignores everything in .local/ except .local/share/nvim/site/autoload
+# 2. Ignores macOS .DS_Store files
+# 3. Ignores all log files (*.log)
 
 .local/*
 !.local/share
