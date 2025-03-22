@@ -1,7 +1,7 @@
 font-size = 14
 window-save-state = always
 font-family = BlexMono Nerd Font
-theme = Ghostty Default StyleDark
+theme = catppuccin-mocha 
 
 # Keybindings
 keybind = super+shift+j=goto_split:bottom
