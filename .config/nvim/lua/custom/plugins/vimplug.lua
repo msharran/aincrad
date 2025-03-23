@@ -9,8 +9,9 @@ Plug 'tpope/vim-unimpaired'  " Pairs of useful mappings
 Plug 'tpope/vim-sensible'    " Sensible defaults
 Plug 'numToStr/Comment.nvim' " Comment lines
 Plug 'ibhagwan/fzf-lua'    " Fuzzy file finder
-Plug 'nvim-tree/nvim-tree.lua' " File explorer
 Plug 'christoomey/vim-tmux-navigator' 
+Plug 'nvim-neo-tree/neo-tree.nvim' , { 'branch': 'v3.x' } " File explorer
+Plug 'MunifTanjim/nui.nvim' " Neotree dependency 
 
 " Looks
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
