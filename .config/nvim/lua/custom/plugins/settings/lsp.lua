@@ -92,7 +92,22 @@ require("mason-lspconfig").setup({
                     },
                 },
             }
-        end
+        end,
+        -- Setup python
+        ["pylsp"] = function()
+            lspconfig.pylsp.setup {
+                settings = {
+                    pylsp = {
+                        plugins = {
+                            pycodestyle = {
+                                ignore = { 'E501' },
+                                maxLineLength = 100
+                            }
+                        }
+                    }
+                }
+            }
+        end,
     }
 })
 
