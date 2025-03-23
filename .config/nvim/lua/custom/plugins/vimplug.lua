@@ -12,6 +12,7 @@ Plug 'ibhagwan/fzf-lua'    " Fuzzy file finder
 Plug 'christoomey/vim-tmux-navigator' 
 Plug 'nvim-neo-tree/neo-tree.nvim' , { 'branch': 'v3.x' } " File explorer
 Plug 'MunifTanjim/nui.nvim' " Neotree dependency 
+Plug 'ThePrimeagen/harpoon' , { 'branch': 'harpoon2' } 
 
 " Looks
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
