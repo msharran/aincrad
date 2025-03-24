@@ -32,6 +32,7 @@ end,
 );
 
 vim.cmd [[
+nnoremap <leader>ec :Neotree close<cr>
 nnoremap <leader>eb :Neotree toggle show buffers reveal left<cr>
 nnoremap <leader>eg :Neotree show git_status reveal left<cr>
 ]]
