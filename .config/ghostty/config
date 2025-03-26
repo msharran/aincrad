@@ -1,6 +1,5 @@
 font-size = 14
 window-save-state = always
-font-family = BlexMono Nerd Font
 theme = catppuccin-mocha 
 
 # Keybindings

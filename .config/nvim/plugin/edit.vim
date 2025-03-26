@@ -5,8 +5,8 @@ augroup highlight_yank
     autocmd TextYankPost * silent! lua vim.highlight.on_yank { higroup = 'IncSearch', timeout = 500 }
 augroup END
 
-" = Buffer =
-nnoremap <leader>b :b 
+" = Copy URL under cursor =
+nnoremap <leader>u :let @+ = expand('<cfile>')<CR>
 
 " = Remove highlight  =
 nnoremap Q :noh<CR>
