@@ -2,6 +2,7 @@ auth.json
 *.log
 /.warp/launch_configurations/*.yaml
 .tmux/plugins
+.uuid
 
 /.config/containers
 /.config/dlv
