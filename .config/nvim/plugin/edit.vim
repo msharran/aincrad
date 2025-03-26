@@ -1,11 +1,12 @@
-" = Yank =
 noremap <leader>y "+y
+noremap <leader>p "+p
 augroup highlight_yank
     autocmd!
     autocmd TextYankPost * silent! lua vim.highlight.on_yank { higroup = 'IncSearch', timeout = 500 }
 augroup END
 
-" = Copy URL under cursor =
+
+" = Copy File (also matches url) under cursor to clipboard =
 nnoremap <leader>u :let @+ = expand('<cfile>')<CR>
 
 " = Remove highlight  =
