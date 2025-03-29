@@ -16,7 +16,11 @@ I prefer MacOS for everyday applications and Apple's hardware ecosystem, but I f
 - **Terminal**: Ghostty
 - **Window Management**: Aerospace tiling window manager
 
-![zed-fzf](./docs/zed-fzf.png)
+![neovim](./docs/neovim.png)
+
+![tmux](./docs/tmux.png)
+
+![vm](./docs/vm.png)
 
 ### Network Connectivity 🔗
 
@@ -52,9 +56,10 @@ This was suggested by the community in the UTM GitHub issue as a workaround for 
 
 ### Development Workflow 🛠️
 
-I use Zed's remote development feature to edit files directly on the guest system from my host. This provides a native-feeling experience while working with Linux under the hood.
+I use Ghostty MacOS application, then SSH into the VM and run
+tmux and neovim for development tasks.
 
-The custom [zed-fzf](./sbin/zed-fzf) script I created lists git projects from both host and guest systems, allowing quick access through Zed. It intelligently reuses existing windows when applicable.
+For rest of the tasks, I use MacOS applications like Aerospace for window management, Chrome for browsing etc.,
 
 > *Note: My host git projects are primarily dotfiles*
 
