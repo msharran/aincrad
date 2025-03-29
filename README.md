@@ -12,7 +12,7 @@ I prefer MacOS for everyday applications and Apple's hardware ecosystem, but I f
 - **Guest OS**: Ubuntu ARM Server
 
 ### Development Environment
-- **Code Editor**: Zed with remote development support
+- **Code Editor**: Run Neovim and Tmux inside the VM after SSH
 - **Terminal**: Ghostty
 - **Window Management**: Aerospace tiling window manager
 
