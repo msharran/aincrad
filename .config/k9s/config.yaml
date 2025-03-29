@@ -1,11 +1,11 @@
 k9s:
   liveViewAutoRefresh: false
-  screenDumpDir: /Users/sharranm/.local/state/k9s/screen-dumps
   refreshRate: 2
   maxConnRetry: 5
   readOnly: false
   noExitOnCtrlC: false
   ui:
+    skin: catppuccin-mocha
     enableMouse: false
     headless: false
     logoless: false
@@ -29,7 +29,6 @@ k9s:
     tail: 100
     buffer: 5000
     sinceSeconds: -1
-    fullScreen: false
     textWrap: false
     showTime: false
   thresholds:

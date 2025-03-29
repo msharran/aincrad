@@ -13,6 +13,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'nvim-neo-tree/neo-tree.nvim' , { 'branch': 'v3.x' } " File explorer
 Plug 'MunifTanjim/nui.nvim' " Neotree dependency 
 Plug 'ThePrimeagen/harpoon' , { 'branch': 'harpoon2' } 
+Plug 'folke/todo-comments.nvim'
 
 " Looks
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
