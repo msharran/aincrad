@@ -21,7 +21,6 @@ Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-tree/nvim-web-devicons' " Icons for plugins
 Plug 'folke/which-key.nvim'        " Keybindings helper
 Plug 'lukas-reineke/indent-blankline.nvim'
-Plug 'Bekaboo/dropbar.nvim'
 Plug 'MeanderingProgrammer/render-markdown.nvim'
 
 " Git plugins
