@@ -46,6 +46,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 vim.cmd [[
 nnoremap <leader>f :FzfLua files<CR>
-nnoremap <leader>s :FzfLua grep<CR>
+nnoremap <leader>s :FzfLua grep -i<CR>
 nnoremap <leader>t :TodoFzfLua<CR>
 ]]

@@ -8,7 +8,7 @@ require("neo-tree").setup({
 })
 
 vim.cmd [[
-nnoremap <leader>e :Neotree reveal float toggle<cr>
+nnoremap <leader>e :Neotree reveal<cr>
 ]]
 
 
