@@ -4,7 +4,8 @@ require("codecompanion").setup({
             return require("codecompanion.adapters").extend("copilot", {
                 schema = {
                     model = {
-                        default = "claude-3.7-sonnet",
+                        -- default = "claude-3.7-sonnet",
+                        default = "gemini-2.5-pro",
                     },
                 },
             })
@@ -25,6 +26,17 @@ require("codecompanion").setup({
     strategies = {
         chat = {
             adapter = "copilot",
+            slash_commands = {
+                ["file"] = {
+                    -- Location to the slash command in CodeCompanion
+                    callback = "strategies.chat.slash_commands.file",
+                    description = "Select a file using FZF",
+                    opts = {
+                        provider = "fzf_lua", -- Can be "default", "telescope", "fzf_lua", "mini_pick" or "snacks"
+                        contains_code = true,
+                    },
+                },
+            },
         },
         inline = {
             adapter = "copilot",

@@ -1,6 +1,7 @@
-font-size = 14
+font-size = 15
 window-save-state = always
 theme = catppuccin-mocha 
+font-family = SauceCodePro Nerd Font
 
 # Keybindings
 keybind = super+shift+j=goto_split:bottom
@@ -17,7 +18,7 @@ keybind = super+ctrl+l=resize_split:right,50
 keybind = "super+shift+p=write_selection_file:paste"
 keybind = "super+shift+o=write_selection_file:open"
 
-keybind = global:super+shift+k=toggle_quick_terminal
+# keybind = global:super+shift+t=toggle_quick_terminal
 quick-terminal-animation-duration = 0
 quick-terminal-autohide = true
 quick-terminal-position = center

@@ -5,7 +5,6 @@ auth.json
 .uuid
 
 /.config/containers
-/.config/dlv
 /.config/btop
 /.config/iterm2
 /.config/go
