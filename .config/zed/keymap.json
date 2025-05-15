@@ -9,42 +9,42 @@
   {
     "bindings": {
       // navigation
-      "cmd-shift-h": "workspace::ActivatePaneLeft",
-      "cmd-shift-l": "workspace::ActivatePaneRight",
-      "cmd-shift-k": "workspace::ActivatePaneUp",
-      "cmd-shift-j": "workspace::ActivatePaneDown",
-      "cmd-{": "pane::ActivatePreviousItem",
-      "cmd-}": "pane::ActivateNextItem",
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown",
 
-      // pane
-      "cmd-k enter": "workspace::ToggleZoom",
+      "ctrl-b ctrl-enter": "workspace::ToggleZoom",
       "shift-escape": null,
-      "cmd-alt-j": "vim::ResizePaneDown",
-      "cmd-alt-k": "vim::ResizePaneUp",
-      "cmd-alt-h": "vim::ResizePaneLeft",
-      "cmd-alt-l": "vim::ResizePaneRight",
-      "cmd-alt-0": "vim::ResetPaneSizes",
+      "ctrl-shift-j": "vim::ResizePaneDown",
+      "ctrl-shift-k": "vim::ResizePaneUp",
+      "ctrl-shift-h": "vim::ResizePaneLeft",
+      "ctrl-shift-l": "vim::ResizePaneRight",
 
-      // panel toggles
-      "cmd-k o": "outline_panel::ToggleFocus",
-      "cmd-k s": "outline::Toggle",
-      "cmd-k e": "project_panel::ToggleFocus",
-      "cmd-k g": "git_panel::ToggleFocus"
+      // Tmux style key Bindings
+      "ctrl-b ctrl-c": "workspace::NewFile",
+      "ctrl-b ctrl-o": "outline_panel::ToggleFocus",
+      "ctrl-b ctrl-s": "outline::Toggle",
+      "ctrl-b ctrl-e": "project_panel::ToggleFocus",
+      "ctrl-b ctrl-g": "git_panel::ToggleFocus",
+      "ctrl-b ctrl-f": "file_finder::Toggle",
+      "ctrl-b ctrl-b": "workspace::ToggleLeftDock",
+      "ctrl-b ctrl-j": "workspace::ToggleBottomDock",
+      "ctrl-b ctrl-l": "workspace::ToggleRightDock",
+      "ctrl-b ctrl-k": "zed::OpenKeymap",
+      "ctrl-b ctrl-r": "pane::RevealInProjectPanel"
     }
-  },
-  {
-    "context": "Workspace",
-    "bindings": {}
   },
   {
     "context": "Terminal",
     "bindings": {
-      "cmd-k space": "terminal::ToggleViMode"
+      "ctrl-x ctrl-space": "terminal::ToggleViMode"
       // "cmd-k cmd-k": ["terminal::SendKeystroke", "cmd-l"]
     }
   },
   {
-    "context": "VimControl",
+    // Vim normal and visual mode
+    "context": "Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu",
     "bindings": {
       "g E": "diagnostics::Deploy",
       "W": "vim::NextSubwordStart",
@@ -52,30 +52,6 @@
       "E": "vim::NextSubwordEnd",
       "s": "vim::PushSneak",
       "S": "vim::PushSneakBackward"
-    }
-  },
-  {
-    "context": "Editor && mode == full && edit_prediction",
-    "bindings": {
-      "shift-tab": "editor::NextEditPrediction"
-    }
-  },
-  {
-    "context": "Editor && !edit_prediction",
-    "bindings": {
-      "shift-tab": "editor::ShowEditPrediction"
-    }
-  },
-  {
-    "context": "Editor && edit_prediction",
-    "bindings": {
-      "shift-tab": "editor::AcceptEditPrediction"
-    }
-  },
-  {
-    "context": "Editor && edit_prediction_conflict",
-    "bindings": {
-      "shift-tab": "editor::AcceptEditPrediction"
     }
   }
 ]

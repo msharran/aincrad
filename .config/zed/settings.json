@@ -8,15 +8,19 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   "theme": "One Dark",
-  "assistant": {
+  "agent": {
+    "inline_assistant_model": {
+      "provider": "copilot_chat",
+      "model": "claude-3.7-sonnet"
+    },
     "default_model": {
       "provider": "copilot_chat",
-      "model": "gpt-4o"
+      "model": "claude-3.7-sonnet"
     },
     "version": "2"
   },
   "features": {
-    "edit_prediction_provider": "zed"
+    "edit_prediction_provider": "copilot"
   },
   "vim_mode": true,
   "relative_line_numbers": true,
@@ -33,5 +37,9 @@
     "Python": {
       "language_servers": ["pyright", "!pylsp", "..."]
     }
+  },
+  "title_bar": {
+    "show_branch_icon": true
   }
+  // "load_direnv": "shell_hook"
 }

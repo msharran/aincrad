@@ -13,31 +13,33 @@ fi
 list_projects() {
     echo "$HOME/aincrad"
     echo "$HOME/.ssh"
+    echo "$HOME/.ssh_keys"
     echo "$HOME/.aws"
-    # fd . $HOME/projects/work $HOME/projects/play -d 1 -t d
+    fd . $HOME/projects/work $HOME/projects/play -d 1 -t d
+    fd . $HOME/projects/play/labs $HOME/projects/play/codingchallenges.fyi -d 2 -t d
 }
 
-list_remote_projects() {
-    local vm_home=$(ssh vm 'echo $HOME')
-    ssh vm "fd . $vm_home/projects/work $vm_home/projects/play -d 1 -t d; \
-        fd . $vm_home/projects/play/labs $vm_home/projects/play/codingchallenges.fyi -d 2 -t d"
-    echo "$vm_home/.ssh"
-    echo "$vm_home/.aws"
-    echo "$vm_home/.ssh_keys"
-}
+# list_remote_projects() {
+# local vm_home=$(ssh vm 'echo $HOME')
+# ssh vm "fd . $vm_home/projects/work $vm_home/projects/play -d 1 -t d; \
+#     fd . $vm_home/projects/play/labs $vm_home/projects/play/codingchallenges.fyi -d 2 -t d"
+# echo "$vm_home/.ssh"
+# echo "$vm_home/.aws"
+# echo "$vm_home/.ssh_keys"
+# }
 
 find_and_open_projects() {
     projects=$(list_projects)
-    remote_projects=$(list_remote_projects)
+    # remote_projects=$(list_remote_projects)
 
     # Add a prefix to remote projects to distinguish them
-    remote_projects_with_prefix=$(echo "$remote_projects" | sed 's/^/vm: /')
+    # remote_projects_with_prefix=$(echo "$remote_projects" | sed 's/^/vm: /')
 
     # Combine both lists
-    all_projects=$(echo -e "${projects}\n${remote_projects_with_prefix}")
+    # all_projects=$(echo -e "${projects}\n${remote_projects_with_prefix}")
 
     # Choose a project with fzf
-    selected=$(echo "$all_projects" | fzf)
+    selected=$(echo "$projects" | fzf)
 
     if [ -z "$selected" ]; then
         echo "Empty selection, exiting loop"

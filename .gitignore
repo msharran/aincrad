@@ -34,3 +34,4 @@ auth.json
 !.local/share/nvim/site/autoload
 .DS_Store
 *.log
+/.config/dlv/.dbg_history
