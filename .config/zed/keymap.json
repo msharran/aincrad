@@ -22,12 +22,13 @@
       "ctrl-shift-l": "vim::ResizePaneRight",
 
       // Tmux style key Bindings
+      "ctrl-b ctrl-p": "file_finder::Toggle",
+      "ctrl-b :": "command_palette::Toggle",
       "ctrl-b ctrl-c": "workspace::NewFile",
       "ctrl-b ctrl-o": "outline_panel::ToggleFocus",
       "ctrl-b ctrl-s": "outline::Toggle",
       "ctrl-b ctrl-e": "project_panel::ToggleFocus",
       "ctrl-b ctrl-g": "git_panel::ToggleFocus",
-      "ctrl-b ctrl-f": "file_finder::Toggle",
       "ctrl-b ctrl-b": "workspace::ToggleLeftDock",
       "ctrl-b ctrl-j": "workspace::ToggleBottomDock",
       "ctrl-b ctrl-l": "workspace::ToggleRightDock",
@@ -38,7 +39,7 @@
   {
     "context": "Terminal",
     "bindings": {
-      "ctrl-x ctrl-space": "terminal::ToggleViMode"
+      "ctrl-b ctrl-space": "terminal::ToggleViMode"
       // "cmd-k cmd-k": ["terminal::SendKeystroke", "cmd-l"]
     }
   },
