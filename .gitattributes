@@ -4,3 +4,4 @@
 .ssh/*pem filter=git-crypt diff=git-crypt
 .gitconfig-work filter=git-crypt diff=git-crypt
 .secure/* filter=git-crypt diff=git-crypt
+.config/fish/conf.d/work.fish filter=git-crypt diff=git-crypt
