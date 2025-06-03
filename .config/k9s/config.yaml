@@ -5,7 +5,7 @@ k9s:
   readOnly: false
   noExitOnCtrlC: false
   ui:
-    skin: catppuccin-mocha
+    # skin: catppuccin-mocha
     enableMouse: false
     headless: false
     logoless: false

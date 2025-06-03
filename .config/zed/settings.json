@@ -7,11 +7,14 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "search": {
+    "regex": true
+  },
   "theme": "One Dark",
   "vim_mode": true,
   "relative_line_numbers": true,
   "buffer_font_size": 13,
-  "ui_font_size": 14,
+  "ui_font_size": 13,
   "ssh_connections": [
     {
       "host": "vm",
@@ -32,16 +35,28 @@
     "Shell Script": [".env*"]
   },
   "agent": {
+    "profiles": {
+      "all": {
+        "name": "All",
+        "tools": {},
+        "enable_all_context_servers": false,
+        "context_servers": {}
+      }
+    },
+    "inline_assistant_model": {
+      "provider": "openai",
+      "model": "claude-4-sonnet"
+    },
     "always_allow_tool_actions": true,
     "default_profile": "write",
     "default_model": {
       "provider": "openai",
-      "model": "gpt-4.1"
+      "model": "claude-4-sonnet"
     },
     "version": "2"
   },
   "features": {
-    "edit_prediction_provider": "copilot"
+    "edit_prediction_provider": "none"
   },
   "language_models": {
     "openai": {
@@ -61,6 +76,11 @@
         {
           "name": "claude-3.7-sonnet",
           "display_name": "Claude 3.7 Sonnet (CRED)",
+          "max_tokens": 200000
+        },
+        {
+          "name": "claude-4-sonnet",
+          "display_name": "Claude 4 Sonnet (CRED)",
           "max_tokens": 200000
         }
       ]

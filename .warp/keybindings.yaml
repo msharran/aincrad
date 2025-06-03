@@ -1,0 +1,4 @@
+---
+"terminal:toggle_block_filter_on_selected_or_last_block": shift-cmd-F
+"terminal:select_bookmark_up": ctrl-up
+"terminal:select_bookmark_down": ctrl-down

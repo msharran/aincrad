@@ -1,7 +1,7 @@
 font-size = 15
 window-save-state = always
 theme = catppuccin-mocha 
-font-family = BlexMono Nerd Font 
+font-family = SauceCodePro Nerd Font
 
 # Keybindings
 keybind = super+shift+j=goto_split:bottom

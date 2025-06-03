@@ -16,7 +16,7 @@ Plug 'ThePrimeagen/harpoon' , { 'branch': 'harpoon2' }
 Plug 'folke/todo-comments.nvim'
 
 " Looks
-Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+Plug 'ellisonleao/gruvbox.nvim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-tree/nvim-web-devicons' " Icons for plugins
 Plug 'folke/which-key.nvim'        " Keybindings helper
@@ -24,8 +24,10 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'MeanderingProgrammer/render-markdown.nvim'
 
 " Git plugins
+Plug 'tpope/vim-fugitive'      " Git integration
 Plug 'ruifm/gitlinker.nvim'    " Open github links
 Plug 'lewis6991/gitsigns.nvim' " Git signs
+Plug 'sindrets/diffview.nvim'  " Better git diff viewer
 
 " LSP plugins
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }  " Treesitter
