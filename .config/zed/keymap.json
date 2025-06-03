@@ -14,7 +14,7 @@
       "ctrl-k": "workspace::ActivatePaneUp",
       "ctrl-j": "workspace::ActivatePaneDown",
 
-      "cmd-k ctrl-enter": "workspace::ToggleZoom",
+      "ctrl-b ctrl-enter": "workspace::ToggleZoom",
       "shift-escape": null,
       "ctrl-shift-j": "vim::ResizePaneDown",
       "ctrl-shift-k": "vim::ResizePaneUp",
@@ -22,20 +22,20 @@
       "ctrl-shift-l": "vim::ResizePaneRight",
 
       // Tmux style key Bindings
-      "cmd-k cmd-o": "outline_panel::ToggleFocus",
-      "cmd-k cmd-s": "outline::Toggle",
-      "cmd-k cmd-e": "project_panel::ToggleFocus",
-      "cmd-k cmd-g": "git_panel::ToggleFocus",
-      // "cmd-k cmd-k": "workspace::ToggleLeftDock",
-      // "cmd-k cmd-j": "workspace::ToggleBottomDock",
-      // "cmd-k cmd-l": "workspace::ToggleRightDock",
-      "cmd-k cmd-r": "pane::RevealInProjectPanel"
+      "ctrl-b ctrl-o": "outline_panel::ToggleFocus",
+      "ctrl-b ctrl-s": "outline::Toggle",
+      "ctrl-b ctrl-e": "project_panel::ToggleFocus",
+      "ctrl-b ctrl-g": "git_panel::ToggleFocus",
+      "ctrl-b ctrl-b": "workspace::ToggleLeftDock",
+      "ctrl-b ctrl-j": "workspace::ToggleBottomDock",
+      "ctrl-b ctrl-l": "workspace::ToggleRightDock",
+      "ctrl-b ctrl-r": "pane::RevealInProjectPanel"
     }
   },
   {
     "context": "Terminal",
     "bindings": {
-      "cmd-k cmd-space": "terminal::ToggleViMode"
+      "ctrl-b ctrl-space": "terminal::ToggleViMode"
       // "cmd-k cmd-k": ["terminal::SendKeystroke", "cmd-l"]
     }
   },
