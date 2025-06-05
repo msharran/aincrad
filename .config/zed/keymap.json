@@ -7,6 +7,12 @@
 // from the command palette.
 [
   {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-s": ["task::Spawn", { "task_name": "fzf-zed" }]
+    }
+  },
+  {
     "bindings": {
       // navigation
       "ctrl-h": "workspace::ActivatePaneLeft",

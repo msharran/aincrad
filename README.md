@@ -61,6 +61,39 @@ tmux and neovim for development tasks.
 
 For rest of the tasks, I use MacOS applications like Aerospace for window management, Chrome for browsing etc.,
 
+---
+
+## Productivity Tasks: Fast Project/Window Switching
+
+### tmux-sessioniser (Terminal/Neovim)
+If you're working in the terminal (with tmux), launch `tmux-sessioniser` (aliased as `t`) to quickly search and switch tmux sessions/projects with [fzf](https://github.com/junegunn/fzf).
+This script enumerates major directories, lets you fuzzy-pick one, and attaches (or creates) a tmux session for it in a single step.
+
+Example usage:
+```bash
+t              # fuzzy find and jump to a project in tmux
+t ~/some/dir   # jump directly if path is provided
+```
+_Source: [sbin/tmux-sessioniser](sbin/tmux-sessioniser)_
+
+---
+
+### fzf-zed Task (Zed Editor)
+Zed doesn't natively have a quick session/project switcher like tmux—so I created a similar solution using a Zed task and fzf!
+
+- **Task Name:** `fzf-zed`
+- **How to run:** Hit <kbd>Ctrl-S</kbd> (when in workspace view) to launch the task.
+- **Behavior:** This spawns your custom `fzf-zed` shell command, letting you search/open projects or Zed windows in a lightning-fast way, just like the terminal workflow above but inside Zed.
+- **Key binding:** Configured in [.config/zed/keymap.json](.config/zed/keymap.json).
+- **Task config:** See [.config/zed/tasks.json](.config/zed/tasks.json).
+- **Benefit:** Makes switching between project windows in Zed almost as fast as with tmux, supercharging multi-project development without ever leaving the keyboard.
+- **Screenshot / Confirmation:**
+  ![Zed fzf task](./docs/zed-fzf-task.png)
+
+If you want to adapt the core of `tmux-sessioniser` for Zed or customize project filtering, just edit your Zed `fzf-zed` script (refer to your shell scripts or automate as needed).
+
+---
+
 > *Note: My host git projects are primarily dotfiles*
 
 ## Usage Instructions

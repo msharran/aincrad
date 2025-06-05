@@ -7,6 +7,9 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "terminal": {
+    "shell": "system"
+  },
   "search": {
     "regex": true
   },
@@ -45,18 +48,18 @@
     },
     "inline_assistant_model": {
       "provider": "openai",
-      "model": "claude-4-sonnet"
+      "model": "gpt-4.1"
     },
     "always_allow_tool_actions": true,
     "default_profile": "write",
     "default_model": {
       "provider": "openai",
-      "model": "claude-4-sonnet"
+      "model": "claude-3.7-sonnet"
     },
     "version": "2"
   },
   "features": {
-    "edit_prediction_provider": "none"
+    "edit_prediction_provider": "zed"
   },
   "language_models": {
     "openai": {

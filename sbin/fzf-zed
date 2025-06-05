@@ -11,12 +11,10 @@ if !command -v "$grepprg" &>/dev/null; then
 fi
 
 list_projects() {
-    echo "$HOME/aincrad"
-    echo "$HOME/.ssh"
-    echo "$HOME/.ssh_keys"
-    echo "$HOME/.aws"
-    fd . $HOME/projects/work $HOME/projects/play -d 1 -t d
-    fd . $HOME/projects/play/labs $HOME/projects/play/codingchallenges.fyi -d 2 -t d
+    fd . $HOME -d 1 -t d
+    fd . $HOME/root -d 1 -t d
+    fd . $HOME/root/work $HOME/root/play -d 1 -t d
+    fd . $HOME/root/play/labs $HOME/root/play/codingchallenges.fyi -d 2 -t d
 }
 
 # list_remote_projects() {
@@ -73,7 +71,4 @@ find_and_open_projects() {
     fi
 }
 
-# Run in loop to allow multiple project selections
-while true; do
-    find_and_open_projects
-done
+find_and_open_projects
