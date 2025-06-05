@@ -27,12 +27,13 @@
       "ctrl-shift-h": "vim::ResizePaneLeft",
       "ctrl-shift-l": "vim::ResizePaneRight",
 
-      // Tmux style key Bindings
+      // Tmux and vim style key bindings
+      "ctrl-p": "file_finder::Toggle",
       "ctrl-b ctrl-o": "outline_panel::ToggleFocus",
       "ctrl-b ctrl-s": "outline::Toggle",
       "ctrl-b ctrl-e": "project_panel::ToggleFocus",
       "ctrl-b ctrl-g": "git_panel::ToggleFocus",
-      "ctrl-b ctrl-b": "workspace::ToggleLeftDock",
+      "ctrl-b ctrl-h": "workspace::ToggleLeftDock",
       "ctrl-b ctrl-j": "workspace::ToggleBottomDock",
       "ctrl-b ctrl-l": "workspace::ToggleRightDock",
       "ctrl-b ctrl-r": "pane::RevealInProjectPanel"
