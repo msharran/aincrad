@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-# Run in loop to allow multiple project selections
-aerospace list-windows --all | grep Ghostty | fzf | head -1 | cut -d\| -f1 | xargs aerospace focus --window-id
-

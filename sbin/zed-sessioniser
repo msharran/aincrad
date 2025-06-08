@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-# Don't have same projects in both HOST and GUEST.
-# Currently there is no way to find that, but it also
-# forces me to not edit and leave one uncommitted.
-
 grepprg=rg
 if !command -v "$grepprg" &>/dev/null; then
     echo "Cannot find 'rg', fallback to grep" >&2

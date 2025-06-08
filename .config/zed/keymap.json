@@ -9,7 +9,7 @@
   {
     "context": "Workspace",
     "bindings": {
-      "ctrl-s": ["task::Spawn", { "task_name": "fzf-zed" }]
+      "ctrl-s": ["task::Spawn", { "task_name": "zed-sessioniser" }]
     }
   },
   {
@@ -28,7 +28,7 @@
       "ctrl-shift-l": "vim::ResizePaneRight",
 
       // Tmux and vim style key bindings
-      "ctrl-p": "file_finder::Toggle",
+      "ctrl-b ctrl-b": "file_finder::Toggle",
       "ctrl-b ctrl-o": "outline_panel::ToggleFocus",
       "ctrl-b ctrl-s": "outline::Toggle",
       "ctrl-b ctrl-e": "project_panel::ToggleFocus",
