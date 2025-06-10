@@ -23,7 +23,7 @@
   "search": {
     "regex": true
   },
-  "theme": "One Light",
+  "theme": "One Dark",
   "vim_mode": true,
   "ui_font_family": "Hack",
   "buffer_font_family": "Hack",

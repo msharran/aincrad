@@ -38,7 +38,7 @@ if type -q direnv
 end
 
 set -gx PYENV_ROOT "$HOME/.pyenv"
-if test -d $PYENV_ROOT/bin 
+if test -d $PYENV_ROOT/bin
     set -gx PATH $PYENV_ROOT/bin $PATH
 end
 if type -q pyenv
@@ -57,3 +57,7 @@ end
 # Added by OrbStack: command-line tools and integration
 # This won't be added again if you remove it.
 source ~/.orbstack/shell/init2.fish 2>/dev/null || :
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+set --export --prepend PATH "$HOME/.rd/bin"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)

@@ -155,12 +155,15 @@ run = 'move-node-to-workspace 1'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.iCal'
-run = 'move-node-to-workspace 1'
+run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
-if.app-id = 'com.
-apple.mail'
-run = 'move-node-to-workspace 1'
+if.app-id = 'com.TickTick.task.mac'
+run = 'move-node-to-workspace 3'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.mail'
+run = 'move-node-to-workspace 4'
 
 [[on-window-detected]]
 if.app-id = 'dev.zed.Zed'
