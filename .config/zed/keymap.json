@@ -9,7 +9,8 @@
   {
     "context": "Workspace",
     "bindings": {
-      "ctrl-s": ["task::Spawn", { "task_name": "zed-sessioniser" }]
+      "ctrl-s": ["task::Spawn", { "task_name": "zed-sessioniser" }],
+      "ctrl-b ctrl-g": ["task::Spawn", { "task_name": "lazygit" }]
     }
   },
   {
@@ -32,7 +33,7 @@
       "ctrl-b ctrl-o": "outline_panel::ToggleFocus",
       "ctrl-b ctrl-s": "outline::Toggle",
       "ctrl-b ctrl-e": "project_panel::ToggleFocus",
-      "ctrl-b ctrl-g": "git_panel::ToggleFocus",
+      // "ctrl-b ctrl-g": "git_panel::ToggleFocus",
       "ctrl-b ctrl-h": "workspace::ToggleLeftDock",
       "ctrl-b ctrl-j": "workspace::ToggleBottomDock",
       "ctrl-b ctrl-l": "workspace::ToggleRightDock",

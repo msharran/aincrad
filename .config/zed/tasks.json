@@ -3,6 +3,16 @@
 // Example:
 [
   {
+    "label": "seabird",
+    "command": "/Applications/Seabird.app/Contents/MacOS/seabird.sh",
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "never",
+    "reveal_target": "center",
+    "hide": "always",
+    "shell": "system"
+  },
+  {
     "label": "zed-sessioniser",
     "command": "zed-sessioniser",
     "use_new_terminal": false,
@@ -20,6 +30,16 @@
     "reveal": "always",
     "reveal_target": "center",
     "hide": "never",
+    "shell": "system"
+  },
+  {
+    "label": "lazygit",
+    "command": "lazygit",
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "reveal_target": "center",
+    "hide": "on_success",
     "shell": "system"
   },
   {

@@ -7,6 +7,9 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "project_panel": {
+    "hide_gitignore": false
+  },
   "edit_predictions": {
     "mode": "subtle",
     "enabled_in_text_threads": false
@@ -22,8 +25,10 @@
   },
   "theme": "One Light",
   "vim_mode": true,
+  "ui_font_family": "Hack",
+  "buffer_font_family": "Hack",
   "relative_line_numbers": true,
-  "buffer_font_size": 13,
+  "buffer_font_size": 14,
   "ui_font_size": 13,
   "ssh_connections": [
     {
