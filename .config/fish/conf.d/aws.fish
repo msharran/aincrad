@@ -7,8 +7,7 @@ function awsunset
 end
 
 function awslogin
-    aws-okta-py save-creds -f -p $argv[1]
-    set -gx AWS_PROFILE $argv[1]
+    eval $(aws-okta-py env $argv[1])
 end
 
 function assume_role

@@ -7,10 +7,10 @@ if !command -v "$grepprg" &>/dev/null; then
 fi
 
 list_projects() {
-    fd . $HOME -d 1 -t d
-    fd . $HOME/root -d 1 -t d
-    fd . $HOME/root/work $HOME/root/play -d 1 -t d
-    fd . $HOME/root/play/labs $HOME/root/play/codingchallenges.fyi -d 2 -t d
+    fd . $HOME -d 1 -t d -H
+    fd . $HOME/root -d 1 -t d -H
+    fd . $HOME/root/work $HOME/root/play -d 1 -t d -H
+    fd . $HOME/root/play/labs $HOME/root/play/codingchallenges.fyi -d 2 -t d -H
 }
 
 # list_remote_projects() {

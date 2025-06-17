@@ -22,7 +22,7 @@ style = "bright-black"
 # The following entry matches on the GKE format (`gke_projectname_zone_cluster-name`)
 # and renames every matching kube context into a more readable format (`gke-cluster-name`):
 context_pattern = "arn:aws:eks.*/(?P<cluster>[\\w-]+)"
-context_alias = "eks-$cluster"
+context_alias = "eks [$cluster]"
 
 [directory]
 style = "blue"
