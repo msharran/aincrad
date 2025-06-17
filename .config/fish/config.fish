@@ -1,7 +1,7 @@
-set -gx PATH $PATH $HOME/bin
-set -gx PATH $PATH $HOME/sbin
-set -gx PATH $PATH /opt/homebrew/bin
-set -gx PATH $PATH $HOME/.local/bin
+set -gx PATH $HOME/bin $PATH
+set -gx PATH $HOME/sbin $PATH
+set -gx PATH /opt/homebrew/bin $PATH
+set -gx PATH $HOME/.local/bin $PATH
 
 # Go
 set -gx PATH $PATH $HOME/.local/go/bin

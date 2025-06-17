@@ -55,13 +55,13 @@
   "agent": {
     "inline_assistant_model": {
       "provider": "openai",
-      "model": "claude-3.7-sonnet"
+      "model": "claude-4-sonnet"
     },
     "always_allow_tool_actions": true,
     "default_profile": "write",
     "default_model": {
       "provider": "openai",
-      "model": "gpt-4.1"
+      "model": "claude-4-sonnet"
     },
     "version": "2"
   },
