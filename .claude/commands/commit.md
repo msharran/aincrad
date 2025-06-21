@@ -13,7 +13,7 @@ description: Analyze git changes and create a descriptive commit message
 Analyze the git changes above and create a descriptive commit message that:
 1. Follows conventional commit format (type(scope): description)
 2. Matches the existing commit style from the repository
-3. Clearly describes what changed and why
+3. Clearly describes what changed and why elaborately
 4. Uses appropriate commit types: feat, fix, docs, style, refactor, test, chore
 5. Don't add claude as co-author
 

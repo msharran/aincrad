@@ -3,8 +3,8 @@
 // Example:
 [
   {
-    "label": "Claude Code",
-    "command": "claude",
+    "label": "claude-code",
+    "command": "claude --model claude-sonnet-4-20250514",
     "use_new_terminal": true,
     "allow_concurrent_runs": true,
     "reveal": "never",

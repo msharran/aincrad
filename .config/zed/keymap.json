@@ -10,6 +10,7 @@
     "context": "Workspace",
     "bindings": {
       "ctrl-s": ["task::Spawn", { "task_name": "zed-sessioniser" }],
+      "ctrl-b ctrl-c": ["task::Spawn", { "task_name": "claude-code" }],
       "ctrl-b g": ["task::Spawn", { "task_name": "lazygit" }]
     }
   },
