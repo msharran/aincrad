@@ -15,5 +15,6 @@ Analyze the git changes above and create a descriptive commit message that:
 2. Matches the existing commit style from the repository
 3. Clearly describes what changed and why
 4. Uses appropriate commit types: feat, fix, docs, style, refactor, test, chore
+5. Don't add claude as co-author
 
 After creating the commit message, ask if I want to proceed with committing using that message.
