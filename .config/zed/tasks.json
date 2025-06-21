@@ -3,10 +3,10 @@
 // Example:
 [
   {
-    "label": "seabird",
-    "command": "/Applications/Seabird.app/Contents/MacOS/seabird.sh",
-    "use_new_terminal": false,
-    "allow_concurrent_runs": false,
+    "label": "Claude Code",
+    "command": "claude",
+    "use_new_terminal": true,
+    "allow_concurrent_runs": true,
     "reveal": "never",
     "reveal_target": "center",
     "hide": "always",
@@ -23,8 +23,18 @@
     "shell": "system"
   },
   {
-    "label": "k9s",
-    "command": "k9s",
+    "label": "k9s stage",
+    "command": "awslogin stage-headuser && k9s",
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "reveal_target": "center",
+    "hide": "never",
+    "shell": "system"
+  },
+  {
+    "label": "k9s central",
+    "command": "awslogin central-headuser && k9s",
     "use_new_terminal": false,
     "allow_concurrent_runs": false,
     "reveal": "always",

@@ -159,7 +159,7 @@ run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
 if.app-id = 'com.TickTick.task.mac'
-run = 'move-node-to-workspace 3'
+run = 'move-node-to-workspace 6'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.mail'

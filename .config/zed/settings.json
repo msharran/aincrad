@@ -52,19 +52,6 @@
     "Dockerfile": ["Dockerfile*"],
     "Shell Script": [".env*"]
   },
-  "agent": {
-    "inline_assistant_model": {
-      "provider": "openai",
-      "model": "claude-4-sonnet"
-    },
-    "always_allow_tool_actions": true,
-    "default_profile": "write",
-    "default_model": {
-      "provider": "openai",
-      "model": "claude-4-sonnet"
-    },
-    "version": "2"
-  },
   "features": {
     "edit_prediction_provider": "zed"
   },

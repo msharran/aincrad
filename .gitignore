@@ -35,3 +35,4 @@ auth.json
 .DS_Store
 *.log
 /.config/dlv/.dbg_history
+/.config/lazygit/state.yml
