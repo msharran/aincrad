@@ -11,10 +11,8 @@ description: Analyze git changes and create a descriptive commit message
 
 ## Your task
 Analyze the git changes above and create a descriptive commit message that:
-1. Follows conventional commit format (type(scope): description)
-2. Matches the existing commit style from the repository
-3. Clearly describes what changed and why elaborately
-4. Uses appropriate commit types: feat, fix, docs, style, refactor, test, chore
-5. Don't add claude as co-author
+- Clearly describes what changed and why elaborately
+- Uses appropriate commit types based on the context of repo. Ex, (zed) config updated...
+- Don't add claude as co-author
 
 After creating the commit message, ask if I want to proceed with committing using that message.
