@@ -8,16 +8,15 @@ description: Create detailed commit messages with context and preview before com
 When creating commits, follow this process:
 
 1. **Analyze the changes**: Use `git status` and `git diff` to understand what has changed
-2. **Check recent commits**: Use `git log --oneline -10` to understand the repo's commit style
-3. **Create descriptive commit message**:
+2. **Create descriptive commit message**:
    - Use appropriate prefixes based on the repo context (e.g., "config:", "feat:", "fix:", "refactor:")
    - Write clear, elaborate descriptions explaining what changed and why
    - Include technical details that represent the actual code changes
    - Never mention AI or automated assistance in the commit message
    - Follow the style of Mitchell Hashimoto's commits: clear title, detailed body explaining the changes and their impact
 
-4. **Preview the commit message**: Always show the proposed commit message to the user for review before committing
-5. **Commit behavior**:
+3. **Preview the commit message**: Always show the proposed commit message to the user for review before committing
+4. **Commit behavior**:
    - If there are staged files, commit only those staged files
    - Do not automatically add untracked or unstaged files to the commit
    - Only commit what the user has intentionally staged
