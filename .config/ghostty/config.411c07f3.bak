@@ -21,4 +21,3 @@ keybind = global:super+shift+b=toggle_quick_terminal
 quick-terminal-animation-duration = 0
 quick-terminal-autohide = true
 quick-terminal-position = center
-keybind = shift+enter=text:\n

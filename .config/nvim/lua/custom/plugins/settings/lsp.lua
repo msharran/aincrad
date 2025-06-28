@@ -58,59 +58,53 @@ vim.api.nvim_create_autocmd('LspAttach', {
 local lspconfig = require("lspconfig")
 local capabilities = vim.tbl_deep_extend("force", {}, vim.lsp.protocol.make_client_capabilities(),
     require("cmp_nvim_lsp").default_capabilities())
+
 require("fidget").setup({})
 require("mason").setup()
-require("mason-lspconfig").setup({
-    ensure_installed = {},
-    handlers = {
-        function(server_name) -- default handler (optional)
-            lspconfig[server_name].setup {
-                capabilities = capabilities
+
+-- Manual LSP server configurations
+lspconfig.lua_ls.setup {
+    capabilities = capabilities,
+    settings = {
+        Lua = {
+            diagnostics = {
+                globals = { "vim", "it", "describe", "before_each", "after_each" },
             }
-        end,
-        ["lua_ls"] = function()
-            lspconfig.lua_ls.setup {
-                capabilities = capabilities,
-                settings = {
-                    Lua = {
-                        diagnostics = {
-                            globals = { "vim", "it", "describe", "before_each", "after_each" },
-                        }
-                    }
-                }
-            }
-        end,
-        -- Setup golang
-        ["gopls"] = function()
-            lspconfig.gopls.setup {
-                capabilities = capabilities,
-                settings = {
-                    gopls = {
-                        analyses = {
-                            unusedparams = true,
-                        },
-                        staticcheck = true,
-                    },
-                },
-            }
-        end,
-        -- Setup python
-        ["pylsp"] = function()
-            lspconfig.pylsp.setup {
-                settings = {
-                    pylsp = {
-                        plugins = {
-                            pycodestyle = {
-                                ignore = { 'E501' },
-                                maxLineLength = 100
-                            }
-                        }
-                    }
-                }
-            }
-        end,
+        }
     }
-})
+}
+
+-- Setup golang if available
+if vim.fn.executable('gopls') == 1 then
+    lspconfig.gopls.setup {
+        capabilities = capabilities,
+        settings = {
+            gopls = {
+                analyses = {
+                    unusedparams = true,
+                },
+                staticcheck = true,
+            },
+        },
+    }
+end
+
+-- Setup python if available
+if vim.fn.executable('pylsp') == 1 then
+    lspconfig.pylsp.setup {
+        capabilities = capabilities,
+        settings = {
+            pylsp = {
+                plugins = {
+                    pycodestyle = {
+                        ignore = { 'E501' },
+                        maxLineLength = 100
+                    }
+                }
+            }
+        }
+    }
+end
 
 
 vim.diagnostic.config({

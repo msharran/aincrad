@@ -10,11 +10,8 @@ cmp.setup({
         ["<C-Space>"] = cmp.mapping.complete(),
     }),
     sources = cmp.config.sources({
-        { name = "nvim_lsp",               keyword_length = 1 },
-        { name = "nvim_lsp_signature_help" },
+        { name = "nvim_lsp", keyword_length = 1 },
         { name = "path" },
-        { name = "nvim_lua" },
-        { name = 'render-markdown' },
     }, {
         { name = 'buffer' },
     }),

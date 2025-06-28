@@ -36,3 +36,7 @@ auth.json
 *.log
 /.config/dlv/.dbg_history
 /.config/lazygit/state.yml
+
+.claude/*
+!.claude/commands
+!.claude/Claude.md

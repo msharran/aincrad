@@ -37,7 +37,11 @@
       "ctrl-b ctrl-b": "workspace::ToggleLeftDock",
       "ctrl-b ctrl-j": "workspace::ToggleBottomDock",
       "ctrl-b ctrl-l": "workspace::ToggleRightDock",
-      "ctrl-b ctrl-r": "pane::RevealInProjectPanel"
+      "ctrl-b ctrl-r": "pane::RevealInProjectPanel",
+
+      // copy
+      "ctrl-b c l": "editor::CopyFileLocation",
+      "ctrl-b c p": "editor::CopyPermalinkToLine"
     }
   },
   {

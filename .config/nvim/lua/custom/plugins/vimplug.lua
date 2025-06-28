@@ -9,14 +9,14 @@ Plug 'tpope/vim-unimpaired'  " Pairs of useful mappings
 Plug 'tpope/vim-sensible'    " Sensible defaults
 Plug 'numToStr/Comment.nvim' " Comment lines
 Plug 'ibhagwan/fzf-lua'    " Fuzzy file finder
-Plug 'christoomey/vim-tmux-navigator' 
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'nvim-neo-tree/neo-tree.nvim' , { 'branch': 'v3.x' } " File explorer
-Plug 'MunifTanjim/nui.nvim' " Neotree dependency 
-Plug 'ThePrimeagen/harpoon' , { 'branch': 'harpoon2' } 
+Plug 'MunifTanjim/nui.nvim' " Neotree dependency
+Plug 'ThePrimeagen/harpoon' , { 'branch': 'harpoon2' }
 Plug 'folke/todo-comments.nvim'
 
 " Looks
-Plug 'ellisonleao/gruvbox.nvim'
+Plug 'Mofiqul/dracula.nvim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-tree/nvim-web-devicons' " Icons for plugins
 Plug 'folke/which-key.nvim'        " Keybindings helper
@@ -32,12 +32,10 @@ Plug 'sindrets/diffview.nvim'  " Better git diff viewer
 " LSP plugins
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }  " Treesitter
 Plug 'williamboman/mason.nvim'                                     " LSP Installer
-Plug 'williamboman/mason-lspconfig.nvim'                           " LSP Installer
 Plug 'j-hui/fidget.nvim'                                           " Loading spinner
 Plug 'folke/neodev.nvim'                                           " Nvim configs autocompletion
 Plug 'fatih/vim-go'                                                " Adds go specific features like :GoAddStructTags, :GoBuild (quickfix support)
 Plug 'neovim/nvim-lspconfig'                                       " Neovim LSP
-Plug 'olimorris/codecompanion.nvim'
 Plug 'github/copilot.vim'
 
 " Completion plugins

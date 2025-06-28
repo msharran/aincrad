@@ -7,7 +7,22 @@
       "Bash(mkdir:*)",
       "Bash(git commit:*)",
       "Bash(git add:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(sed:*)",
+      "Bash(grep:*)",
+      "Bash(printf:*)",
+      "Bash(ghostty:*)",
+      "Bash(nvim:*)",
+      "Bash(aerospace list-windows:*)",
+      "Bash(chmod:*)",
+      "Bash(open:*)",
+      "Bash(/Applications/Ghostty.app/Contents/MacOS/ghostty:*)",
+      "Bash(bash:*)",
+      "Bash(command -v:*)",
+      "Bash(command:*)",
+      "Bash(source:*)",
+      "Bash(list_projects)",
+      "Bash(mv:*)"
     ],
     "deny": []
   }

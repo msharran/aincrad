@@ -1,0 +1,79 @@
+#!/usr/bin/env bash
+
+# Script to find and switch between Ghostty windows running nvim
+# Designed to run in a loop for use in a global floating window
+
+# Handle Ctrl+C gracefully
+trap 'exit 0' SIGINT
+
+grepprg=rg
+if !command -v "$grepprg" &>/dev/null; then
+    echo "Cannot find 'rg', fallback to grep" >&2
+    grepprg=grep
+fi
+
+find_and_focus_nvim_window() {
+    # Get all Ghostty windows that contain "nvim" in their title
+    # aerospace list-windows format: "ID | APP | TITLE"
+    nvim_windows=$(aerospace list-windows --all | $grepprg -i ghostty | $grepprg -i nvim)
+    
+    if [[ -z "$nvim_windows" ]]; then
+        echo "No Ghostty windows running nvim found."
+        echo "Press any key to try again or Ctrl+C to exit..."
+        read -n 1
+        return 1
+    fi
+    
+    # Format for fzf: show the title prominently with window ID hidden until selection
+    formatted_windows=$(echo "$nvim_windows" | while IFS='|' read -r window_id app title; do
+        # Clean up the fields
+        window_id=$(echo "$window_id" | xargs)
+        title=$(echo "$title" | xargs)
+        # Format: "title [window_id]"
+        echo "$title [$window_id]"
+    done)
+    
+    # Use fzf to select window
+    selected=$(echo "$formatted_windows" | fzf \
+        --prompt="Select nvim window: " \
+        --height=40% \
+        --reverse \
+        --border \
+        --preview="echo 'Window: {}'" \
+        --preview-window=down:2:wrap)
+    
+    if [[ -z "$selected" ]]; then
+        echo "No selection made."
+        return 1
+    fi
+    
+    # Extract window ID from selection (between the last [ and ])
+    window_id=$(echo "$selected" | sed -n 's/.*\[\([^]]*\)\]$/\1/p')
+    
+    if [[ -n "$window_id" ]]; then
+        echo "Focusing window: $window_id"
+        aerospace focus --window-id "$window_id"
+        return 0
+    else
+        echo "Could not extract window ID from selection: $selected"
+        return 1
+    fi
+}
+
+# Main loop
+echo "nvim Window Switcher"
+echo "==================="
+echo "This will continuously look for Ghostty windows running nvim."
+echo "Press Ctrl+C to exit."
+echo
+
+while true; do
+    echo "Searching for nvim windows..."
+    if find_and_focus_nvim_window; then
+        echo "Window focused successfully!"
+        echo "Press any key to search again or Ctrl+C to exit..."
+        read -n 1
+    fi
+    
+    echo
+done

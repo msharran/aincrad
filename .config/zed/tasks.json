@@ -13,6 +13,26 @@
     "shell": "system"
   },
   {
+    "label": "claude-code-continue",
+    "command": "claude --model claude-sonnet-4-20250514 --continue",
+    "use_new_terminal": true,
+    "allow_concurrent_runs": true,
+    "reveal": "never",
+    "reveal_target": "center",
+    "hide": "always",
+    "shell": "system"
+  },
+  {
+    "label": "claude-code-resume",
+    "command": "claude --model claude-sonnet-4-20250514 --resume",
+    "use_new_terminal": true,
+    "allow_concurrent_runs": true,
+    "reveal": "never",
+    "reveal_target": "center",
+    "hide": "always",
+    "shell": "system"
+  },
+  {
     "label": "zed-sessioniser",
     "command": "zed-sessioniser",
     "use_new_terminal": false,
