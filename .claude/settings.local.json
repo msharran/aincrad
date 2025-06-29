@@ -22,7 +22,9 @@
       "Bash(command:*)",
       "Bash(source:*)",
       "Bash(list_projects)",
-      "Bash(mv:*)"
+      "Bash(mv:*)",
+      "Bash(timeout:*)",
+      "Bash(ls:*)"
     ],
     "deny": []
   }

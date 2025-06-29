@@ -7,6 +7,9 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "tab_bar": {
+    "show": true
+  },
   "agent": {
     "inline_assistant_model": {
       "provider": "openai",
@@ -38,12 +41,12 @@
   "search": {
     "regex": true
   },
-  "theme": "One Dark",
+  "theme": "Rosé Pine",
   "vim_mode": true,
   "ui_font_family": "JetBrainsMono Nerd Font",
   "buffer_font_family": "JetBrainsMono Nerd Font",
   "relative_line_numbers": true,
-  "buffer_font_size": 13,
+  "buffer_font_size": 14,
   "ui_font_size": 13,
   "ssh_connections": [
     {
