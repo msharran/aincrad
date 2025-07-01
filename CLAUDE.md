@@ -15,16 +15,19 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ### Bootstrap Commands
 ```bash
-# Bootstrap host (MacOS)
+# Bootstrap host (MacOS) - installs git-crypt, imports GPG keys
 make host/bootstrap
 
-# Bootstrap guest VM (Ubuntu)
+# Bootstrap guest VM (Ubuntu) - requires EXPORTED_GPG_ZIP environment variable
 make vm/bootstrap
 
-# Install dotfiles with stow
+# Copy secrets to VM (requires EXPORTED_GPG_ZIP path)
+make vm/copy-secrets
+
+# Install dotfiles with stow (unlocks git-crypt, creates symlinks, sets SSH permissions)
 make aincrad/install
 
-# Dry run installation
+# Dry run installation (preview symlinks without creating them)
 make aincrad/dryrun
 
 # Clean/uninstall symlinks
@@ -32,6 +35,15 @@ make aincrad/clean
 
 # List installed symlinks
 make aincrad/ls
+```
+
+### Required Environment Variables
+```bash
+# Path to exported GPG keys zip file (required for VM bootstrap)
+export EXPORTED_GPG_ZIP=~/Downloads/sharran-gpg-20250316T104202Z-001.zip
+
+# SSH host for VM connection (defaults to 'vm')
+export VM_SSH_HOST=vm
 ```
 
 ### Project/Session Management
@@ -55,9 +67,12 @@ t ~/path/to/dir      # jump directly to specific path
 - `.config/aerospace/` - Tiling window manager for MacOS
 
 ### Key Scripts
-- `sbin/tmux-sessioniser` - Project session management for tmux
+- `sbin/tmux-sessioniser` - Project session management for tmux (aliased as `t`)
 - `sbin/zed-sessioniser` - Project session management for Zed
-- `bootstrap/vm.sh` - Ubuntu VM setup script
+- `sbin/zellij-sessionizer` - Project session management for Zellij
+- `sbin/nwm` - Network window manager utility
+- `sbin/warp-launch-config-generator.sh` - Warp terminal configuration generator
+- `bootstrap/vm.sh` - Ubuntu VM setup script with development tools
 - `bootstrap/import_gpg.sh` - GPG key import automation
 
 ## Editor Integration
@@ -101,6 +116,8 @@ Use `eval $(aws-okta-py env {profile})` before kubectl commands.
 - SSH keys are encrypted using `git-crypt` with GPG
 - GPG keys are imported via bootstrap scripts
 - Use `git crypt unlock` to decrypt sensitive files
+- SSH key permissions are automatically set to 400 during installation
+- Requires EXPORTED_GPG_ZIP environment variable pointing to GPG key archive
 
 ## VM Dependencies
 
@@ -110,3 +127,11 @@ The VM bootstrap installs:
 - Neovim (compiled from source)
 - Starship prompt
 - Fish shell (set as default)
+
+## Network Configuration
+
+- VM uses UTM with Emulated VLAN networking mode
+- SSH port forwarding: Host:2022 → Guest:22
+- Connection via `ssh vm` (configured in `.ssh/config`)
+- Emulated VLAN mode ensures VM traffic routes through host VPN
+- Avoids connectivity issues with bridged networking mode

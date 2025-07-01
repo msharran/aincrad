@@ -3,7 +3,7 @@ require('neodev').setup()
 -- Setup treesitter
 require('nvim-treesitter.configs').setup {
     -- a list of parser names, or "all"
-    ensure_installed = { "vimdoc", "javascript", "typescript", "c", "lua", "rust", "go", "bash", "templ" },
+    ensure_installed = { "vimdoc", "javascript", "typescript", "c", "lua", "rust", "go", "bash", "python", "templ" },
 
     -- install parsers synchronously (only applied to `ensure_installed`)
     sync_install = false,
@@ -89,22 +89,19 @@ if vim.fn.executable('gopls') == 1 then
     }
 end
 
--- Setup python if available
-if vim.fn.executable('pylsp') == 1 then
-    lspconfig.pylsp.setup {
-        capabilities = capabilities,
-        settings = {
-            pylsp = {
-                plugins = {
-                    pycodestyle = {
-                        ignore = { 'E501' },
-                        maxLineLength = 100
-                    }
-                }
+-- Setup python with pyright (managed by Mason)
+lspconfig.pyright.setup {
+    capabilities = capabilities,
+    settings = {
+        python = {
+            analysis = {
+                typeCheckingMode = "basic",
+                autoSearchPaths = true,
+                useLibraryCodeForTypes = true,
             }
         }
     }
-end
+}
 
 
 vim.diagnostic.config({
