@@ -3,8 +3,8 @@
 # Usage: t <optional dir, relative or absolute path>
 list_projects() {
     fd . $HOME -d 1 -t d --hidden
-    fd . $HOME/projects/work $HOME/projects/play -d 1 -t d
-    fd . $HOME/projects/play/labs $HOME/projects/play/codingchallenges.fyi -d 2 -t d
+    fd . $HOME/root/work $HOME/root/play -d 1 -t d
+    fd . $HOME/root/play/labs $HOME/root/play/codingchallenges.fyi -d 2 -t d
 }
 
 # Parse optional argument

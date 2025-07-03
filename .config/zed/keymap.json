@@ -9,46 +9,40 @@
   {
     "context": "Workspace",
     "bindings": {
-      "ctrl-s": ["task::Spawn", { "task_name": "zed-sessioniser" }],
-      "ctrl-b ctrl-c": ["task::Spawn", { "task_name": "claude-code" }],
-      "ctrl-b g": ["task::Spawn", { "task_name": "lazygit" }]
+      "cmd-shift-t": ["task::Spawn", { "task_name": "Terminal" }],
+      "cmd-shift-s": ["task::Spawn", { "task_name": "zed-sessioniser" }],
+      "cmd-shift-a": ["task::Spawn", { "task_name": "claude-code" }]
     }
   },
   {
     "bindings": {
       // navigation
-      "ctrl-h": "workspace::ActivatePaneLeft",
-      "ctrl-l": "workspace::ActivatePaneRight",
-      "ctrl-k": "workspace::ActivatePaneUp",
-      "ctrl-j": "workspace::ActivatePaneDown",
+      "cmd-shift-h": "workspace::ActivatePaneLeft",
+      "cmd-shift-l": "workspace::ActivatePaneRight",
+      "cmd-shift-k": "workspace::ActivatePaneUp",
+      "cmd-shift-j": "workspace::ActivatePaneDown",
 
-      "ctrl-b ctrl-enter": "workspace::ToggleZoom",
+      "cmd-k cmd-enter": "workspace::ToggleZoom",
       "shift-escape": null,
-      "ctrl-shift-j": "vim::ResizePaneDown",
-      "ctrl-shift-k": "vim::ResizePaneUp",
-      "ctrl-shift-h": "vim::ResizePaneLeft",
-      "ctrl-shift-l": "vim::ResizePaneRight",
+      "cmd-shift-down": "vim::ResizePaneDown",
+      "cmd-shift-up": "vim::ResizePaneUp",
+      "cmd-shift-left": "vim::ResizePaneLeft",
+      "cmd-shift-right": "vim::ResizePaneRight",
 
       // Tmux and vim style key bindings
-      "ctrl-b ctrl-o": "outline_panel::ToggleFocus",
-      "ctrl-b ctrl-s": "outline::Toggle",
-      "ctrl-b ctrl-e": "project_panel::ToggleFocus",
-      "ctrl-b ctrl-g": "git_panel::ToggleFocus",
-      "ctrl-b ctrl-b": "workspace::ToggleLeftDock",
-      "ctrl-b ctrl-j": "workspace::ToggleBottomDock",
-      "ctrl-b ctrl-l": "workspace::ToggleRightDock",
-      "ctrl-b ctrl-r": "pane::RevealInProjectPanel",
+      "cmd-shift-g": "git_panel::ToggleFocus",
 
       // copy
-      "ctrl-b c l": "editor::CopyFileLocation",
-      "ctrl-b c p": "editor::CopyPermalinkToLine"
+      "cmd-k c l": "editor::CopyFileLocation",
+      "cmd-k c p": "editor::CopyPermalinkToLine"
     }
   },
   {
     "context": "Terminal",
     "bindings": {
-      "ctrl-b ctrl-space": "terminal::ToggleViMode"
-      // "cmd-k cmd-k": ["terminal::SendKeystroke", "cmd-l"]
+      "cmd-k space": "terminal::ToggleViMode",
+      "shift-enter": ["terminal::SendText", "\n"],
+      "cmd-k cmd-k": ["terminal::SendKeystroke", "cmd-l"]
     }
   },
   {

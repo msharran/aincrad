@@ -16,7 +16,7 @@ Plug 'ThePrimeagen/harpoon' , { 'branch': 'harpoon2' }
 Plug 'folke/todo-comments.nvim'
 
 " Looks
-Plug 'Mofiqul/dracula.nvim'
+Plug 'folke/tokyonight.nvim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-tree/nvim-web-devicons' " Icons for plugins
 Plug 'folke/which-key.nvim'        " Keybindings helper

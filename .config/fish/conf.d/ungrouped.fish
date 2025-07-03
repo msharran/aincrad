@@ -21,3 +21,4 @@ function killport
     end
 end
 
+abbr --add l eza

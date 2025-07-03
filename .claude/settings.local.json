@@ -24,7 +24,14 @@
       "Bash(list_projects)",
       "Bash(mv:*)",
       "Bash(timeout:*)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(pip3 install:*)",
+      "Bash(git clone:*)",
+      "Bash(cat:*)",
+      "Bash(rm:*)",
+      "Bash(tmux source-file:*)",
+      "Bash(git restore:*)",
+      "WebFetch(domain:github.com)"
     ],
     "deny": []
   }

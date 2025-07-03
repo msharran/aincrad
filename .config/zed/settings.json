@@ -8,7 +8,7 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   "tab_bar": {
-    "show": true
+    "show": false
   },
   "agent": {
     "inline_assistant_model": {
@@ -41,7 +41,7 @@
   "search": {
     "regex": true
   },
-  "theme": "Rosé Pine",
+  "theme": "Gruvbox Dark Hard",
   "vim_mode": true,
   "ui_font_family": "JetBrainsMono Nerd Font",
   "buffer_font_family": "JetBrainsMono Nerd Font",

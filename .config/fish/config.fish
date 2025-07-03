@@ -53,3 +53,7 @@ end
 if test -d /snap/bin
     set -gx PATH $PATH /snap/bin
 end
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+set --export --prepend PATH "/Users/sharranm/.rd/bin"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)

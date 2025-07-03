@@ -1,3 +1,3 @@
 # Editor
-set -gx EDITOR 'zed --wait'
+set -gx EDITOR 'nvim'
 set -gx NVIMHOME "$XDG_CONFIG_HOME/nvim"
