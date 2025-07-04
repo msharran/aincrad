@@ -2,6 +2,10 @@ font-size = 15
 window-save-state = always
 theme = tokyonight
 
+# Clipboard settings for tmux integration
+clipboard-read = allow
+clipboard-write = allow
+
 # https://github.com/shaunsingh/SFMono-Nerd-Font-Ligaturized
 # font-family = Liga SFMono Nerd Font
 

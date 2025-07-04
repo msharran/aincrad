@@ -31,7 +31,15 @@
       "Bash(rm:*)",
       "Bash(tmux source-file:*)",
       "Bash(git restore:*)",
-      "WebFetch(domain:github.com)"
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:ghostty.org)",
+      "Bash(tmux kill-server:*)",
+      "Bash(~/.tmux/plugins/tpm/bin/install_plugins:*)",
+      "Bash(tmux new-session:*)",
+      "Bash(tmux send-keys:*)",
+      "Bash(tmux list-sessions:*)",
+      "Bash(tmux show-messages:*)",
+      "Bash(tmux attach-session:*)"
     ],
     "deny": []
   }

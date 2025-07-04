@@ -1,54 +1,87 @@
+-- ~/.config/nvim/lua/custom/plugins/vimplug.lua
+--
+-- This file manages the plugins for Neovim using the vim-plug plugin manager.
+-- For more information on vim-plug, see: https://github.com/junegunn/vim-plug
+--
+-- To add a new plugin, add a new `Plug` line to the `call plug#begin()` block.
+-- To remove a plugin, remove the corresponding `Plug` line.
+--
+-- After modifying this file, restart Neovim to automatically install or remove plugins.
+
 vim.cmd [[
 call plug#begin()
 
-" Editor
-Plug 'nvim-lua/plenary.nvim' " Lua lib used by many plugins
-Plug 'tpope/vim-repeat'      " Repeat plugin maps
-Plug 'tpope/vim-surround'    " Surround text with brackets, quotes, etc.
-Plug 'tpope/vim-unimpaired'  " Pairs of useful mappings
-Plug 'tpope/vim-sensible'    " Sensible defaults
-Plug 'numToStr/Comment.nvim' " Comment lines
-Plug 'ibhagwan/fzf-lua'    " Fuzzy file finder
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'nvim-neo-tree/neo-tree.nvim' , { 'branch': 'v3.x' } " File explorer
-Plug 'MunifTanjim/nui.nvim' " Neotree dependency
-Plug 'ThePrimeagen/harpoon' , { 'branch': 'harpoon2' }
-Plug 'folke/todo-comments.nvim'
+" =============================================================================
+" General Editor Enhancements
+" =============================================================================
+Plug 'nvim-lua/plenary.nvim'         " Lua utility library, a dependency for many other plugins.
+Plug 'tpope/vim-repeat'              " Enables repeating plugin actions with the '.' command.
+Plug 'tpope/vim-surround'            " Easily add, change, and delete surrounding pairs (quotes, brackets, etc.).
+Plug 'tpope/vim-unimpaired'          " Provides complementary pairs of mappings (e.g., `[b` and `]b` for buffers).
+Plug 'tpope/vim-sensible'            " A set of sensible default settings for Vim.
+Plug 'numToStr/Comment.nvim'         " Smart and powerful commenting plugin.
+Plug 'christoomey/vim-tmux-navigator' " Seamless navigation between Vim splits and Tmux panes.
+Plug 'ThePrimeagen/harpoon' , { 'branch': 'harpoon2' } " Quickly navigate to frequently used files.
+Plug 'folke/todo-comments.nvim'      " Highlight and search for TODO, FIXME, etc. comments.
 
-" Looks
-Plug 'folke/tokyonight.nvim'
-Plug 'nvim-lualine/lualine.nvim'
-Plug 'nvim-tree/nvim-web-devicons' " Icons for plugins
-Plug 'folke/which-key.nvim'        " Keybindings helper
-Plug 'lukas-reineke/indent-blankline.nvim'
-Plug 'MeanderingProgrammer/render-markdown.nvim'
+" =============================================================================
+" File and Project Navigation
+" =============================================================================
+Plug 'ibhagwan/fzf-lua'               " Fuzzy finder for files, buffers, git, etc., powered by fzf.
+Plug 'nvim-neo-tree/neo-tree.nvim' , { 'branch': 'v3.x' } " A modern file explorer tree.
+Plug 'MunifTanjim/nui.nvim'           " UI component library, a dependency for neo-tree.
 
-" Git plugins
-Plug 'tpope/vim-fugitive'      " Git integration
-Plug 'ruifm/gitlinker.nvim'    " Open github links
-Plug 'lewis6991/gitsigns.nvim' " Git signs
-Plug 'sindrets/diffview.nvim'  " Better git diff viewer
+" =============================================================================
+" Appearance and UI
+" =============================================================================
+Plug 'folke/tokyonight.nvim'         " A clean, dark color scheme.
+Plug 'nvim-lualine/lualine.nvim'      " A fast and customizable statusline.
+Plug 'nvim-tree/nvim-web-devicons'   " Adds file-type icons to various plugins.
+Plug 'folke/which-key.nvim'          " Displays a popup with possible keybindings.
+Plug 'lukas-reineke/indent-blankline.nvim' " Adds indentation guides.
+Plug 'MeanderingProgrammer/render-markdown.nvim' " Renders markdown in neovim.
 
-" LSP plugins
-Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }  " Treesitter
-Plug 'williamboman/mason.nvim'                                     " LSP Installer
-Plug 'j-hui/fidget.nvim'                                           " Loading spinner
-Plug 'folke/neodev.nvim'                                           " Nvim configs autocompletion
-Plug 'fatih/vim-go'                                                " Adds go specific features like :GoAddStructTags, :GoBuild (quickfix support)
-Plug 'neovim/nvim-lspconfig'                                       " Neovim LSP
-Plug 'github/copilot.vim'
+" =============================================================================
+" Git Integration
+" =============================================================================
+Plug 'tpope/vim-fugitive'             " A premier Git wrapper for Vim.
+Plug 'ruifm/gitlinker.nvim'           " Generates shareable permalinks to Git repositories.
+Plug 'lewis6991/gitsigns.nvim'        " Shows Git decorations in the sign column.
+Plug 'sindrets/diffview.nvim'         " A powerful Git diff viewer.
 
-" Completion plugins
-Plug 'hrsh7th/cmp-nvim-lsp' " LSP completion
-Plug 'hrsh7th/cmp-buffer'   " Buffer completion
-Plug 'hrsh7th/cmp-path'     " Path completion
-Plug 'hrsh7th/cmp-cmdline'  " Command line completion
-Plug 'onsails/lspkind.nvim' " nvim-cmp pictograms
-Plug 'hrsh7th/nvim-cmp'     " Autocompletion plugin
+" =============================================================================
+" Language Support and LSP (Language Server Protocol)
+" =============================================================================
+Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' } " Advanced syntax highlighting and code analysis.
+Plug 'williamboman/mason.nvim'        " Manages LSP servers, DAP servers, linters, and formatters.
+Plug 'neovim/nvim-lspconfig'          " Configurations for the built-in LSP client.
+Plug 'j-hui/fidget.nvim'              " Standalone UI for LSP progress.
+Plug 'folke/neodev.nvim'              " Provides full signature help and completion for the Neovim Lua API.
+Plug 'fatih/vim-go'                   " Go development plugin for Vim.
+
+" =============================================================================
+" Autocompletion
+" =============================================================================
+Plug 'hrsh7th/nvim-cmp'               " The core autocompletion engine.
+Plug 'hrsh7th/cmp-nvim-lsp'           " LSP source for nvim-cmp.
+Plug 'hrsh7th/cmp-buffer'             " Buffer source for nvim-cmp.
+Plug 'hrsh7th/cmp-path'               " Filesystem path source for nvim-cmp.
+Plug 'hrsh7th/cmp-cmdline'            " Command-line source for nvim-cmp.
+Plug 'onsails/lspkind.nvim'           " Adds file-type pictograms to completion items.
+
+" =============================================================================
+" AI and Copilot
+" =============================================================================
+Plug 'github/copilot.vim'             " GitHub Copilot integration.
+Plug 'yetone/avante.nvim', { 'branch': 'main', 'do': 'make' } " AI-powered code assistant.
 
 call plug#end()
 
-" == Auto Install on VimEnter ==
+" =============================================================================
+" Auto-installation of Plugins
+" =============================================================================
+" This function checks if any plugins are missing and installs them automatically
+" when Neovim starts. It then quits Neovim, and you will need to restart it.
 function! s:install_plugins()
   if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
     PlugInstall --sync | q
@@ -56,5 +89,6 @@ function! s:install_plugins()
   endif
 endfunction
 
+" Run the auto-install function on startup.
 autocmd VimEnter * call s:install_plugins()
 ]]
