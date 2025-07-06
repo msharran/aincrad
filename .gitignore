@@ -40,3 +40,4 @@ auth.json
 .claude/*
 !.claude/commands
 !.claude/Claude.md
+*.local.md

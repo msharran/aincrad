@@ -14,6 +14,7 @@
       shell: lsb_release -rs
       register: ubuntu_version
       changed_when: false
+      check_mode: no
 
     - name: Verify Ubuntu version is 22.04 or higher
       fail:
