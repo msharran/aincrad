@@ -126,7 +126,8 @@ cd aincrad
 
 # Run the playbook
 cd ansible
-ansible-playbook -i inventory.yml site.yml
+ansible-playbook -i inventory.yml site.yml --ask-become-pass --check
+ansible-playbook -i inventory.yml site.yml --ask-become-pass
 ```
 
 See the [Setup Guide](#setup-guide) section below for complete instructions including UTM VM setup, prerequisites, and troubleshooting.
