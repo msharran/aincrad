@@ -1,0 +1,275 @@
+---
+- name: Bootstrap Ubuntu ARM VM for Development
+  hosts: vm
+  become: yes
+  gather_facts: yes
+  vars:
+    user_name: msharran
+    user_home: "/home/{{ user_name }}"
+    opt_dir: "{{ user_home }}/opt"
+    local_bin_dir: "{{ user_home }}/.local/bin"
+
+  tasks:
+    - name: Get Ubuntu version
+      shell: lsb_release -rs
+      register: ubuntu_version
+      changed_when: false
+
+    - name: Verify Ubuntu version is 22.04 or higher
+      fail:
+        msg: "This playbook requires Ubuntu 22.04 or higher. Current version: {{ ubuntu_version.stdout }}"
+      when: ubuntu_version.stdout is version('22.04', '<')
+
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+
+    - name: Install snapd (required for snap packages)
+      apt:
+        name: snapd
+        state: present
+
+    - name: Install system dependencies
+      apt:
+        name:
+          - wget
+          - git
+          - bat
+          - fzf
+          - zoxide
+          - eza
+          - ripgrep
+          - make
+          - curl
+          - stow
+          - fish
+          - btop
+          - libssl-dev
+          - git-crypt
+          - ninja-build
+          - gettext
+          - cmake
+          - unzip
+          - build-essential
+          - gcc
+          - g++
+          - python3
+          - python3-pip
+          - python3-venv
+          - direnv
+        state: present
+
+    - name: Create local bin directory
+      file:
+        path: "{{ local_bin_dir }}"
+        state: directory
+        owner: "{{ user_name }}"
+        group: "{{ user_name }}"
+        mode: '0755'
+      become_user: "{{ user_name }}"
+
+    - name: Create opt directory
+      file:
+        path: "{{ opt_dir }}"
+        state: directory
+        owner: "{{ user_name }}"
+        group: "{{ user_name }}"
+        mode: '0755'
+      become_user: "{{ user_name }}"
+
+    - name: Create npm-global directory
+      file:
+        path: "{{ user_home }}/.npm-global"
+        state: directory
+        owner: "{{ user_name }}"
+        group: "{{ user_name }}"
+        mode: '0755'
+      become_user: "{{ user_name }}"
+
+    - name: Create go directory
+      file:
+        path: "{{ user_home }}/go"
+        state: directory
+        owner: "{{ user_name }}"
+        group: "{{ user_name }}"
+        mode: '0755'
+      become_user: "{{ user_name }}"
+
+    - name: Create local go directory
+      file:
+        path: "{{ user_home }}/.local/go"
+        state: directory
+        owner: "{{ user_name }}"
+        group: "{{ user_name }}"
+        mode: '0755'
+      become_user: "{{ user_name }}"
+
+    - name: Create cargo directory
+      file:
+        path: "{{ user_home }}/.cargo"
+        state: directory
+        owner: "{{ user_name }}"
+        group: "{{ user_name }}"
+        mode: '0755'
+      become_user: "{{ user_name }}"
+
+    - name: Wait for snapd to be ready
+      wait_for:
+        path: /var/lib/snapd/state.json
+        timeout: 60
+
+    - name: Check installed snaps
+      shell: snap list | grep -w "{{ item }}" || echo "not_installed"
+      register: snap_check
+      loop:
+        - nvim
+        - go
+        - node
+        - ghostty
+      changed_when: false
+      failed_when: false
+
+    - name: Install snaps
+      snap:
+        name: "{{ item.item }}"
+        classic: true
+      loop: "{{ snap_check.results }}"
+      when: "'not_installed' in item.stdout"
+      become: yes
+      retries: 3
+      delay: 10
+
+    - name: Install Rust via rustup
+      shell: |
+        curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+        source ~/.cargo/env
+      become_user: "{{ user_name }}"
+      args:
+        creates: "{{ user_home }}/.cargo/bin/rustc"
+
+    - name: Get system architecture
+      shell: uname -m
+      register: system_arch
+      changed_when: false
+
+    - name: Set Zig architecture variable
+      set_fact:
+        zig_arch: "{{ 'aarch64' if system_arch.stdout == 'aarch64' else 'x86_64' }}"
+
+    - name: Install Zig
+      shell: |
+        ZIG_VERSION="0.13.0"
+        wget -O /tmp/zig.tar.xz "https://ziglang.org/download/${ZIG_VERSION}/zig-linux-{{ zig_arch }}-${ZIG_VERSION}.tar.xz"
+        tar -xf /tmp/zig.tar.xz -C {{ user_home }}/.local/
+        mv {{ user_home }}/.local/zig-linux-{{ zig_arch }}-${ZIG_VERSION} {{ user_home }}/.local/zig
+        ln -sf {{ user_home }}/.local/zig/zig {{ local_bin_dir }}/zig
+        rm -f /tmp/zig.tar.xz
+      become_user: "{{ user_name }}"
+      args:
+        creates: "{{ local_bin_dir }}/zig"
+
+    - name: Install pyenv
+      shell: |
+        curl https://pyenv.run | bash
+      become_user: "{{ user_name }}"
+      args:
+        creates: "{{ user_home }}/.pyenv/bin/pyenv"
+
+    - name: Wait for npm to be available
+      wait_for:
+        path: /snap/bin/npm
+        timeout: 60
+
+    - name: Check npm global prefix
+      shell: /snap/bin/npm config get prefix
+      register: npm_prefix
+      become_user: "{{ user_name }}"
+      changed_when: false
+      failed_when: false
+      retries: 3
+      delay: 5
+
+    - name: Set npm global prefix
+      shell: |
+        /snap/bin/npm config set prefix '{{ user_home }}/.npm-global'
+      become_user: "{{ user_name }}"
+      when: npm_prefix.stdout != user_home + '/.npm-global'
+
+    - name: Check if Starship is already installed
+      stat:
+        path: "{{ local_bin_dir }}/starship"
+      register: starship_installed
+
+    - name: Download and install Starship
+      shell: |
+        curl -sS https://starship.rs/install.sh | BIN_DIR={{ local_bin_dir }} sh -s -- --yes
+      become_user: "{{ user_name }}"
+      when: not starship_installed.stat.exists
+
+    - name: Set Fish as default shell
+      user:
+        name: "{{ user_name }}"
+        shell: /usr/bin/fish
+      become: yes
+
+    - name: Create projects directory structure
+      file:
+        path: "{{ user_home }}/projects/{{ item }}"
+        state: directory
+        owner: "{{ user_name }}"
+        group: "{{ user_name }}"
+        mode: '0755'
+      loop:
+        - work
+        - play
+      become_user: "{{ user_name }}"
+
+    - name: Check if aincrad repository exists
+      stat:
+        path: "{{ user_home }}/aincrad"
+      register: aincrad_exists
+
+    - name: Clone aincrad repository
+      git:
+        repo: https://github.com/msharran/aincrad
+        dest: "{{ user_home }}/aincrad"
+      become_user: "{{ user_name }}"
+      when: not aincrad_exists.stat.exists
+
+    - name: Check if aincrad dotfiles are already installed
+      stat:
+        path: "{{ user_home }}/.config/fish/config.fish"
+      register: dotfiles_installed
+
+    - name: Install aincrad dotfiles
+      make:
+        chdir: "{{ user_home }}/aincrad"
+      become_user: "{{ user_name }}"
+      when: not dotfiles_installed.stat.exists
+
+    - name: Verify installations
+      shell: |
+        echo "=== Neovim ==="
+        /snap/bin/nvim --version | head -1
+        echo "=== Node.js ==="
+        /snap/bin/node --version
+        echo "=== Go ==="
+        /snap/bin/go version
+        echo "=== Rust ==="
+        {{ user_home }}/.cargo/bin/rustc --version
+        echo "=== Zig ==="
+        {{ local_bin_dir }}/zig version
+        echo "=== Python (pyenv) ==="
+        {{ user_home }}/.pyenv/bin/pyenv --version
+        echo "=== GCC ==="
+        gcc --version | head -1
+        echo "=== direnv ==="
+        direnv --version
+      become_user: "{{ user_name }}"
+      register: tool_versions
+      changed_when: false
+
+    - name: Display tool versions
+      debug:
+        msg: "{{ tool_versions.stdout_lines }}"

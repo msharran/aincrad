@@ -16,3 +16,5 @@ docs/*
 .gitmodules
 bootstrap
 .jj
+ansible
+*.md
