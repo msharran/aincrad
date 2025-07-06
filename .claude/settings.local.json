@@ -41,7 +41,8 @@
       "Bash(tmux show-messages:*)",
       "Bash(tmux attach-session:*)",
       "WebFetch(domain:docs.getutm.app)",
-      "WebFetch(domain:archlinuxarm.org)"
+      "WebFetch(domain:archlinuxarm.org)",
+      "WebFetch(domain:jj-vcs.github.io)"
     ],
     "deny": []
   }

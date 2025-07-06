@@ -170,6 +170,16 @@
       args:
         creates: "{{ local_bin_dir }}/zig"
 
+    - name: Install Jujutsu VCS via Cargo
+      shell: |
+        source {{ user_home }}/.cargo/env
+        {{ user_home }}/.cargo/bin/cargo install --locked --bin jj jj-cli
+      become_user: "{{ user_name }}"
+      args:
+        creates: "{{ user_home }}/.cargo/bin/jj"
+      environment:
+        PATH: "{{ user_home }}/.cargo/bin:{{ ansible_env.PATH }}"
+
     - name: Install pyenv
       shell: |
         curl https://pyenv.run | bash
@@ -267,6 +277,8 @@
         gcc --version | head -1
         echo "=== direnv ==="
         direnv --version
+        echo "=== Jujutsu (jj) ==="
+        {{ user_home }}/.cargo/bin/jj --version
       become_user: "{{ user_name }}"
       register: tool_versions
       changed_when: false
