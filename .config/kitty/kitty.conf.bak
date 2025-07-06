@@ -6,8 +6,7 @@
 #: individual font faces and even specify special fonts for particular
 #: characters.
 
-# font_family      MesloLGL Nerd Font 
-font_family      FiraCode Nerd Font 
+font_family      JetBrainsMono Nerd Font
 bold_font        auto
 italic_font      auto 
 bold_italic_font auto
@@ -735,7 +734,7 @@ font_size 14
 
 #: Terminal bell 
 
-enable_audio_bell no
+enable_audio_bell yes
 
 #: The audio bell. Useful to disable it in environments that require
 #: silence.
@@ -2532,4 +2531,9 @@ enable_audio_bell no
 #: 
 
 include custom-maps.conf 
-include embark-theme.conf 
+
+
+# BEGIN_KITTY_THEME
+# Tokyo Night
+include current-theme.conf
+# END_KITTY_THEME

@@ -49,6 +49,10 @@ if type -q starship
     starship init fish | source
 end
 
+if command -v pyenv 1>/dev/null 2>&1
+  pyenv init - | source
+end
+
 # Snap for linux
 if test -d /snap/bin
     set -gx PATH $PATH /snap/bin

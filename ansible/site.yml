@@ -207,6 +207,13 @@
       become_user: "{{ user_name }}"
       when: npm_prefix.stdout != user_home + '/.npm-global'
 
+    - name: Install global npm packages
+      shell: |
+        /snap/bin/npm install -g @google/gemini-cli @anthropic-ai/claude-code
+      become_user: "{{ user_name }}"
+      args:
+        creates: "{{ user_home }}/.npm-global/bin/gemini"
+
     - name: Check if Starship is already installed
       stat:
         path: "{{ local_bin_dir }}/starship"
