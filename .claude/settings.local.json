@@ -39,7 +39,9 @@
       "Bash(tmux send-keys:*)",
       "Bash(tmux list-sessions:*)",
       "Bash(tmux show-messages:*)",
-      "Bash(tmux attach-session:*)"
+      "Bash(tmux attach-session:*)",
+      "WebFetch(domain:docs.getutm.app)",
+      "WebFetch(domain:archlinuxarm.org)"
     ],
     "deny": []
   }

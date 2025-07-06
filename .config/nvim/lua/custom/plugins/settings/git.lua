@@ -36,6 +36,7 @@ require('gitsigns').setup({
         map('v', '<leader>gr', function() gs.reset_hunk { vim.fn.line('.'), vim.fn.line('v') } end)
         map('n', '<leader>gR', gs.reset_buffer, { desc = "[G]it [R]eset buffer" })
         map('n', '<leader>gp', gs.preview_hunk, { desc = "[G]it [P]review hunk" })
-        map('n', '<leader>gd', gs.toggle_deleted, { desc = "[G]it [D]eleted toggle" })
+        map('n', '<leader>gD', gs.toggle_deleted, { desc = "[G]it [D]eleted toggle" })
+        map('n', '<leader>gd', gs.diffthis, { desc = "[G]it [D]iffthis" })
     end
 })
