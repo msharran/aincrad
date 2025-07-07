@@ -275,30 +275,54 @@
       become_user: "{{ user_name }}"
       tags: dotfiles
 
-    - name: Remove aincrad repository if exists 
-      shell: |
-        rm -rf "{{ user_home }}/aincrad"
-      when: aincrad_repo_status.stat.exists
-      become_user: "{{ user_name }}"
-      tags: dotfiles
-
-    - name: Clone aincrad repository if it does not exist
+    - name: Clone or update aincrad repository
       git:
         repo: https://github.com/msharran/aincrad
         dest: "{{ user_home }}/aincrad"
-      when: not aincrad_repo_status.stat.exists
+        force: yes
+        update: yes
       become_user: "{{ user_name }}"
       tags: dotfiles
 
-    - name: Install aincrad dotfiles
-      shell: |
-        echo "{{ gpg_passphrase }}" | git crypt unlock
-        stow -v .
-        chmod 400 .ssh/id*
-      args:
-        chdir: "{{ user_home }}/aincrad"
+    - name: Check if git-crypt is already unlocked
+      stat:
+        path: "{{ user_home }}/aincrad/.git-crypt"
+      register: git_crypt_status
       become_user: "{{ user_name }}"
       tags: dotfiles
+
+    - name: Unlock git-crypt if needed
+      shell: |
+        cd "{{ user_home }}/aincrad"
+        echo "{{ gpg_passphrase }}" | git crypt unlock
+      become_user: "{{ user_name }}"
+      when: git_crypt_status.stat.exists
+      tags: dotfiles
+      failed_when: false
+
+    - name: Check if SSH keys exist
+      stat:
+        path: "{{ user_home }}/aincrad/.ssh"
+      register: ssh_keys_status
+      become_user: "{{ user_name }}"
+      tags: dotfiles
+
+    - name: Install aincrad dotfiles with stow
+      shell: |
+        cd "{{ user_home }}/aincrad"
+        stow -v .
+      become_user: "{{ user_name }}"
+      tags: dotfiles
+      register: stow_result
+      failed_when: false
+
+    - name: Set SSH key permissions if they exist
+      shell: |
+        chmod 400 "{{ user_home }}/aincrad/.ssh/id"*
+      become_user: "{{ user_name }}"
+      when: ssh_keys_status.stat.exists
+      tags: dotfiles
+      failed_when: false
 
     - name: Verify installations
       shell: |

@@ -21,12 +21,12 @@ clean:
 .PHONY: vm-install
 vm-install: ssh-copy-id
 	cd ansible &&\
-	ansible-playbook -i inventory.yml site.yml --ask-become-pass --diff
+	ansible-playbook -i inventory.yml site.yml --ask-become-pass --diff -vvv
 
 .PHONY: vm-install-aincrad
 vm-install-aincrad: ssh-copy-id
 	cd ansible &&\
-	ansible-playbook -i inventory.yml site.yml --ask-become-pass --tags dotfiles --diff
+	ansible-playbook -i inventory.yml site.yml --ask-become-pass --tags dotfiles --diff -vvv
 
 .PHONY: ssh-copy-id 
 ssh-copy-id:
