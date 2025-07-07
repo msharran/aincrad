@@ -1,0 +1,6 @@
+# Refer: https://jj-vcs.github.io/jj/latest/config/#using-multiple-files
+
+--when.repositories = ["~/root/work"]
+
+[user]
+email = "sharran.m@cred.club"
