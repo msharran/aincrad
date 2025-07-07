@@ -69,6 +69,8 @@ We need to be able to SSH into the VM without a password.
     ```
 4.  **Test it**: Run `ssh vm`. You should log in without a password. If not, something went wrong in the steps above.
 
+5.  **Configure GPG Key**: Import your GPG key. I have my SOP to do it in a private Google Doc.
+
 ### Step 4: Run the Ansible Playbook
 
 This is the magic part. The playbook will install everything and set it all up.

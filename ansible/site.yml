@@ -3,6 +3,11 @@
   hosts: vm
   become: yes
   gather_facts: yes
+
+  vars_prompt:
+    - name: gpg_passphrase
+      prompt: "Enter GPG passphrase"
+      private: yes
   vars:
     user_name: msharran
     user_home: "/home/{{ user_name }}"
@@ -272,7 +277,11 @@
       tags: dotfiles
 
     - name: Install aincrad dotfiles
-      make:
+      shell: |
+        echo "{{ gpg_passphrase }}" | git crypt unlock
+        stow -v .
+        chmod 400 .ssh/id*
+      args:
         chdir: "{{ user_home }}/aincrad"
       become_user: "{{ user_name }}"
       tags: dotfiles
