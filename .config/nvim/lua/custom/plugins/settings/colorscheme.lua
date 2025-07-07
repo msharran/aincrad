@@ -3,4 +3,4 @@ vim.opt.termguicolors = true
 
 -- Configure gruvbox for a dark Warp-like theme
 vim.opt.background = "dark"
-vim.cmd.colorscheme("tokyonight-night")
+vim.cmd.colorscheme("seoul256")
