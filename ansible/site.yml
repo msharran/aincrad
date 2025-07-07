@@ -268,8 +268,6 @@
         - play
       become_user: "{{ user_name }}"
 
-    
-
     - name: Check if aincrad repository exists
       stat:
         path: "{{ user_home }}/aincrad"
@@ -277,11 +275,9 @@
       become_user: "{{ user_name }}"
       tags: dotfiles
 
-    - name: Pull aincrad repository if it exists
-      git:
-        repo: https://github.com/msharran/aincrad
-        dest: "{{ user_home }}/aincrad"
-        update: yes
+    - name: Remove aincrad repository if exists 
+      shell: |
+        rm -rf "{{ user_home }}/aincrad"
       when: aincrad_repo_status.stat.exists
       become_user: "{{ user_name }}"
       tags: dotfiles
