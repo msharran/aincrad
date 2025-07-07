@@ -1,55 +1,45 @@
-"$schema" = 'https://starship.rs/config-schema.json'
+format = """
+$hostname\
+$git_branch\
+$git_state\
+$git_status\
+$character"""
 
-[aws]
-disabled = true
+[hostname]
+ssh_only = false
+style = "bright-blue"
 
 [directory]
-truncation_length = 3
-truncation_symbol = "…/"
+style = "blue"
 
-[fill]
-symbol = " "
+[character]
+success_symbol = "[❯](purple)"
+error_symbol = "[❯](red)"
+vimcmd_symbol = "[❮](green)"
+
+[git_branch]
+format = "[$branch]($style)"
+style = "bright-black"
 
 [git_status]
-disabled = false
+format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
+style = "cyan"
+conflicted = "​"
+untracked = "​"
+modified = "​"
+staged = "​"
+renamed = "​"
+deleted = "​"
+stashed = "≡"
 
-[time]
-disabled = false
-use_12hr = true
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+style = "bright-black"
 
-[username]
-disabled = false
-show_always = true
-
-# Languages
-
-[golang]
-disabled = false
-symbol = " "
-
-[direnv]
-disabled = false
-
-[nodejs]
-disabled = false
-symbol = "󰎙 "
-
-[rust]
-disabled = false
-symbol = " "
+[cmd_duration]
+format = "[$duration]($style) "
+style = "yellow"
 
 [python]
-disabled = false
-symbol = ' '
-
-[kubernetes]
-disabled = false
-symbol = "󱃾 "
-
-[[kubernetes.contexts]]
-# Using capture groups
-# Contexts from GKE, AWS and other cloud providers usually carry additional information, like the region/zone.
-# The following entry matches on the GKE format (`gke_projectname_zone_cluster-name`)
-# and renames every matching kube context into a more readable format (`gke-cluster-name`):
-context_pattern = "arn:aws:eks.*/(?P<cluster>[\\w-]+)"
-context_alias = "$cluster"
+format = "[$virtualenv]($style) "
+style = "bright-black"

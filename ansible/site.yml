@@ -215,16 +215,39 @@
       args:
         creates: "{{ user_home }}/.npm-global/bin/gemini"
 
-    - name: Check if Starship is already installed
-      stat:
-        path: "{{ local_bin_dir }}/starship"
-      register: starship_installed
+    - name: Install powerline-shell
+      pip:
+        name: powerline-shell
+        executable: pip3
 
-    - name: Download and install Starship
-      shell: |
-        curl -sS https://starship.rs/install.sh | BIN_DIR={{ local_bin_dir }} sh -s -- --yes
+    - name: Create powerline-shell config directory
+      file:
+        path: "{{ user_home }}/.config/powerline-shell"
+        state: directory
+        owner: "{{ user_name }}"
+        group: "{{ user_name }}"
+        mode: '0755'
       become_user: "{{ user_name }}"
-      when: not starship_installed.stat.exists
+
+    - name: Create default powerline-shell config
+      copy:
+        dest: "{{ user_home }}/.config/powerline-shell/config.json"
+        content: |
+          {
+            "segments": [
+              "virtual_env",
+              "ssh",
+              "cwd",
+              "git",
+              "hg",
+              "jobs",
+              "root"
+            ]
+          }
+        owner: "{{ user_name }}"
+        group: "{{ user_name }}"
+        mode: '0644'
+      become_user: "{{ user_name }}"
 
     - name: Set Fish as default shell
       user:
