@@ -299,6 +299,7 @@
       when: git_crypt_status.stat.exists
       tags: dotfiles
       failed_when: false
+      no_log: true
 
     - name: Check if SSH keys exist
       stat:
