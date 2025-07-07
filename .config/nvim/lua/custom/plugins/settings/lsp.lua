@@ -62,14 +62,20 @@ local capabilities = vim.tbl_deep_extend("force", {}, vim.lsp.protocol.make_clie
 require("fidget").setup({})
 require("mason").setup()
 
--- Setup mason-lspconfig
-require("mason-lspconfig").setup({
+-- Setup mason-lspconfig with error handling
+local mason_lspconfig_ok, mason_lspconfig = pcall(require, "mason-lspconfig")
+if not mason_lspconfig_ok then
+    vim.notify("mason-lspconfig not available", vim.log.levels.WARN)
+    return
+end
+
+mason_lspconfig.setup({
     ensure_installed = { "lua_ls", "pylsp", "gopls" },
     automatic_installation = true,
 })
 
 -- Configure LSP servers through mason-lspconfig
-require("mason-lspconfig").setup_handlers({
+mason_lspconfig.setup_handlers({
     -- Default handler for all servers
     function(server_name)
         lspconfig[server_name].setup({
