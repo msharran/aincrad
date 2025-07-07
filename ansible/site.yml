@@ -262,17 +262,29 @@
         - play
       become_user: "{{ user_name }}"
 
-    - name: Remove existing aincrad directory
-      file:
+    
+
+    - name: Check if aincrad repository exists
+      stat:
         path: "{{ user_home }}/aincrad"
-        state: absent
+      register: aincrad_repo_status
       become_user: "{{ user_name }}"
       tags: dotfiles
 
-    - name: Clone aincrad repository
+    - name: Pull aincrad repository if it exists
       git:
         repo: https://github.com/msharran/aincrad
         dest: "{{ user_home }}/aincrad"
+        update: yes
+      when: aincrad_repo_status.stat.exists
+      become_user: "{{ user_name }}"
+      tags: dotfiles
+
+    - name: Clone aincrad repository if it does not exist
+      git:
+        repo: https://github.com/msharran/aincrad
+        dest: "{{ user_home }}/aincrad"
+      when: not aincrad_repo_status.stat.exists
       become_user: "{{ user_name }}"
       tags: dotfiles
 
