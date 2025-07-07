@@ -18,3 +18,7 @@ dryrun:
 clean:
 	stow -v -D .
 
+.PHONY: vm-install
+vm-install: 
+	cd ansible &&\
+	ansible-playbook -i inventory.yml site.yml --ask-become-pass

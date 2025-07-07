@@ -121,7 +121,7 @@
         timeout: 60
 
     - name: Check installed snaps
-      shell: snap list | grep -w "{{ item }}" || echo "not_installed"
+      command: snap list {{ item }}
       register: snap_check
       loop:
         - nvim
@@ -129,6 +129,7 @@
         - node
         - ghostty
         - pyright
+        - kubectl
       changed_when: false
       failed_when: false
 
@@ -137,7 +138,7 @@
         name: "{{ item.item }}"
         classic: true
       loop: "{{ snap_check.results }}"
-      when: "'not_installed' in item.stdout"
+      when: item.rc != 0
       become: yes
       retries: 3
       delay: 10
@@ -158,6 +159,10 @@
     - name: Set Zig architecture variable
       set_fact:
         zig_arch: "{{ 'aarch64' if system_arch.stdout == 'aarch64' else 'x86_64' }}"
+
+    - name: Set k9s architecture variable
+      set_fact:
+        k9s_arch: "{{ 'arm64' if system_arch.stdout == 'aarch64' else 'amd64' }}"
 
     - name: Install Zig
       shell: |
@@ -180,6 +185,14 @@
         creates: "{{ user_home }}/.cargo/bin/jj"
       environment:
         PATH: "{{ user_home }}/.cargo/bin:{{ ansible_env.PATH }}"
+
+    - name: Install k9s
+      shell: |
+        wget https://github.com/derailed/k9s/releases/latest/download/k9s_linux_{{ k9s_arch }}.deb
+        apt install ./k9s_linux_{{ k9s_arch }}.deb
+        rm k9s_linux_{{ k9s_arch }}.deb
+      args:
+        creates: "/usr/bin/k9s"
 
     - name: Install pyenv
       shell: |
@@ -287,6 +300,10 @@
         direnv --version
         echo "=== Jujutsu (jj) ==="
         {{ user_home }}/.cargo/bin/jj --version
+        echo "=== kubectl ==="
+        /snap/bin/kubectl version --client
+        echo "=== k9s ==="
+        k9s version
       become_user: "{{ user_name }}"
       register: tool_versions
       changed_when: false
