@@ -17,4 +17,4 @@ docs/*
 bootstrap
 .jj
 ansible
-*.md
+.*\.md
