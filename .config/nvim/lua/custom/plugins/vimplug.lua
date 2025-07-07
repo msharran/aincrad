@@ -55,6 +55,7 @@ Plug 'sindrets/diffview.nvim'         " A powerful Git diff viewer.
 " =============================================================================
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' } " Advanced syntax highlighting and code analysis.
 Plug 'williamboman/mason.nvim'        " Manages LSP servers, DAP servers, linters, and formatters.
+Plug 'williamboman/mason-lspconfig.nvim' " Bridges mason.nvim and lspconfig.
 Plug 'neovim/nvim-lspconfig'          " Configurations for the built-in LSP client.
 Plug 'j-hui/fidget.nvim'              " Standalone UI for LSP progress.
 Plug 'folke/neodev.nvim'              " Provides full signature help and completion for the Neovim Lua API.

@@ -62,46 +62,66 @@ local capabilities = vim.tbl_deep_extend("force", {}, vim.lsp.protocol.make_clie
 require("fidget").setup({})
 require("mason").setup()
 
--- Manual LSP server configurations
-lspconfig.lua_ls.setup {
-    capabilities = capabilities,
-    settings = {
-        Lua = {
-            diagnostics = {
-                globals = { "vim", "it", "describe", "before_each", "after_each" },
-            }
-        }
-    }
-}
+-- Setup mason-lspconfig
+require("mason-lspconfig").setup({
+    ensure_installed = { "lua_ls", "pyright", "gopls" },
+    automatic_installation = true,
+})
 
--- Setup golang if available
-if vim.fn.executable('gopls') == 1 then
-    lspconfig.gopls.setup {
-        capabilities = capabilities,
-        settings = {
-            gopls = {
-                analyses = {
-                    unusedparams = true,
+-- Configure LSP servers through mason-lspconfig
+require("mason-lspconfig").setup_handlers({
+    -- Default handler for all servers
+    function(server_name)
+        lspconfig[server_name].setup({
+            capabilities = capabilities,
+        })
+    end,
+    
+    -- Lua language server with custom settings
+    ["lua_ls"] = function()
+        lspconfig.lua_ls.setup({
+            capabilities = capabilities,
+            settings = {
+                Lua = {
+                    diagnostics = {
+                        globals = { "vim", "it", "describe", "before_each", "after_each" },
+                    }
+                }
+            }
+        })
+    end,
+    
+    -- Go language server with custom settings
+    ["gopls"] = function()
+        lspconfig.gopls.setup({
+            capabilities = capabilities,
+            settings = {
+                gopls = {
+                    analyses = {
+                        unusedparams = true,
+                    },
+                    staticcheck = true,
                 },
-                staticcheck = true,
             },
-        },
-    }
-end
-
--- Setup python with pyright (managed by Mason)
-lspconfig.pyright.setup {
-    capabilities = capabilities,
-    settings = {
-        python = {
-            analysis = {
-                typeCheckingMode = "basic",
-                autoSearchPaths = true,
-                useLibraryCodeForTypes = true,
+        })
+    end,
+    
+    -- Python language server with custom settings
+    ["pyright"] = function()
+        lspconfig.pyright.setup({
+            capabilities = capabilities,
+            settings = {
+                python = {
+                    analysis = {
+                        typeCheckingMode = "basic",
+                        autoSearchPaths = true,
+                        useLibraryCodeForTypes = true,
+                    }
+                }
             }
-        }
-    }
-}
+        })
+    end,
+})
 
 
 vim.diagnostic.config({
