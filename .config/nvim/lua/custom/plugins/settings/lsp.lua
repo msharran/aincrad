@@ -64,7 +64,7 @@ require("mason").setup()
 
 -- Setup mason-lspconfig
 require("mason-lspconfig").setup({
-    ensure_installed = { "lua_ls", "pyright", "gopls" },
+    ensure_installed = { "lua_ls", "pylsp", "gopls" },
     automatic_installation = true,
 })
 
@@ -107,15 +107,16 @@ require("mason-lspconfig").setup_handlers({
     end,
     
     -- Python language server with custom settings
-    ["pyright"] = function()
-        lspconfig.pyright.setup({
+    ["pylsp"] = function()
+        lspconfig.pylsp.setup({
             capabilities = capabilities,
             settings = {
-                python = {
-                    analysis = {
-                        typeCheckingMode = "basic",
-                        autoSearchPaths = true,
-                        useLibraryCodeForTypes = true,
+                pylsp = {
+                    plugins = {
+                        pycodestyle = {
+                            ignore = {'W391'},
+                            maxLineLength = 100
+                        }
                     }
                 }
             }
