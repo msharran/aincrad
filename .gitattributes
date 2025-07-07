@@ -6,3 +6,4 @@
 .secure/* filter=git-crypt diff=git-crypt
 .config/fish/conf.d/work.fish filter=git-crypt diff=git-crypt
 .claude/Claude.md filter=git-crypt diff=git-crypt
+.config/jj/conf.d/work.toml filter=git-crypt diff=git-crypt
