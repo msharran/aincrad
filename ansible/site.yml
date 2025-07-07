@@ -257,28 +257,25 @@
         - play
       become_user: "{{ user_name }}"
 
-    - name: Check if aincrad repository exists
-      stat:
+    - name: Remove existing aincrad directory
+      file:
         path: "{{ user_home }}/aincrad"
-      register: aincrad_exists
+        state: absent
+      become_user: "{{ user_name }}"
+      tags: dotfiles
 
     - name: Clone aincrad repository
       git:
         repo: https://github.com/msharran/aincrad
         dest: "{{ user_home }}/aincrad"
       become_user: "{{ user_name }}"
-      when: not aincrad_exists.stat.exists
-
-    - name: Check if aincrad dotfiles are already installed
-      stat:
-        path: "{{ user_home }}/.config/fish/config.fish"
-      register: dotfiles_installed
+      tags: dotfiles
 
     - name: Install aincrad dotfiles
       make:
         chdir: "{{ user_home }}/aincrad"
       become_user: "{{ user_name }}"
-      when: not dotfiles_installed.stat.exists
+      tags: dotfiles
 
     - name: Verify installations
       shell: |

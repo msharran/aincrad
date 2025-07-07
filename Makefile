@@ -22,3 +22,8 @@ clean:
 vm-install: 
 	cd ansible &&\
 	ansible-playbook -i inventory.yml site.yml --ask-become-pass
+
+.PHONY: vm-install-aincrad
+vm-install-aincrad:
+	cd ansible &&\
+	ansible-playbook -i inventory.yml site.yml --ask-become-pass --tags dotfiles
