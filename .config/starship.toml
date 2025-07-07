@@ -45,6 +45,10 @@ disabled = false
 style = "bg:#9A348E"
 disabled = false # Enabled to show OS icons
 
+[os.symbols]
+Macos = " "
+Ubuntu = " "
+
 [directory]
 style = "bg:#DA627D"
 format = "[ $path ]($style)"
