@@ -62,68 +62,10 @@ local capabilities = vim.tbl_deep_extend("force", {}, vim.lsp.protocol.make_clie
 require("fidget").setup({})
 require("mason").setup()
 
--- Setup mason-lspconfig (v1.31.0 with setup_handlers support)
 require("mason-lspconfig").setup({
-    ensure_installed = { "lua_ls", "pylsp", "gopls" },
+    ensure_installed = { "lua_ls", "pyrefly", "gopls", "rust_analyzer", "zls" },
     automatic_installation = true,
 })
-
--- Configure LSP servers through mason-lspconfig
-require("mason-lspconfig").setup_handlers({
-    -- Default handler for all servers
-    function(server_name)
-        lspconfig[server_name].setup({
-            capabilities = capabilities,
-        })
-    end,
-    
-    -- Lua language server with custom settings
-    ["lua_ls"] = function()
-        lspconfig.lua_ls.setup({
-            capabilities = capabilities,
-            settings = {
-                Lua = {
-                    diagnostics = {
-                        globals = { "vim", "it", "describe", "before_each", "after_each" },
-                    }
-                }
-            }
-        })
-    end,
-    
-    -- Go language server with custom settings
-    ["gopls"] = function()
-        lspconfig.gopls.setup({
-            capabilities = capabilities,
-            settings = {
-                gopls = {
-                    analyses = {
-                        unusedparams = true,
-                    },
-                    staticcheck = true,
-                },
-            },
-        })
-    end,
-    
-    -- Python language server with custom settings
-    ["pylsp"] = function()
-        lspconfig.pylsp.setup({
-            capabilities = capabilities,
-            settings = {
-                pylsp = {
-                    plugins = {
-                        pycodestyle = {
-                            ignore = {'W391'},
-                            maxLineLength = 100
-                        }
-                    }
-                }
-            }
-        })
-    end,
-})
-
 
 vim.diagnostic.config({
     float = {
