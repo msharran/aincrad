@@ -63,8 +63,8 @@ require("fidget").setup({})
 require("mason").setup()
 
 require("mason-lspconfig").setup({
-    ensure_installed = { "lua_ls", "pyrefly", "gopls", "rust_analyzer", "zls" },
-    automatic_installation = true,
+    automatic_enable = true, -- calls vim.lsp.enable("<lsp-name>")
+    ensure_installed = { "lua_ls", "pylsp", "gopls", "rust_analyzer", "zls" },
 })
 
 vim.diagnostic.config({
