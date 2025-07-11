@@ -46,7 +46,7 @@ def abbreviate_path(input_path: str) -> str:
 
         # Filter out empty components first
         non_empty_components = [c for c in components if c]
-        
+
         for i, component in enumerate(non_empty_components):
             # Keep the last component unchanged
             if i == len(non_empty_components) - 1:
@@ -79,26 +79,35 @@ def abbreviate_path(input_path: str) -> str:
 def list_projects() -> List[str]:
     """List all project directories."""
     home = os.path.expanduser("~")
-    projects = []
+    projects = [
+        f"{home}/aincrad",
+        f"{home}/.aws",
+        f"{home}/.kube",
+    ]
 
     # Define search paths with exclusions for faster search
     search_configs = [
-        (f"{home}/root/work", 1, [".git", "node_modules", ".cache", "target", "build"]),
-        (f"{home}/root/play", 1, [".git", "node_modules", ".cache", "target", "build"]),
-        (f"{home}/root/play/labs", 2, [".git", "node_modules", ".cache", "target", "build"]),
-        (f"{home}/root/play/codingchallenges.fyi", 2, [".git", "node_modules", ".cache", "target", "build"]),
+        (f"{home}/root/work", 1,
+         [".git", "node_modules", ".cache", "target", "build"]),
+        (f"{home}/root/play", 1,
+         [".git", "node_modules", ".cache", "target", "build"]),
+        (f"{home}/root/play/labs", 2,
+         [".git", "node_modules", ".cache", "target", "build"]),
+        (f"{home}/root/play/codingchallenges.fyi", 2,
+         [".git", "node_modules", ".cache", "target", "build"]),
     ]
 
     for search_path, max_depth, excludes in search_configs:
         if os.path.exists(search_path):
             try:
                 # Build fd command with excludes for better performance
-                cmd = ["fd", ".", search_path, "-d", str(max_depth), "-t", "d", "-H"]
-                
+                cmd = ["fd", ".", search_path, "-d",
+                       str(max_depth), "-t", "d", "-H"]
+
                 # Add excludes
                 for exclude in excludes:
                     cmd.extend(["-E", exclude])
-                
+
                 result = subprocess.run(
                     cmd,
                     capture_output=True,
@@ -114,10 +123,12 @@ def list_projects() -> List[str]:
                 try:
                     exclude_args = []
                     for exclude in excludes:
-                        exclude_args.extend(["-not", "-path", f"*/{exclude}/*"])
-                    
+                        exclude_args.extend(
+                            ["-not", "-path", f"*/{exclude}/*"])
+
                     result = subprocess.run(
-                        ["find", search_path, "-maxdepth", str(max_depth), "-type", "d"] + exclude_args,
+                        ["find", search_path, "-maxdepth",
+                            str(max_depth), "-type", "d"] + exclude_args,
                         capture_output=True,
                         text=True,
                         check=True
@@ -143,24 +154,26 @@ def find_existing_window(abbreviated_path: str, selected_path: str) -> Optional[
 
         import json
         kitty_data = json.loads(result.stdout)
-        
+
         logger.debug(f"Looking for path: '{selected_path}'")
-        
+
         # Search through all OS windows and tabs to find matching cwd
         matching_platform_window_id = None
         for os_window in kitty_data:
             platform_window_id = os_window.get("platform_window_id")
-            logger.debug(f"Checking OS window with platform_window_id: {platform_window_id}")
-            
+            logger.debug(f"Checking OS window with platform_window_id: {
+                         platform_window_id}")
+
             for tab in os_window.get("tabs", []):
                 for window in tab.get("windows", []):
                     cwd = window.get("cwd", "")
                     logger.debug(f"  Checking window cwd: '{cwd}'")
-                    
+
                     # Check if this window's cwd matches our selected path (normalize trailing slash)
                     if cwd.rstrip('/') == selected_path.rstrip('/'):
                         matching_platform_window_id = platform_window_id
-                        logger.debug(f"Found matching cwd in platform window: {platform_window_id}")
+                        logger.debug(f"Found matching cwd in platform window: {
+                                     platform_window_id}")
                         break
                 if matching_platform_window_id:  # Found a match in this OS window
                     break
@@ -173,19 +186,21 @@ def find_existing_window(abbreviated_path: str, selected_path: str) -> Optional[
 
         # Now get aerospace window IDs and find the one that corresponds to our platform window
         aerospace_result = subprocess.run(
-            ["aerospace", "list-windows", "--monitor", "all", "--app-bundle-id", "net.kovidgoyal.kitty"],
+            ["aerospace", "list-windows", "--monitor", "all",
+                "--app-bundle-id", "net.kovidgoyal.kitty"],
             capture_output=True,
             text=True,
             check=True
         )
-        
+
         logger.debug(f"Aerospace output:\n{aerospace_result.stdout}")
-        
+
         # Match the aerospace window ID by checking if it matches our platform window ID
         for line in aerospace_result.stdout.strip().split("\n"):
             if str(matching_platform_window_id) in line:
                 window_id = line.split()[0]
-                logger.debug(f"Found matching aerospace window ID: {window_id}")
+                logger.debug(
+                    f"Found matching aerospace window ID: {window_id}")
                 return window_id
 
         logger.debug("No matching aerospace window found")
