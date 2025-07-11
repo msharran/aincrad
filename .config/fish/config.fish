@@ -60,5 +60,8 @@ if test -d /snap/bin
 end
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-set --export --prepend PATH "/Users/sharranm/.rd/bin"
+set --export --prepend PATH "$HOME/.rd/bin"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
+# opencode
+fish_add_path $HOME/.opencode/bin
