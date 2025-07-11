@@ -45,7 +45,10 @@
       "WebFetch(domain:jj-vcs.github.io)",
       "Bash(starship preset:*)",
       "Bash(brew install:*)",
-      "Bash(rg:*)"
+      "Bash(rg:*)",
+      "Bash(kitten:*)",
+      "WebFetch(domain:sw.kovidgoyal.net)",
+      "Bash(/Users/sharranm/aincrad/sbin/kitty-sessioniser:*)"
     ],
     "deny": []
   }

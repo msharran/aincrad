@@ -154,17 +154,13 @@ if.app-id = 'com.google.Chrome'
 run = 'move-node-to-workspace 1'
 
 [[on-window-detected]]
-if.app-id = 'app.zen-browser.zen'
+if.app-id = 'org.mozilla.firefox'
 run = 'move-node-to-workspace 1'
 
 [[on-window-detected]]
 if.app-id = 'com.tinyspeck.slackmacgap'
-run = 'move-node-to-workspace 1'
+run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
-if.app-id = 'dev.zed.Zed'
+if.app-id = 'net.kovidgoyal.kitty'
 run = 'move-node-to-workspace 2'
-
-[[on-window-detected]]
-if.app-id = 'com.bitwarden.desktop'
-run = 'move-node-to-workspace 1'
