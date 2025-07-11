@@ -44,13 +44,12 @@ def abbreviate_path(input_path: str) -> str:
         components = remaining.split("/")
         result = "~"
 
-        for i, component in enumerate(components):
-            # Skip empty components
-            if not component:
-                continue
-
+        # Filter out empty components first
+        non_empty_components = [c for c in components if c]
+        
+        for i, component in enumerate(non_empty_components):
             # Keep the last component unchanged
-            if i == len(components) - 1:
+            if i == len(non_empty_components) - 1:
                 result += f"/{component}"
             # Abbreviate intermediate components to first letter
             else:
@@ -82,22 +81,26 @@ def list_projects() -> List[str]:
     home = os.path.expanduser("~")
     projects = []
 
-    # Define search paths
-    search_paths = [
-        (f"{home}", 1),
-        (f"{home}/root", 1),
-        (f"{home}/root/work", 1),
-        (f"{home}/root/play", 1),
-        (f"{home}/root/play/labs", 2),
-        (f"{home}/root/play/codingchallenges.fyi", 2),
+    # Define search paths with exclusions for faster search
+    search_configs = [
+        (f"{home}/root/work", 1, [".git", "node_modules", ".cache", "target", "build"]),
+        (f"{home}/root/play", 1, [".git", "node_modules", ".cache", "target", "build"]),
+        (f"{home}/root/play/labs", 2, [".git", "node_modules", ".cache", "target", "build"]),
+        (f"{home}/root/play/codingchallenges.fyi", 2, [".git", "node_modules", ".cache", "target", "build"]),
     ]
 
-    for search_path, max_depth in search_paths:
+    for search_path, max_depth, excludes in search_configs:
         if os.path.exists(search_path):
             try:
+                # Build fd command with excludes for better performance
+                cmd = ["fd", ".", search_path, "-d", str(max_depth), "-t", "d", "-H"]
+                
+                # Add excludes
+                for exclude in excludes:
+                    cmd.extend(["-E", exclude])
+                
                 result = subprocess.run(
-                    ["fd", ".", search_path, "-d",
-                        str(max_depth), "-t", "d", "-H"],
+                    cmd,
                     capture_output=True,
                     text=True,
                     check=True
@@ -107,11 +110,14 @@ def list_projects() -> List[str]:
                 logger.warning(f"fd command failed for {search_path}")
             except FileNotFoundError:
                 logger.warning("fd command not found, falling back to find")
-                # Fallback to find command
+                # Fallback to find command with excludes
                 try:
+                    exclude_args = []
+                    for exclude in excludes:
+                        exclude_args.extend(["-not", "-path", f"*/{exclude}/*"])
+                    
                     result = subprocess.run(
-                        ["find", search_path, "-maxdepth",
-                            str(max_depth), "-type", "d"],
+                        ["find", search_path, "-maxdepth", str(max_depth), "-type", "d"] + exclude_args,
                         capture_output=True,
                         text=True,
                         check=True
@@ -124,30 +130,74 @@ def list_projects() -> List[str]:
     return list(filter(None, set(projects)))
 
 
-def find_existing_window(abbreviated_path: str) -> Optional[str]:
-    """Find existing kitty window with the given abbreviated path."""
+def find_existing_window(abbreviated_path: str, selected_path: str) -> Optional[str]:
+    """Find existing kitty window with the given path."""
     try:
-        # Get all windows
+        # Get kitty window info using kitten @ ls
         result = subprocess.run(
-            ["aerospace", "list-windows", "--all"],
+            ["kitten", "@", "ls"],
             capture_output=True,
             text=True,
             check=True
         )
 
-        # Filter for kitty windows with matching path
-        for line in result.stdout.strip().split("\n"):
-            if "kitty" in line.lower() and line.endswith(abbreviated_path):
+        import json
+        kitty_data = json.loads(result.stdout)
+        
+        logger.debug(f"Looking for path: '{selected_path}'")
+        
+        # Search through all OS windows and tabs to find matching cwd
+        matching_platform_window_id = None
+        for os_window in kitty_data:
+            platform_window_id = os_window.get("platform_window_id")
+            logger.debug(f"Checking OS window with platform_window_id: {platform_window_id}")
+            
+            for tab in os_window.get("tabs", []):
+                for window in tab.get("windows", []):
+                    cwd = window.get("cwd", "")
+                    logger.debug(f"  Checking window cwd: '{cwd}'")
+                    
+                    # Check if this window's cwd matches our selected path (normalize trailing slash)
+                    if cwd.rstrip('/') == selected_path.rstrip('/'):
+                        matching_platform_window_id = platform_window_id
+                        logger.debug(f"Found matching cwd in platform window: {platform_window_id}")
+                        break
+                if matching_platform_window_id:  # Found a match in this OS window
+                    break
+            if matching_platform_window_id:  # Found a match
+                break
+
+        if not matching_platform_window_id:
+            logger.debug("No matching platform window found")
+            return None
+
+        # Now get aerospace window IDs and find the one that corresponds to our platform window
+        aerospace_result = subprocess.run(
+            ["aerospace", "list-windows", "--monitor", "all", "--app-bundle-id", "net.kovidgoyal.kitty"],
+            capture_output=True,
+            text=True,
+            check=True
+        )
+        
+        logger.debug(f"Aerospace output:\n{aerospace_result.stdout}")
+        
+        # Match the aerospace window ID by checking if it matches our platform window ID
+        for line in aerospace_result.stdout.strip().split("\n"):
+            if str(matching_platform_window_id) in line:
                 window_id = line.split()[0]
-                logger.debug(f"Found existing window ID: {window_id}")
+                logger.debug(f"Found matching aerospace window ID: {window_id}")
                 return window_id
 
+        logger.debug("No matching aerospace window found")
         return None
     except subprocess.CalledProcessError as e:
-        logger.warning(f"aerospace command failed: {e}")
+        logger.warning(f"Command failed: {e}")
         return None
     except FileNotFoundError:
-        logger.warning("aerospace command not found")
+        logger.warning("Command not found")
+        return None
+    except json.JSONDecodeError as e:
+        logger.warning(f"Failed to parse kitten @ ls output: {e}")
         return None
 
 
@@ -222,7 +272,7 @@ def find_and_open_projects():
     print(f"selected: {selected_abbreviated}, {selected}")
 
     # Check if kitty window already exists
-    window_id = find_existing_window(selected_abbreviated)
+    window_id = find_existing_window(selected_abbreviated, selected)
 
     if window_id:
         logger.debug(
