@@ -34,9 +34,7 @@ Plug 'MunifTanjim/nui.nvim'           " UI component library, a dependency for n
 " =============================================================================
 " Appearance and UI
 " =============================================================================
-Plug 'junegunn/seoul256.vim'         " A clean, dark color scheme.
-Plug 'folke/tokyonight.nvim'         " A clean, dark color scheme.
-Plug 'nvim-lualine/lualine.nvim'      " A fast and customizable statusline.
+Plug 'tpope/vim-vividchalk'         " A clean, dark color scheme.
 Plug 'nvim-tree/nvim-web-devicons'   " Adds file-type icons to various plugins.
 Plug 'folke/which-key.nvim'          " Displays a popup with possible keybindings.
 Plug 'lukas-reineke/indent-blankline.nvim' " Adds indentation guides.
