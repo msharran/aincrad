@@ -28,13 +28,12 @@ Plug 'folke/todo-comments.nvim'      " Highlight and search for TODO, FIXME, etc
 " File and Project Navigation
 " =============================================================================
 Plug 'ibhagwan/fzf-lua'               " Fuzzy finder for files, buffers, git, etc., powered by fzf.
-Plug 'nvim-neo-tree/neo-tree.nvim' , { 'branch': 'v3.x' } " A modern file explorer tree.
 Plug 'MunifTanjim/nui.nvim'           " UI component library, a dependency for neo-tree.
 
 " =============================================================================
 " Appearance and UI
 " =============================================================================
-Plug 'tpope/vim-vividchalk'         " A clean, dark color scheme.
+Plug 'ramojus/mellifluous.nvim', { 'tag': 'v1.2.0' } 
 Plug 'nvim-tree/nvim-web-devicons'   " Adds file-type icons to various plugins.
 Plug 'folke/which-key.nvim'          " Displays a popup with possible keybindings.
 Plug 'lukas-reineke/indent-blankline.nvim' " Adds indentation guides.
