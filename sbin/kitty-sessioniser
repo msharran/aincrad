@@ -2,6 +2,8 @@
 
 > /tmp/kitty-sessioniser.log
 
+env > /tmp/kitty-sessioniser.log
+
 grepprg=rg
 if !command -v "$grepprg" &>/dev/null; then
     echo "Cannot find 'rg', fallback to grep" >&2
@@ -63,12 +65,19 @@ ABBR_PATH=$(abbreviate_path "$RESULT")
 echo "Selected session title: $ABBR_PATH" >> /tmp/kitty-sessioniser.log
 
 # Check if kitty window already exists using aerospace
-aerospace_window_id=$(aerospace list-windows --monitor all --app-bundle-id net.kovidgoyal.kitty | $grepprg -e "$ABBR_PATH\$" | head -n 1 | awk '{print $1}')
+hit=$(aerospace list-windows --monitor all --app-bundle-id net.kovidgoyal.kitty | $grepprg -e "$ABBR_PATH\$")
+if [[ -z $hit ]]; then
+    # if the abbr path is not in window name, check for the project name. Some programs
+    # like gemini-cli follow this pattern
+    hit=$(aerospace list-windows --monitor all --app-bundle-id net.kovidgoyal.kitty | $grepprg "$(basename $ABBR_PATH)")
+fi
+aerospace_window_id=$(echo $hit | head -n 1 | awk '{print $1}')
 
 # If kitty window already exists, focus it
 if [[ $? == 0 ]] && [[ -n "$aerospace_window_id" ]]; then
     aerospace focus --window-id $aerospace_window_id
 else
+    
     # Launch new kitty os-window
     kitty @ launch --type=os-window --cwd "$RESULT" --title "$ABBR_PATH"
 fi
