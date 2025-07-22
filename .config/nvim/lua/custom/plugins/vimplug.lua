@@ -16,13 +16,13 @@ call plug#begin()
 " =============================================================================
 Plug 'nvim-lua/plenary.nvim'         " Lua utility library, a dependency for many other plugins.
 Plug 'tpope/vim-repeat'              " Enables repeating plugin actions with the '.' command.
-Plug 'tpope/vim-surround'            " Easily add, change, and delete surrounding pairs (quotes, brackets, etc.).
 Plug 'tpope/vim-unimpaired'          " Provides complementary pairs of mappings (e.g., `[b` and `]b` for buffers).
 Plug 'tpope/vim-sensible'            " A set of sensible default settings for Vim.
 Plug 'numToStr/Comment.nvim'         " Smart and powerful commenting plugin.
 Plug 'christoomey/vim-tmux-navigator' " Seamless navigation between Vim splits and Tmux panes.
 Plug 'ThePrimeagen/harpoon' , { 'branch': 'harpoon2' } " Quickly navigate to frequently used files.
 Plug 'folke/todo-comments.nvim'      " Highlight and search for TODO, FIXME, etc. comments.
+Plug 'machakann/vim-sandwich'
 
 " =============================================================================
 " File and Project Navigation

@@ -8,4 +8,4 @@ nnoremap <leader>e :let @z=expand("%:t")<CR>:Ex<CR>/<C-R>z<CR>:noh<CR>
 
 
 " List style = Tree
-let g:netrw_liststyle = 3
+" let g:netrw_liststyle = 3
