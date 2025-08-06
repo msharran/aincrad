@@ -1,4 +1,13 @@
-require('gitlinker').setup({ mappings = nil })
+require('gitlinker').setup({
+    mappings = nil,
+    callbacks = {
+        ["github.work"] = function(url_data)
+            url_data.host = "github.com"
+            return require "gitlinker.hosts".get_github_type_url(url_data)
+        end
+    },
+})
+
 vim.cmd [[
 nmap <leader>gy <CMD>lua require"gitlinker".get_buf_range_url("n", {})<CR>
 vmap <leader>gy <CMD>lua require"gitlinker".get_buf_range_url("v", {})<CR>
@@ -9,7 +18,7 @@ nmap <leader>gB <CMD>lua require"gitlinker".get_repo_url({action_callback = requ
 ]]
 
 require('gitsigns').setup({
-    current_line_blame = true,             -- Toggle with `:Gitsigns toggle_current_line_blame`
+    current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
     on_attach = function(bufnr)
         local gs = package.loaded.gitsigns
 

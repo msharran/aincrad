@@ -2,8 +2,6 @@
 
 > /tmp/kitty-sessioniser.log
 
-env > /tmp/kitty-sessioniser.log
-
 grepprg=rg
 if !command -v "$grepprg" &>/dev/null; then
     echo "Cannot find 'rg', fallback to grep" >&2
@@ -69,7 +67,7 @@ hit=$(aerospace list-windows --monitor all --app-bundle-id net.kovidgoyal.kitty 
 if [[ -z $hit ]]; then
     # if the abbr path is not in window name, check for the project name. Some programs
     # like gemini-cli follow this pattern
-    hit=$(aerospace list-windows --monitor all --app-bundle-id net.kovidgoyal.kitty | $grepprg "$(basename $ABBR_PATH)")
+    hit=$(aerospace list-windows --monitor all --app-bundle-id net.kovidgoyal.kitty | $grepprg -e "$(basename $ABBR_PATH)\$")
 fi
 aerospace_window_id=$(echo $hit | head -n 1 | awk '{print $1}')
 

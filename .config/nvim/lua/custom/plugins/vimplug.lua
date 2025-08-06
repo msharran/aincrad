@@ -33,7 +33,7 @@ Plug 'MunifTanjim/nui.nvim'           " UI component library, a dependency for n
 " =============================================================================
 " Appearance and UI
 " =============================================================================
-Plug 'ramojus/mellifluous.nvim', { 'tag': 'v1.2.0' } 
+Plug 'junegunn/seoul256.vim'
 Plug 'nvim-tree/nvim-web-devicons'   " Adds file-type icons to various plugins.
 Plug 'folke/which-key.nvim'          " Displays a popup with possible keybindings.
 Plug 'lukas-reineke/indent-blankline.nvim' " Adds indentation guides.

@@ -22,9 +22,9 @@ set -gx XDG_CONFIG_HOME $HOME/.config
 set -gx XDG_DATA_HOME $HOME/.local/share
 set -gx XDG_STATE_HOME $HOME/.local/state
 
-
-# Brew luarocks
-# set -gx DYLD_LIBRARY_PATH "$(brew --prefix)/lib" $DYLD_LIBRARY_PATH
+# LLVM
+set -gx LDFLAGS "-L/opt/homebrew/opt/llvm/lib"
+set -gx CPPFLAGS "-I/opt/homebrew/opt/llvm/include"
 
 # Less options, set colors and line numbers
 set -gx LESS '--chop-long-lines --RAW-CONTROL-CHARS'
@@ -52,6 +52,10 @@ end
 
 if command -v pyenv 1>/dev/null 2>&1
   pyenv init - | source
+end
+
+if type -q fnm
+  fnm env | source 
 end
 
 # Snap for linux

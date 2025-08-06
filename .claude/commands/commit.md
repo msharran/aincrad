@@ -1,5 +1,5 @@
 ---
-allowed-tools: Bash(git status:*), Bash(git diff:*), Bash(git commit:*)
+allowed-tools: Bash(git status:*), Bash(git diff:*) 
 description: Create detailed commit messages with context and preview before committing
 ---
 
@@ -11,11 +11,11 @@ When creating commits, follow this process:
 2. **Create descriptive commit message**:
    - Follow the style of Mitchell Hashimoto's commits: clear title, detailed body explaining the changes and their impact
    - Never mention AI or automated assistance in the commit message (Like co authored by Claude)
-3. **Preview the commit message**: Always show the proposed commit message to the user for review before committing
-4. **Commit behavior**:
+3. **Preview the commit message**: Always only show the proposed commit message to the user. Do not commit using `git commit` 
+4. **Commit message generation behavior**:
    - If there are staged files, commit only those staged files
    - Do not automatically add untracked or unstaged files to the commit
-   - Only commit what the user has intentionally staged
+   - Only generate commit message for what the user has intentionally staged
 
 ## Example Commit Style (following Mitchell Hashimoto's approach)
 
