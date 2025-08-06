@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+
+grepprg=rg
+if !command -v "$grepprg" &>/dev/null; then
+    echo "Cannot find 'rg', fallback to grep" >&2
+    grepprg=grep
+fi
+
+list_projects() {
+    fd . $HOME -d 1 -t d -H
+    fd . $HOME/root -d 1 -t d -H
+    fd . $HOME/root/work $HOME/root/play -d 1 -t d -H
+    fd . $HOME/root/play/labs $HOME/root/play/codingchallenges.fyi -d 2 -t d -H
+}
+
+# Parse optional argument
+if [ "$1" ]; then
+    # Argument is given
+    if [ ! -d "$@" ]; then
+        echo "Directory '$@' does not exist."
+        exit 1
+    fi
+    SELECTED_PATH=$(cd "$@" && pwd)
+else
+    # No argument is given. Use FZF
+    SELECTED_PATH=$(list_projects | fzf)
+    if [ -z "$SELECTED_PATH" ]; then
+        echo "No projects selected"
+        exit 1
+    fi
+fi
+
+echo "Selected Project Path: $SELECTED_PATH" 
+TAB_TITLE=$(basename ${SELECTED_PATH})
+echo "Infered Tab Name: $TAB_TITLE"
+
+# Check if tab with selected project already exists
+FOUND_TAB_TITLE=$(kitten @ ls | jq -r ".[].tabs.[] | select(.title == \"$TAB_TITLE\") | .title")
+echo "Found Tab Title = $FOUND_TAB_TITLE"
+
+if [[ -n $FOUND_TAB_TITLE ]]; then
+    # Tab exists, focus it
+    echo "Focusing Tab: title:${FOUND_TAB_TITLE}"
+    kitten @ focus-tab -m "title:${FOUND_TAB_TITLE}"
+else
+    # Else create one
+    echo "Launching Tab: title:${TAB_TITLE}"
+    kitten @ launch --type tab --tab-title "${TAB_TITLE}" --cwd ${SELECTED_PATH}
+fi
