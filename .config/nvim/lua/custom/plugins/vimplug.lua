@@ -29,11 +29,12 @@ Plug 'machakann/vim-sandwich'
 " =============================================================================
 Plug 'ibhagwan/fzf-lua'               " Fuzzy finder for files, buffers, git, etc., powered by fzf.
 Plug 'MunifTanjim/nui.nvim'           " UI component library, a dependency for neo-tree.
+Plug 'nvim-tree/nvim-tree.lua'        " Fast and configurable file explorer
 
 " =============================================================================
 " Appearance and UI
 " =============================================================================
-Plug 'junegunn/seoul256.vim'
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 Plug 'nvim-tree/nvim-web-devicons'   " Adds file-type icons to various plugins.
 Plug 'folke/which-key.nvim'          " Displays a popup with possible keybindings.
 Plug 'lukas-reineke/indent-blankline.nvim' " Adds indentation guides.
