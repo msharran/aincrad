@@ -2531,8 +2531,7 @@ kitty_mod ctrl+shift
 include custom-maps.conf 
 
 
-
 # BEGIN_KITTY_THEME
-# One Dark
+# GitHub Dark High Contrast
 include current-theme.conf
 # END_KITTY_THEME

@@ -34,7 +34,7 @@ Plug 'nvim-tree/nvim-tree.lua'        " Fast and configurable file explorer
 " =============================================================================
 " Appearance and UI
 " =============================================================================
-Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+Plug 'navarasu/onedark.nvim'
 Plug 'nvim-tree/nvim-web-devicons'   " Adds file-type icons to various plugins.
 Plug 'folke/which-key.nvim'          " Displays a popup with possible keybindings.
 Plug 'lukas-reineke/indent-blankline.nvim' " Adds indentation guides.
