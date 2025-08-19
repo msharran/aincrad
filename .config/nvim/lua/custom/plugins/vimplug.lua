@@ -34,7 +34,7 @@ Plug 'nvim-tree/nvim-tree.lua'        " Fast and configurable file explorer
 " =============================================================================
 " Appearance and UI
 " =============================================================================
-Plug 'navarasu/onedark.nvim'
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'nvim-tree/nvim-web-devicons'   " Adds file-type icons to various plugins.
 Plug 'folke/which-key.nvim'          " Displays a popup with possible keybindings.
 Plug 'lukas-reineke/indent-blankline.nvim' " Adds indentation guides.
@@ -73,7 +73,6 @@ Plug 'onsails/lspkind.nvim'           " Adds file-type pictograms to completion 
 " AI and Copilot
 " =============================================================================
 Plug 'github/copilot.vim'             " GitHub Copilot integration.
-Plug 'yetone/avante.nvim', { 'branch': 'main', 'do': 'make' } " AI-powered code assistant.
 
 call plug#end()
 
