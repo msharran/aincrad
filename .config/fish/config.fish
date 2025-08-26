@@ -45,9 +45,7 @@ if type -q pyenv
     pyenv init - fish | source
 end
 
-if type -q starship
-    starship init fish | source
-end
+# Using default fish prompt
 
 
 if command -v pyenv 1>/dev/null 2>&1
@@ -69,3 +67,7 @@ set --export --prepend PATH "/Users/sharranm/.rd/bin"
 
 # opencode
 fish_add_path $HOME/.opencode/bin
+
+# Added by OrbStack: command-line tools and integration
+# This won't be added again if you remove it.
+source ~/.orbstack/shell/init2.fish 2>/dev/null || :

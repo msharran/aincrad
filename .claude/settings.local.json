@@ -51,5 +51,6 @@
       "Bash(/Users/sharranm/aincrad/sbin/kitty-sessioniser:*)"
     ],
     "deny": []
-  }
+  },
+  "outputStyle": "Learning"
 }

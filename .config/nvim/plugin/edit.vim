@@ -41,3 +41,7 @@ noremap { {zz
 noremap } }zz
 noremap <C-d> <C-d>zz
 noremap <C-u> <C-u>zz
+
+" = Insert mode escape alternatives =
+inoremap jk <Esc>
+inoremap kj <Esc>

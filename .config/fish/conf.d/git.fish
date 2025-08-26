@@ -11,4 +11,3 @@ abbr --add glog git log --graph --oneline
 abbr --add grhh git reset --hard HEAD
 
 
-abbr --add jjl jj log --limit 6 
