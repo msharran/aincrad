@@ -43,3 +43,4 @@ auth.json
 !.claude/CLAUDE.md
 .gemini/*
 !.gemini/GEMINI.md
+.gemini-clipboard/
