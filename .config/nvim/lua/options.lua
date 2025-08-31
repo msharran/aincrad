@@ -24,3 +24,7 @@ opt.cursorline = true
 
 -- Set search path
 opt.path:append '**'
+
+-- Colorschemes
+opt.termguicolors = true
+vim.cmd.colorscheme 'default'

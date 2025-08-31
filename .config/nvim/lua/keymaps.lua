@@ -5,6 +5,7 @@ local keymap = vim.keymap.set
 
 -- General
 keymap('n', '<leader>y', '"+y', { desc = "Yank to system clipboard" })
+keymap('v', '<leader>y', '"+y', { desc = "Yank to system clipboard" })
 keymap('n', '<leader>p', '"+p', { desc = "Paste from system clipboard" })
 keymap('n', 'Q', '<cmd>noh<CR>', { desc = "Clear search highlight" })
 keymap('n', '<leader>x', '<cmd>silent !chmod +x %<CR>', { desc = "Make current file executable" })
@@ -29,11 +30,23 @@ keymap('n', '<leader>wn', '<cmd>vertical resize -5<CR>', { desc = "Decrease wind
 keymap('i', 'jk', '<Esc>', { desc = "Escape insert mode" })
 keymap('i', 'kj', '<Esc>', { desc = "Escape insert mode" })
 
--- Tmux navigation
-keymap('n', '<C-h>', '<cmd>TmuxNavigateLeft<CR>', { desc = "Navigate left (Tmux)" })
-keymap('n', '<C-j>', '<cmd>TmuxNavigateDown<CR>', { desc = "Navigate down (Tmux)" })
-keymap('n', '<C-k>', '<cmd>TmuxNavigateUp<CR>', { desc = "Navigate up (Tmux)" })
-keymap('n', '<C-l>', '<cmd>TmuxNavigateRight<CR>', { desc = "Navigate right (Tmux)" })
+-- Window navigation
+keymap('n', '<C-h>', '<C-w>h', { desc = "Navigate window left" })
+keymap('n', '<C-j>', '<C-w>j', { desc = "Navigate window down" })
+keymap('n', '<C-k>', '<C-w>k', { desc = "Navigate window up" })
+keymap('n', '<C-l>', '<C-w>l', { desc = "Navigate window right" })
+keymap('i', '<C-h>', '<C-\\><C-N><C-w>h', { desc = "Navigate window left" })
+keymap('i', '<C-j>', '<C-\\><C-N><C-w>j', { desc = "Navigate window down" })
+keymap('i', '<C-k>', '<C-\\><C-N><C-w>k', { desc = "Navigate window up" })
+keymap('i', '<C-l>', '<C-\\><C-N><C-w>l', { desc = "Navigate window right" })
+keymap('t', '<C-h>', '<C-\\><C-N><C-w>h', { desc = "Navigate window left" })
+keymap('t', '<C-j>', '<C-\\><C-N><C-w>j', { desc = "Navigate window down" })
+keymap('t', '<C-k>', '<C-\\><C-N><C-w>k', { desc = "Navigate window up" })
+keymap('t', '<C-l>', '<C-\\><C-N><C-w>l', { desc = "Navigate window right" })
+
+-- Terminal maps
+keymap('t', '<ESC>', '<C-\\><C-n>', { desc = "Normal Mode (terminal)" })
+
 
 -- Plugin specific keymaps are defined in plugins.lua with the plugin spec
 

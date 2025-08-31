@@ -1,6 +1,6 @@
 font-size = 14
 window-save-state = always
-theme = tokyonight
+theme = GruvboxDark
 
 # Clipboard settings for tmux integration
 clipboard-read = allow
