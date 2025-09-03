@@ -5,7 +5,7 @@ return {
     priority = 1000,
     config = function()
         -- Eye-friendly settings for optimal comfort
-        vim.g.gruvbox_material_background = 'medium'  -- Softer than 'hard', easier on eyes
+        vim.g.gruvbox_material_background = 'hard'  -- Softer than 'hard', easier on eyes
         vim.g.gruvbox_material_palette = 'material'   -- Enhanced Material Design palette
         vim.g.gruvbox_material_enable_italic = 1      -- Better typography with italics
         vim.g.gruvbox_material_enable_bold = 1        -- Enhanced readability

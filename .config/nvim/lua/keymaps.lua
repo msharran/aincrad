@@ -4,6 +4,7 @@
 local keymap = vim.keymap.set
 
 -- General
+keymap('n', '<leader>z', 'zf%', { desc = "Create fold for matching params", noremap = true })
 keymap('n', '<leader>y', '"+y', { desc = "Yank to system clipboard" })
 keymap('v', '<leader>y', '"+y', { desc = "Yank to system clipboard" })
 keymap('n', '<leader>p', '"+p', { desc = "Paste from system clipboard" })

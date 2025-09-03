@@ -8,9 +8,10 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   "tab_bar": {
-    "show": false
+    "show": true
   },
   "agent": {
+    "always_allow_tool_actions": true,
     "inline_assistant_model": {
       "provider": "openai",
       "model": "gpt-4.1"
@@ -19,8 +20,7 @@
     "default_model": {
       "provider": "openai",
       "model": "gpt-4.1"
-    },
-    "version": "2"
+    }
   },
   "auto_update_extensions": {
     "go-snippets": false
@@ -41,7 +41,7 @@
   "search": {
     "regex": true
   },
-  "theme": "Gruvbox Dark Hard",
+  "theme": "One Dark",
   "vim_mode": true,
   "ui_font_family": "JetBrainsMono Nerd Font",
   "buffer_font_family": "JetBrainsMono Nerd Font",
@@ -77,7 +77,6 @@
   "language_models": {
     "openai": {
       "api_url": "https://api.labs.dreamplug.net",
-      "version": "1",
       "available_models": [
         {
           "name": "gemini-2.5-pro",

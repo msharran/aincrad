@@ -45,7 +45,7 @@ if type -q pyenv
     pyenv init - fish | source
 end
 
-# Using default fish prompt
+
 
 
 if command -v pyenv 1>/dev/null 2>&1
@@ -53,7 +53,7 @@ if command -v pyenv 1>/dev/null 2>&1
 end
 
 if type -q fnm
-  fnm env | source 
+  fnm env | source
 end
 
 # Snap for linux
