@@ -9,40 +9,23 @@
   {
     "context": "Workspace",
     "bindings": {
-      "cmd-shift-t": ["task::Spawn", { "task_name": "Terminal" }],
-      "cmd-shift-s": ["task::Spawn", { "task_name": "zed-sessioniser" }],
-      "cmd-shift-a": ["task::Spawn", { "task_name": "claude-code" }]
+      "cmd-shift-space": ["task::Spawn", { "task_name": "zed-sessioniser" }]
     }
   },
   {
     "bindings": {
       // navigation
-      "cmd-shift-h": "workspace::ActivatePaneLeft",
-      "cmd-shift-l": "workspace::ActivatePaneRight",
-      "cmd-shift-k": "workspace::ActivatePaneUp",
-      "cmd-shift-j": "workspace::ActivatePaneDown",
-
-      "cmd-k cmd-enter": "workspace::ToggleZoom",
-      "shift-escape": null,
-      "cmd-shift-down": "vim::ResizePaneDown",
-      "cmd-shift-up": "vim::ResizePaneUp",
-      "cmd-shift-left": "vim::ResizePaneLeft",
-      "cmd-shift-right": "vim::ResizePaneRight",
-
-      // Tmux and vim style key bindings
-      "cmd-shift-g": "git_panel::ToggleFocus",
-
-      // copy
-      "cmd-k c l": "editor::CopyFileLocation",
-      "cmd-k c p": "editor::CopyPermalinkToLine"
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown"
     }
   },
   {
     "context": "Terminal",
     "bindings": {
-      "cmd-k space": "terminal::ToggleViMode",
-      "shift-enter": ["terminal::SendText", "\n"],
-      "cmd-k cmd-k": ["terminal::SendKeystroke", "cmd-l"]
+      "ctrl-b space": "terminal::ToggleViMode"
+      // "cmd-k cmd-k": ["terminal::SendKeystroke", "cmd-l"]
     }
   },
   {

@@ -11,16 +11,13 @@
     "show": true
   },
   "agent": {
+    "default_profile": "write",
     "always_allow_tool_actions": true,
     "inline_assistant_model": {
       "provider": "openai",
-      "model": "gpt-4.1"
+      "model": "claude-4-sonnet"
     },
-    "model_parameters": [],
-    "default_model": {
-      "provider": "openai",
-      "model": "gpt-4.1"
-    }
+    "model_parameters": []
   },
   "auto_update_extensions": {
     "go-snippets": false
@@ -41,18 +38,26 @@
   "search": {
     "regex": true
   },
-  "theme": "One Dark",
+  "theme": "One Light",
   "vim_mode": true,
-  "ui_font_family": "JetBrainsMono Nerd Font",
   "buffer_font_family": "JetBrainsMono Nerd Font",
   "relative_line_numbers": true,
-  "buffer_font_size": 14,
-  "ui_font_size": 13,
+  // "buffer_font_size": 12,
+  // "ui_font_size": 13,
   "ssh_connections": [
     {
       "host": "vm",
       "projects": [],
       "nickname": "vm"
+    },
+    {
+      "host": "centos@orb",
+      "projects": [
+        {
+          "paths": ["/Users/sharranm/root/work/rollouts"]
+        }
+      ],
+      "nickname": "dev"
     },
     {
       "host": "github.work",
@@ -94,14 +99,14 @@
           "max_tokens": 1000000
         },
         {
-          "name": "claude-3.7-sonnet",
-          "display_name": "Claude 3.7 Sonnet (CRED)",
-          "max_tokens": 200000
-        },
-        {
           "name": "claude-4-sonnet",
           "display_name": "Claude 4 Sonnet (CRED)",
           "max_tokens": 200000
+        },
+        {
+          "name": "gpt-5",
+          "display_name": "GPT-5 (CRED)",
+          "max_tokens": 1000000
         }
       ]
     }

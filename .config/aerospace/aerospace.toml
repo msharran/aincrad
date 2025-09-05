@@ -164,3 +164,15 @@ run = 'move-node-to-workspace 3'
 [[on-window-detected]]
 if.app-id = 'net.kovidgoyal.kitty'
 run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
+if.app-id = 'dev.zed.Zed'
+run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.ScreenContinuity'
+run = 'move-node-to-workspace 4'
+
+[[on-window-detected]]
+if.app-id = 'com.bitwarden.desktop'
+run = 'move-node-to-workspace 6'
