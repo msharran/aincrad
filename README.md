@@ -80,15 +80,22 @@ This is the magic part. The playbook will install everything and set it all up.
     git clone https://github.com/msharran/aincrad.git
     cd aincrad/ansible
     ```
-2.  **Check the connection**: Before running the whole thing, make sure Ansible can talk to your VM.
+2.  **Run the playbook**:
+    Use the `Makefile` to provision your machines.
+    - To provision the UTM VM, run:
+      ```bash
+      make utm/install
+      ```
+    - To provision the OrbStack VM, run:
+      ```bash
+      make orb/install
+      ```
+    The command will prompt for your GPG passphrase. The playbook is idempotent, so you can run it again without breaking anything.
+
+    If you need to create a new OrbStack VM, you can use the `orb/create` command:
     ```bash
-    ansible vm -i inventory.yml -m ping
+    make orb/create
     ```
-3.  **Run it**:
-    ```bash
-    ansible-playbook -i inventory.yml site.yml --ask-become-pass
-    ```
-    This will take a bit of time. It's installing all my development tools (Neovim, Go, Node, Rust, etc.), configuring my shell, and setting up my dotfiles. It's idempotent, so you can run it again without breaking anything.
 
 ## My Daily Workflow
 
@@ -102,7 +109,8 @@ That's it. It's a super fast way to switch between projects, and my development 
 
 ## Customizing It
 
-If you want to adapt this for yourself, it's pretty easy.
+If you want to adapt this for yourself, you'll need to change the username in a few places:
 
--   **Username**: The main thing you'll want to change is the `user_name` variable in `ansible/site.yml`.
--   **Software**: To add or remove software, just edit the lists of APT and Snap packages in the `site.yml` playbook.
+-   **`ansible/site.yml`**: Change the `user_name` variable.
+-   **`ansible/inventory.yml`**: Change the `ansible_user` for the hosts.
+-   **`ansible/Makefile`**: Change the username in the `orb/create` command.

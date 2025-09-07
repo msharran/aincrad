@@ -7,33 +7,27 @@ if !command -v "$grepprg" &>/dev/null; then
 fi
 
 list_projects() {
-    fd . $HOME -d 1 -t d -H
-    fd . $HOME/root -d 1 -t d -H
-    fd . $HOME/root/work $HOME/root/play -d 1 -t d -H
-    fd . $HOME/root/play/labs $HOME/root/play/codingchallenges.fyi -d 2 -t d -H
+    find $HOME -maxdepth 1 -type d
+    find $HOME/root -maxdepth 1 -type d
+    find $HOME/root/work -maxdepth 1 -type d
 }
 
-# list_remote_projects() {
-# local vm_home=$(ssh vm 'echo $HOME')
-# ssh vm "fd . $vm_home/projects/work $vm_home/projects/play -d 1 -t d; \
-#     fd . $vm_home/projects/play/labs $vm_home/projects/play/codingchallenges.fyi -d 2 -t d"
-# echo "$vm_home/.ssh"
-# echo "$vm_home/.aws"
-# echo "$vm_home/.ssh_keys"
-# }
+list_remote_projects() {
+    ssh orb "$HOME/root/play -maxdepth 1 -type d; \
+    find $HOME/root/play/labs $HOME/root/play/codingchallenges.fyi -maxdepth 2 -type d"
+}
 
 find_and_open_projects() {
     projects=$(list_projects)
-    # remote_projects=$(list_remote_projects)
+    remote_projects=$(list_remote_projects)
 
     # Add a prefix to remote projects to distinguish them
-    # remote_projects_with_prefix=$(echo "$remote_projects" | sed 's/^/vm: /')
-
+    remote_projects_with_prefix=$(echo "$remote_projects" | sed 's/^/orb: /')
     # Combine both lists
-    # all_projects=$(echo -e "${projects}\n${remote_projects_with_prefix}")
+    all_projects=$(echo -e "${projects}\n${remote_projects_with_prefix}")
 
     # Choose a project with fzf
-    selected=$(echo "$projects" | fzf)
+    selected=$(echo "$all_projects" | fzf)
 
     if [ -z "$selected" ]; then
         echo "Empty selection, exiting loop"
@@ -55,11 +49,11 @@ find_and_open_projects() {
         aerospace focus --window-id $aerospace_window_id
     else
         # Check if it's a remote project
-        if [[ $selected == vm:* ]]; then
-            # Extract the actual path by removing the "vm: " prefix
-            remote_path=${selected#vm: }
+        if [[ $selected == orb:* ]]; then
+            # Extract the actual path by removing the "orb: " prefix
+            remote_path=${selected#orb: }
             # Use zed with ssh:// protocol
-            zed "ssh://vm$remote_path"
+            zed "ssh://orb$remote_path"
         else
             # Local project
             zed "$selected"

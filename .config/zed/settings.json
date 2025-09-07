@@ -12,6 +12,9 @@
   "buffer_font_size": 13,
   "ui_font_size": 14,
   "pane_split_direction_vertical": "right",
+  "scrollbar": {
+    "show": "never"
+  },
   "tab_bar": {
     "show": true
   },
@@ -55,11 +58,13 @@
     "hide_gitignore": false
   },
   "edit_predictions": {
-    "mode": "subtle",
+    "mode": "eager",
     "enabled_in_text_threads": false
   },
   "terminal": {
     "shell": "system",
+    "font_family": "JetBrainsMono Nerd Font",
+    "copy_on_select": true,
     "env": {
       "FZF_DEFAULT_OPTS": "--color=light"
     }
@@ -75,15 +80,6 @@
       "host": "vm",
       "projects": [],
       "nickname": "vm"
-    },
-    {
-      "host": "centos@orb",
-      "projects": [
-        {
-          "paths": ["/Users/sharranm/root/work/rollouts"]
-        }
-      ],
-      "nickname": "dev"
     },
     {
       "host": "github.work",

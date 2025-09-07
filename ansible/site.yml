@@ -1,6 +1,14 @@
 ---
+- name: Bootstrap Python for Ansible
+  hosts: all
+  become: yes
+  gather_facts: no
+  tasks:
+    - name: Install Python for Ansible
+      raw: apt-get update && apt-get install -y python3
+
 - name: Bootstrap Ubuntu ARM VM for Development
-  hosts: vm
+  hosts: all
   become: yes
   gather_facts: yes
 
@@ -72,7 +80,7 @@
         state: directory
         owner: "{{ user_name }}"
         group: "{{ user_name }}"
-        mode: '0755'
+        mode: "0755"
       become_user: "{{ user_name }}"
 
     - name: Create opt directory
@@ -81,7 +89,7 @@
         state: directory
         owner: "{{ user_name }}"
         group: "{{ user_name }}"
-        mode: '0755'
+        mode: "0755"
       become_user: "{{ user_name }}"
 
     - name: Create npm-global directory
@@ -90,7 +98,7 @@
         state: directory
         owner: "{{ user_name }}"
         group: "{{ user_name }}"
-        mode: '0755'
+        mode: "0755"
       become_user: "{{ user_name }}"
 
     - name: Create go directory
@@ -99,7 +107,7 @@
         state: directory
         owner: "{{ user_name }}"
         group: "{{ user_name }}"
-        mode: '0755'
+        mode: "0755"
       become_user: "{{ user_name }}"
 
     - name: Create local go directory
@@ -108,7 +116,7 @@
         state: directory
         owner: "{{ user_name }}"
         group: "{{ user_name }}"
-        mode: '0755'
+        mode: "0755"
       become_user: "{{ user_name }}"
 
     - name: Create cargo directory
@@ -117,7 +125,7 @@
         state: directory
         owner: "{{ user_name }}"
         group: "{{ user_name }}"
-        mode: '0755'
+        mode: "0755"
       become_user: "{{ user_name }}"
 
     - name: Wait for snapd to be ready
@@ -157,10 +165,17 @@
     - name: Install Rust via rustup
       shell: |
         curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-        source ~/.cargo/env
       become_user: "{{ user_name }}"
       args:
         creates: "{{ user_home }}/.cargo/bin/rustc"
+
+    - name: Install fd via Cargo
+      shell: |
+        . {{ user_home }}/.cargo/env
+        cargo install fd-find
+      become_user: "{{ user_name }}"
+      args:
+        creates: "{{ user_home }}/.cargo/bin/fd"
 
     - name: Get system architecture
       shell: uname -m
@@ -186,16 +201,6 @@
       become_user: "{{ user_name }}"
       args:
         creates: "{{ local_bin_dir }}/zig"
-
-    - name: Install Jujutsu VCS via Cargo
-      shell: |
-        source {{ user_home }}/.cargo/env
-        {{ user_home }}/.cargo/bin/cargo install --locked --bin jj jj-cli
-      become_user: "{{ user_name }}"
-      args:
-        creates: "{{ user_home }}/.cargo/bin/jj"
-      environment:
-        PATH: "{{ user_home }}/.cargo/bin:{{ ansible_env.PATH }}"
 
     - name: Install k9s
       shell: |
@@ -262,7 +267,7 @@
         state: directory
         owner: "{{ user_name }}"
         group: "{{ user_name }}"
-        mode: '0755'
+        mode: "0755"
       loop:
         - work
         - play
@@ -335,6 +340,8 @@
         /snap/bin/go version
         echo "=== Rust ==="
         {{ user_home }}/.cargo/bin/rustc --version
+        echo "=== fd ==="
+        {{ user_home }}/.cargo/bin/fd --version
         echo "=== Zig ==="
         {{ local_bin_dir }}/zig version
         echo "=== Python (pyenv) ==="
@@ -343,8 +350,7 @@
         gcc --version | head -1
         echo "=== direnv ==="
         direnv --version
-        echo "=== Jujutsu (jj) ==="
-        {{ user_home }}/.cargo/bin/jj --version
+
         echo "=== kubectl ==="
         /snap/bin/kubectl version --client
         echo "=== k9s ==="
