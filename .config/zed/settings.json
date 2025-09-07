@@ -7,11 +7,40 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "buffer_font_family": "JetBrainsMono Nerd Font",
+  "use_system_prompts": false,
+  "buffer_font_size": 13,
+  "ui_font_size": 14,
+  "pane_split_direction_vertical": "right",
   "tab_bar": {
     "show": true
   },
   "agent": {
-    "default_profile": "write",
+    "profiles": {
+      "plan": {
+        "name": "Plan",
+        "tools": {
+          "diagnostics": true,
+          "fetch": true,
+          "find_path": true,
+          "grep": true,
+          "list_directory": true,
+          "now": true,
+          "open": true,
+          "project_notifications": true,
+          "read_file": true,
+          "terminal": true,
+          "thinking": true
+        },
+        "enable_all_context_servers": false,
+        "context_servers": {}
+      }
+    },
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "claude-sonnet-4"
+    },
+    "default_profile": "ask",
     "always_allow_tool_actions": true,
     "inline_assistant_model": {
       "provider": "openai",
@@ -38,12 +67,9 @@
   "search": {
     "regex": true
   },
-  "theme": "One Light",
+  "theme": "One Dark",
   "vim_mode": true,
-  "buffer_font_family": "JetBrainsMono Nerd Font",
   "relative_line_numbers": true,
-  // "buffer_font_size": 12,
-  // "ui_font_size": 13,
   "ssh_connections": [
     {
       "host": "vm",
@@ -80,14 +106,19 @@
     "edit_prediction_provider": "zed"
   },
   "language_models": {
+    "anthropic": {
+      "api_url": "https://api.labs.dreamplug.net/anthropic",
+      "available_models": [
+        {
+          "name": "claude-sonnet-4-20250514",
+          "display_name": "Claude 4 Sonnet (CRED)",
+          "max_tokens": 200000
+        }
+      ]
+    },
     "openai": {
       "api_url": "https://api.labs.dreamplug.net",
       "available_models": [
-        {
-          "name": "gemini-2.5-pro",
-          "display_name": "Gemini 2.5 Pro (CRED)",
-          "max_tokens": 1000000
-        },
         {
           "name": "gpt-4.1",
           "display_name": "GPT-4.1 (CRED)",
@@ -97,11 +128,6 @@
           "name": "gpt-4o",
           "display_name": "GPT-4o (CRED)",
           "max_tokens": 1000000
-        },
-        {
-          "name": "claude-4-sonnet",
-          "display_name": "Claude 4 Sonnet (CRED)",
-          "max_tokens": 200000
         },
         {
           "name": "gpt-5",
