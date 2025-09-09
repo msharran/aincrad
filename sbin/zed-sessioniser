@@ -7,27 +7,21 @@ if !command -v "$grepprg" &>/dev/null; then
 fi
 
 list_projects() {
-    find $HOME -maxdepth 1 -type d
-    find $HOME/root -maxdepth 1 -type d
-    find $HOME/root/work -maxdepth 1 -type d
-}
-
-list_remote_projects() {
-    ssh orb "$HOME/root/play -maxdepth 1 -type d; \
-    find $HOME/root/play/labs $HOME/root/play/codingchallenges.fyi -maxdepth 2 -type d"
+    fd .  $HOME \
+    $HOME/root \
+    $HOME/root/work \
+    $HOME/root/play \
+    $HOME/root/play/codingchallenges.fyi \
+    $HOME/root/play/protohackers.com \
+    $HOME/root/play/labs.com \
+    --min-depth 1 --max-depth 1 --type d
 }
 
 find_and_open_projects() {
     projects=$(list_projects)
-    remote_projects=$(list_remote_projects)
-
-    # Add a prefix to remote projects to distinguish them
-    remote_projects_with_prefix=$(echo "$remote_projects" | sed 's/^/orb: /')
-    # Combine both lists
-    all_projects=$(echo -e "${projects}\n${remote_projects_with_prefix}")
 
     # Choose a project with fzf
-    selected=$(echo "$all_projects" | fzf)
+    selected=$(echo "$projects" | fzf)
 
     if [ -z "$selected" ]; then
         echo "Empty selection, exiting loop"
@@ -48,16 +42,7 @@ find_and_open_projects() {
         # running this command every time
         aerospace focus --window-id $aerospace_window_id
     else
-        # Check if it's a remote project
-        if [[ $selected == orb:* ]]; then
-            # Extract the actual path by removing the "orb: " prefix
-            remote_path=${selected#orb: }
-            # Use zed with ssh:// protocol
-            zed "ssh://orb$remote_path"
-        else
-            # Local project
-            zed "$selected"
-        fi
+        zed "$selected"
     fi
 }
 

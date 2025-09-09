@@ -7,6 +7,15 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "context_servers": {
+    "mcp-server-context7": {
+      "source": "extension",
+      "enabled": true,
+      "settings": {
+        "default_minimum_tokens": "10000"
+      }
+    }
+  },
   "buffer_font_family": "JetBrainsMono Nerd Font",
   "use_system_prompts": false,
   "buffer_font_size": 13,
@@ -19,6 +28,7 @@
     "show": true
   },
   "agent": {
+    "always_allow_tool_actions": true,
     "profiles": {
       "plan": {
         "name": "Plan",
@@ -40,11 +50,10 @@
       }
     },
     "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-sonnet-4"
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-20250514"
     },
     "default_profile": "ask",
-    "always_allow_tool_actions": true,
     "inline_assistant_model": {
       "provider": "openai",
       "model": "claude-4-sonnet"
@@ -58,7 +67,7 @@
     "hide_gitignore": false
   },
   "edit_predictions": {
-    "mode": "eager",
+    "mode": "subtle",
     "enabled_in_text_threads": false
   },
   "terminal": {
