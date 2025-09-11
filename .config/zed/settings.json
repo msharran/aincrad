@@ -16,10 +16,9 @@
       }
     }
   },
-  "buffer_font_family": "JetBrainsMono Nerd Font",
-  "use_system_prompts": false,
   "buffer_font_size": 13,
   "ui_font_size": 14,
+  "agent_font_size": 15,
   "pane_split_direction_vertical": "right",
   "scrollbar": {
     "show": "never"
@@ -67,21 +66,17 @@
     "hide_gitignore": false
   },
   "edit_predictions": {
-    "mode": "subtle",
+    "mode": "eager",
     "enabled_in_text_threads": false
   },
   "terminal": {
     "shell": "system",
-    "font_family": "JetBrainsMono Nerd Font",
-    "copy_on_select": true,
-    "env": {
-      "FZF_DEFAULT_OPTS": "--color=light"
-    }
+    "copy_on_select": true
   },
   "search": {
     "regex": true
   },
-  "theme": "One Dark",
+  "theme": "One Light",
   "vim_mode": true,
   "relative_line_numbers": true,
   "ssh_connections": [
@@ -108,7 +103,7 @@
     "Shell Script": [".env*"]
   },
   "features": {
-    "edit_prediction_provider": "zed"
+    "edit_prediction_provider": "copilot"
   },
   "language_models": {
     "anthropic": {

@@ -11,10 +11,12 @@ list_projects() {
     $HOME/root \
     $HOME/root/work \
     $HOME/root/play \
+    --min-depth 1 --max-depth 1 --type d
+    fd . \
     $HOME/root/play/codingchallenges.fyi \
     $HOME/root/play/protohackers.com \
-    $HOME/root/play/labs.com \
-    --min-depth 1 --max-depth 1 --type d
+    $HOME/root/play/labs \
+    --min-depth 2 --max-depth 2 --type d
 }
 
 find_and_open_projects() {
