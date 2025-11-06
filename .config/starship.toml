@@ -1,0 +1,66 @@
+format = """
+$username\
+$hostname\
+$directory\
+$kubernetes\
+$git_branch\
+$git_state\
+$git_status\
+$env_var\
+$cmd_duration\
+$line_break\
+$python\
+$character"""
+
+[directory]
+style = "blue"
+
+[character]
+success_symbol = "[❯](purple)"
+error_symbol = "[❯](red)"
+vimcmd_symbol = "[❮](green)"
+
+[git_branch]
+format = "[$branch]($style)"
+style = "bright-black"
+
+[git_status]
+format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
+style = "cyan"
+conflicted = "​"
+untracked = "​"
+modified = "​"
+staged = "​"
+renamed = "​"
+deleted = "​"
+stashed = "≡"
+
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+style = "bright-black"
+
+[cmd_duration]
+format = "[$duration]($style) "
+style = "yellow"
+
+[python]
+format = "[$virtualenv]($style) "
+style = "bright-black"
+
+[kubernetes]
+disabled = false
+format = "[$context]($style) "
+style = "cyan"
+
+[[kubernetes.contexts]]
+context_pattern = "arn:aws:eks:.*:.*:cluster/(.*)"
+context_alias = "$1"
+
+[[kubernetes.contexts]]
+context_pattern = ".*"
+context_alias = "$1"
+
+[env_var.AWS_OKTA_ASSUMED_ROLE]
+format = " [$env_value]($style) "
+style = "yellow"
+default = ""

@@ -37,6 +37,10 @@ if type -q direnv
     direnv hook fish | source
 end
 
+if type -q starship
+    starship init fish | source
+end
+
 set -gx PYENV_ROOT "$HOME/.pyenv"
 if test -d $PYENV_ROOT/bin
     set -gx PATH $PYENV_ROOT/bin $PATH
