@@ -25,10 +25,12 @@
       "ctrl-shift-k": "vim::ResizePaneUp",
       "ctrl-shift-j": "vim::ResizePaneDown",
       // agents
-      "cmd-shift-c": [
-        "agent::NewExternalAgentThread",
-        { "agent": "claude_code" }
-      ]
+      "cmd-shift-c": ["task::Spawn", { "task_name": "claude-code" }],
+      "cmd-shift-l": "pane::SplitAndMoveRight"
+      // "cmd-shift-c": [
+      //   "agent::NewExternalAgentThread",
+      //   { "agent": "claude_code" }
+      // ]
     }
   },
   {

@@ -48,7 +48,9 @@
       "Bash(rg:*)",
       "Bash(kitten:*)",
       "WebFetch(domain:sw.kovidgoyal.net)",
-      "Bash(/Users/sharranm/aincrad/sbin/kitty-sessioniser:*)"
+      "Bash(/Users/sharranm/aincrad/sbin/kitty-sessioniser:*)",
+      "WebSearch",
+      "WebFetch(domain:starship.rs)"
     ],
     "deny": []
   },

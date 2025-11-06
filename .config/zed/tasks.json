@@ -4,7 +4,7 @@
 [
   {
     "label": "claude-code",
-    "command": "claude --model claude-sonnet-4-20250514",
+    "command": "claude --model claude-sonnet-4-5-20250929",
     "use_new_terminal": true,
     "allow_concurrent_runs": true,
     "reveal": "never",
@@ -14,7 +14,7 @@
   },
   {
     "label": "claude-code-continue",
-    "command": "claude --model claude-sonnet-4-20250514 --continue",
+    "command": "claude --model claude-sonnet-4-5-20250929 --continue",
     "use_new_terminal": true,
     "allow_concurrent_runs": true,
     "reveal": "never",
@@ -24,7 +24,7 @@
   },
   {
     "label": "claude-code-resume",
-    "command": "claude --model claude-sonnet-4-20250514 --resume",
+    "command": "claude --model claude-sonnet-4-5-20250929 --resume",
     "use_new_terminal": true,
     "allow_concurrent_runs": true,
     "reveal": "never",

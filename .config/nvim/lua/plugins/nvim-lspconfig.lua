@@ -11,19 +11,19 @@ return {
             group = vim.api.nvim_create_augroup('lsp_keymaps', { clear = true }),
             callback = function(e)
                 local opts = { buffer = e.buf }
-                vim.keymap.set("n", "gd", function() Snacks.picker.lsp_definitions() end,
+                vim.keymap.set("n", "gd", vim.lsp.buf.definition,
                     vim.tbl_extend('force', opts, { desc = "Goto Definition" }))
-                vim.keymap.set("n", "gD", function() Snacks.picker.lsp_declarations() end,
+                vim.keymap.set("n", "gD", vim.lsp.buf.declaration,
                     vim.tbl_extend('force', opts, { desc = "Goto Declaration" }))
-                vim.keymap.set("n", "gr", function() Snacks.picker.lsp_references() end,
+                vim.keymap.set("n", "gr", vim.lsp.buf.references,
                     vim.tbl_extend('force', opts, { nowait = true, desc = "References" }))
-                vim.keymap.set("n", "gI", function() Snacks.picker.lsp_implementations() end,
+                vim.keymap.set("n", "gI", vim.lsp.buf.implementation,
                     vim.tbl_extend('force', opts, { desc = "Goto Implementation" }))
-                vim.keymap.set("n", "gy", function() Snacks.picker.lsp_type_definitions() end,
+                vim.keymap.set("n", "gy", vim.lsp.buf.type_definition,
                     vim.tbl_extend('force', opts, { desc = "Goto T[y]pe Definition" }))
-                vim.keymap.set("n", "<leader>ls", function() Snacks.picker.lsp_symbols() end,
+                vim.keymap.set("n", "<leader>ls", function() vim.lsp.buf.document_symbol() end,
                     vim.tbl_extend('force', opts, { desc = "LSP Symbols" }))
-                vim.keymap.set("n", "<leader>lS", function() Snacks.picker.lsp_workspace_symbols() end,
+                vim.keymap.set("n", "<leader>lS", function() vim.lsp.buf.workspace_symbol() end,
                     vim.tbl_extend('force', opts, { desc = "LSP Workspace Symbols" }))
 
                 vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end,

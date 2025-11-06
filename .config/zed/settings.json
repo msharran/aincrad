@@ -16,9 +16,10 @@
       }
     }
   },
-  "buffer_font_size": 13,
-  "ui_font_size": 14,
-  "agent_font_size": 15,
+  "buffer_font_family": "JetBrainsMono Nerd Font",
+  "ui_font_family": "JetBrainsMono Nerd Font",
+  "buffer_font_size": 14,
+  "ui_font_size": 13,
   "pane_split_direction_vertical": "right",
   "scrollbar": {
     "show": "never"
@@ -50,7 +51,7 @@
     },
     "default_model": {
       "provider": "anthropic",
-      "model": "claude-sonnet-4-20250514"
+      "model": "claude-sonnet-4-5-20250929"
     },
     "default_profile": "ask",
     "inline_assistant_model": {
@@ -66,17 +67,19 @@
     "hide_gitignore": false
   },
   "edit_predictions": {
-    "mode": "eager",
+    "mode": "subtle",
     "enabled_in_text_threads": false
   },
   "terminal": {
     "shell": "system",
-    "copy_on_select": true
+    "copy_on_select": true,
+    "font_family": "JetBrainsMono Nerd Font",
+    "cursor_shape": "bar"
   },
   "search": {
     "regex": true
   },
-  "theme": "One Light",
+  "theme": "One Dark",
   "vim_mode": true,
   "relative_line_numbers": true,
   "ssh_connections": [
@@ -112,6 +115,11 @@
         {
           "name": "claude-sonnet-4-20250514",
           "display_name": "Claude 4 Sonnet (CRED)",
+          "max_tokens": 200000
+        },
+        {
+          "name": "claude-sonnet-4-5-20250929",
+          "display_name": "Claude 4.5 Sonnet (CRED)",
           "max_tokens": 200000
         }
       ]
