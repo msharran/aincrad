@@ -1,6 +1,57 @@
 -- Quickstart configs for Nvim LSP
 return {
     'neovim/nvim-lspconfig',
+    dependencies = {
+        {
+            'folke/trouble.nvim',
+            dependencies = { 'nvim-tree/nvim-web-devicons' },
+            cmd = 'Trouble',
+            opts = {
+                -- Your configuration comes here
+                -- or leave it empty to use the default settings
+                auto_close = true, -- auto close when there are no items
+                auto_open = false, -- auto open when there are items
+                auto_preview = true, -- automatically open preview when on an item
+                auto_refresh = true, -- auto refresh when open
+                focus = true, -- Focus the window when opened
+            },
+            keys = {
+                -- Diagnostics
+                {
+                    '<leader>ld',
+                    '<cmd>Trouble diagnostics toggle<cr>',
+                    desc = 'Diagnostics (Trouble)',
+                },
+                {
+                    '<leader>lD',
+                    '<cmd>Trouble diagnostics toggle filter.buf=0<cr>',
+                    desc = 'Buffer Diagnostics (Trouble)',
+                },
+                -- LSP
+                {
+                    '<leader>ls',
+                    '<cmd>Trouble symbols toggle focus=false<cr>',
+                    desc = 'Symbols (Trouble)',
+                },
+                {
+                    '<leader>ll',
+                    '<cmd>Trouble lsp toggle focus=false win.position=right<cr>',
+                    desc = 'LSP Definitions / references / ... (Trouble)',
+                },
+                -- Location list and Quickfix
+                {
+                    '<leader>lL',
+                    '<cmd>Trouble loclist toggle<cr>',
+                    desc = 'Location List (Trouble)',
+                },
+                {
+                    '<leader>lQ',
+                    '<cmd>Trouble qflist toggle<cr>',
+                    desc = 'Quickfix List (Trouble)',
+                },
+            },
+        }
+    },
     config = function()
         local lspconfig = require("lspconfig")
         local capabilities = vim.tbl_deep_extend("force", {}, vim.lsp.protocol.make_client_capabilities(),
@@ -11,27 +62,20 @@ return {
             group = vim.api.nvim_create_augroup('lsp_keymaps', { clear = true }),
             callback = function(e)
                 local opts = { buffer = e.buf }
-                vim.keymap.set("n", "gd", vim.lsp.buf.definition,
+
+                vim.keymap.set("n", "gd", "<cmd>Trouble lsp_definitions<cr>",
                     vim.tbl_extend('force', opts, { desc = "Goto Definition" }))
-                vim.keymap.set("n", "gD", vim.lsp.buf.declaration,
+                vim.keymap.set("n", "gD", "<cmd>Trouble lsp_declarations<cr>",
                     vim.tbl_extend('force', opts, { desc = "Goto Declaration" }))
                 vim.keymap.set("n", "gr", "<cmd>Trouble lsp_references<cr>",
                     vim.tbl_extend('force', opts, { nowait = true, desc = "References (Trouble)" }))
                 vim.keymap.set("n", "gI", "<cmd>Trouble lsp_implementations<cr>",
                     vim.tbl_extend('force', opts, { desc = "Implementations (Trouble)" }))
-                vim.keymap.set("n", "gy", vim.lsp.buf.type_definition,
+                vim.keymap.set("n", "gy", "<cmd>Trouble lsp_type_definitions<cr>",
                     vim.tbl_extend('force', opts, { desc = "Goto T[y]pe Definition" }))
-                vim.keymap.set("n", "<leader>ls", function() vim.lsp.buf.document_symbol() end,
-                    vim.tbl_extend('force', opts, { desc = "LSP Symbols" }))
-                vim.keymap.set("n", "<leader>lS", function() vim.lsp.buf.workspace_symbol() end,
-                    vim.tbl_extend('force', opts, { desc = "LSP Workspace Symbols" }))
 
                 vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end,
                     vim.tbl_extend('force', opts, { desc = "Show Hover" }))
-                vim.keymap.set("n", "]d", function() vim.diagnostic.goto_next() end,
-                    vim.tbl_extend('force', opts, { desc = "Next Diagnostic" }))
-                vim.keymap.set("n", "[d", function() vim.diagnostic.goto_prev() end,
-                    vim.tbl_extend('force', opts, { desc = "Previous Diagnostic" }))
                 vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, { silent = true, desc = "LSP Format Buffer" })
                 vim.keymap.set("n", "<leader>lr", function() vim.lsp.buf.rename() end,
                     vim.tbl_extend('force', opts, { desc = "LSP Rename" }))
