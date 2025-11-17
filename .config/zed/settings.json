@@ -16,8 +16,8 @@
       }
     }
   },
-  "buffer_font_family": "JetBrainsMono Nerd Font",
-  "ui_font_family": "JetBrainsMono Nerd Font",
+  "buffer_font_family": "SauceCodePro Nerd Font",
+  "ui_font_family": "SauceCodePro Nerd Font",
   "buffer_font_size": 14,
   "ui_font_size": 13,
   "pane_split_direction_vertical": "right",

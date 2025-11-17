@@ -1,6 +1,8 @@
 return {
-    "tanvirtin/monokai.nvim",
+    "rebelot/kanagawa.nvim",
     config = function()
-        require('monokai').setup {}
+        vim.opt.termguicolors = true
+        vim.opt.background = "dark"
+        vim.cmd("colorscheme kanagawa-wave")
     end,
 }

@@ -49,7 +49,7 @@ style = "bright-black"
 
 [kubernetes]
 disabled = false
-format = "[$context]($style) "
+format = "[$context.$namespace]($style) "
 style = "cyan"
 
 [[kubernetes.contexts]]

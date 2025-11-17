@@ -2532,7 +2532,7 @@ include custom-maps.conf
 
 
 # BEGIN_KITTY_THEME
-# One Half Dark
+# Kanagawa_light
 include current-theme.conf
 # END_KITTY_THEME
 

@@ -15,10 +15,10 @@ return {
                     vim.tbl_extend('force', opts, { desc = "Goto Definition" }))
                 vim.keymap.set("n", "gD", vim.lsp.buf.declaration,
                     vim.tbl_extend('force', opts, { desc = "Goto Declaration" }))
-                vim.keymap.set("n", "gr", vim.lsp.buf.references,
-                    vim.tbl_extend('force', opts, { nowait = true, desc = "References" }))
-                vim.keymap.set("n", "gI", vim.lsp.buf.implementation,
-                    vim.tbl_extend('force', opts, { desc = "Goto Implementation" }))
+                vim.keymap.set("n", "gr", "<cmd>Trouble lsp_references<cr>",
+                    vim.tbl_extend('force', opts, { nowait = true, desc = "References (Trouble)" }))
+                vim.keymap.set("n", "gI", "<cmd>Trouble lsp_implementations<cr>",
+                    vim.tbl_extend('force', opts, { desc = "Implementations (Trouble)" }))
                 vim.keymap.set("n", "gy", vim.lsp.buf.type_definition,
                     vim.tbl_extend('force', opts, { desc = "Goto T[y]pe Definition" }))
                 vim.keymap.set("n", "<leader>ls", function() vim.lsp.buf.document_symbol() end,
