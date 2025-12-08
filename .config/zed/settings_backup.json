@@ -7,68 +7,139 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "buffer_font_size": null,
-  "assistant": {
-    "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-3-5-sonnet-latest"
+  "context_servers": {
+    "mcp-server-context7": {
+      "source": "extension",
+      "enabled": true,
+      "settings": {
+        "default_minimum_tokens": "10000"
+      }
+    }
+  },
+  "buffer_font_family": "SauceCodePro Nerd Font",
+  "ui_font_family": "SauceCodePro Nerd Font",
+  "pane_split_direction_vertical": "right",
+  "scrollbar": {
+    "show": "never"
+  },
+  "tab_bar": {
+    "show": true
+  },
+  "agent": {
+    "always_allow_tool_actions": true,
+    "profiles": {
+      "plan": {
+        "name": "Plan",
+        "tools": {
+          "diagnostics": true,
+          "fetch": true,
+          "find_path": true,
+          "grep": true,
+          "list_directory": true,
+          "now": true,
+          "open": true,
+          "project_notifications": true,
+          "read_file": true,
+          "terminal": true,
+          "thinking": true
+        },
+        "enable_all_context_servers": false,
+        "context_servers": {}
+      }
     },
-    "version": "2"
+    "default_model": {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-5-20250929"
+    },
+    "default_profile": "ask",
+    "inline_assistant_model": {
+      "provider": "openai",
+      "model": "claude-4-sonnet"
+    },
+    "model_parameters": []
   },
-  "features": {
-    "inline_completion_provider": "zed"
+  "auto_update_extensions": {
+    "go-snippets": false
   },
+  "project_panel": {
+    "hide_gitignore": false
+  },
+  "edit_predictions": {
+    "mode": "subtle",
+    "enabled_in_text_threads": false
+  },
+  "terminal": {
+    "shell": "system",
+    "copy_on_select": true,
+    "cursor_shape": "bar"
+  },
+  "search": {
+    "regex": true
+  },
+  "theme": "Cursor Dark",
+  "vim_mode": true,
+  "relative_line_numbers": "enabled",
   "ssh_connections": [
     {
       "host": "vm",
-      "projects": [
-        {
-          "paths": ["~/aincrad"]
-        },
-        {
-          "paths": ["~/.dotfiles-private"]
-        },
-        {
-          "paths": ["~/projects"]
-        },
-        {
-          "paths": ["~/projects/play/codingchallenges.fyi"]
-        },
-        {
-          "paths": [
-            "~/projects/play/codingchallenges.fyi/redis-server/zig-redis-server"
-          ]
-        },
-        {
-          "paths": ["~/projects/play/ingress-nginx"]
-        },
-        {
-          "paths": ["~/projects/play/labs"]
-        },
-        {
-          "paths": ["~/projects/work/acropolis/codepipeline"]
-        },
-        {
-          "paths": ["~/projects/work/caterpillar"]
-        },
-        {
-          "paths": ["~/projects/work/caterpillar-cli"]
-        },
-        {
-          "paths": ["~/projects/work/caterpillar-ops-configs"]
-        },
-        {
-          "paths": ["~/projects/work/caterpillar/master"]
-        }
-      ],
+      "projects": [],
       "nickname": "vm"
+    },
+    {
+      "host": "github.work",
+      "projects": []
     }
   ],
-  "theme": {
-    "mode": "light",
-    "light": "One Dark",
-    "dark": "One Dark"
+  "languages": {
+    "Python": {
+      "language_servers": ["pyright", "!pylsp", "..."]
+    }
   },
-  "vim_mode": true,
-  "relative_line_numbers": true
+  "title_bar": {
+    "show_branch_icon": true
+  },
+  "file_types": {
+    "Dockerfile": ["Dockerfile*"],
+    "Shell Script": [".env*"]
+  },
+  "features": {
+    "edit_prediction_provider": "copilot"
+  },
+  "language_models": {
+    "anthropic": {
+      "api_url": "https://api.labs.dreamplug.net/anthropic",
+      "available_models": [
+        {
+          "name": "claude-sonnet-4-20250514",
+          "display_name": "Claude 4 Sonnet (CRED)",
+          "max_tokens": 200000
+        },
+        {
+          "name": "claude-sonnet-4-5-20250929",
+          "display_name": "Claude 4.5 Sonnet (CRED)",
+          "max_tokens": 200000
+        }
+      ]
+    },
+    "openai": {
+      "api_url": "https://api.labs.dreamplug.net",
+      "available_models": [
+        {
+          "name": "gpt-4.1",
+          "display_name": "GPT-4.1 (CRED)",
+          "max_tokens": 1000000
+        },
+        {
+          "name": "gpt-4o",
+          "display_name": "GPT-4o (CRED)",
+          "max_tokens": 1000000
+        },
+        {
+          "name": "gpt-5",
+          "display_name": "GPT-5 (CRED)",
+          "max_tokens": 1000000
+        }
+      ]
+    }
+  }
 }
