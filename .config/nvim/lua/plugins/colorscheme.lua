@@ -1,11 +1,18 @@
 return {
-    "junegunn/seoul256.vim",
+  -- Your other plugins...
+
+  {
+    "ydkulks/cursor-dark.nvim",
+    lazy = false,
+    priority = 1000,
     config = function()
-        vim.opt.termguicolors = true
-        vim.opt.background = "dark"
-        vim.cmd [[
-        let g:seoul256_background = 236
-        colorscheme seoul256
-        ]]
+      require("cursor-dark").setup({
+        -- For theme
+        style = "dark-midnight",
+        -- For a transparent background
+        transparent = true,
+      })
+      vim.cmd.colorscheme("cursor-dark")
     end,
+  },
 }

@@ -15,22 +15,15 @@
   {
     "bindings": {
       // navigation
-      "ctrl-h": "workspace::ActivatePaneLeft",
-      "ctrl-l": "workspace::ActivatePaneRight",
-      "ctrl-k": "workspace::ActivatePaneUp",
-      "ctrl-j": "workspace::ActivatePaneDown",
+      "cmd-shift-h": "workspace::ActivatePaneLeft",
+      "cmd-shift-l": "workspace::ActivatePaneRight",
+      "cmd-shift-k": "workspace::ActivatePaneUp",
+      "cmd-shift-j": "workspace::ActivatePaneDown",
       // pane resize
       "ctrl-shift-h": "vim::ResizePaneLeft",
       "ctrl-shift-l": "vim::ResizePaneRight",
       "ctrl-shift-k": "vim::ResizePaneUp",
-      "ctrl-shift-j": "vim::ResizePaneDown",
-      // agents
-      "cmd-shift-c": ["task::Spawn", { "task_name": "claude-code" }],
-      "cmd-shift-l": "pane::SplitAndMoveRight"
-      // "cmd-shift-c": [
-      //   "agent::NewExternalAgentThread",
-      //   { "agent": "claude_code" }
-      // ]
+      "ctrl-shift-j": "vim::ResizePaneDown"
     }
   },
   {

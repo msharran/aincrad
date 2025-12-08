@@ -4,7 +4,7 @@ return {
     event = 'VeryLazy',
     opts = {
         options = {
-            theme = 'seoul256',
+            theme = 'onehalfdark',
             component_separators = '',
             section_separators = '',
             disabled_filetypes = {

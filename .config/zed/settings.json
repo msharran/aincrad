@@ -9,7 +9,6 @@
 {
   "context_servers": {
     "mcp-server-context7": {
-      "source": "extension",
       "enabled": true,
       "settings": {
         "default_minimum_tokens": "10000"
@@ -18,8 +17,8 @@
   },
   "buffer_font_family": "SauceCodePro Nerd Font",
   "ui_font_family": "SauceCodePro Nerd Font",
-  "buffer_font_size": 14,
   "ui_font_size": 13,
+  "buffer_font_size": 12,
   "pane_split_direction_vertical": "right",
   "scrollbar": {
     "show": "never"
@@ -50,10 +49,10 @@
       }
     },
     "default_model": {
-      "provider": "anthropic",
-      "model": "claude-sonnet-4-5-20250929"
+      "provider": "openai",
+      "model": "gpt-5"
     },
-    "default_profile": "ask",
+    "default_profile": "write",
     "inline_assistant_model": {
       "provider": "openai",
       "model": "claude-4-sonnet"
@@ -73,15 +72,14 @@
   "terminal": {
     "shell": "system",
     "copy_on_select": true,
-    "font_family": "JetBrainsMono Nerd Font",
     "cursor_shape": "bar"
   },
   "search": {
     "regex": true
   },
-  "theme": "One Dark",
+  "theme": "Cursor Dark",
   "vim_mode": true,
-  "relative_line_numbers": true,
+  "relative_line_numbers": "enabled",
   "ssh_connections": [
     {
       "host": "vm",

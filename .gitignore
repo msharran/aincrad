@@ -10,8 +10,6 @@ auth.json
 /.config/go
 /.config/swiftpm
 /.config/gh
-/.config/zed/conversations
-/.config/zed/prompts
 /.config/ibus
 /.config/gtk-3.0
 /.config/evolution
@@ -40,6 +38,8 @@ auth.json
 *.local.md
 .claude/*
 !.claude/commands
+!.claude/instructions
+!.claude/skills
 !.claude/CLAUDE.md
 .gemini/*
 !.gemini/GEMINI.md

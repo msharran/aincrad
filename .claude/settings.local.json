@@ -50,7 +50,9 @@
       "WebFetch(domain:sw.kovidgoyal.net)",
       "Bash(/Users/sharranm/aincrad/sbin/kitty-sessioniser:*)",
       "WebSearch",
-      "WebFetch(domain:starship.rs)"
+      "WebFetch(domain:starship.rs)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(kitty @ ls:*)"
     ],
     "deny": []
   },

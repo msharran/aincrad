@@ -56,10 +56,6 @@ style = "cyan"
 context_pattern = "arn:aws:eks:.*:.*:cluster/(.*)"
 context_alias = "$1"
 
-[[kubernetes.contexts]]
-context_pattern = ".*"
-context_alias = "$1"
-
 [env_var.AWS_OKTA_ASSUMED_ROLE]
 format = " [$env_value]($style) "
 style = "yellow"
