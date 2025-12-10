@@ -1,18 +1,10 @@
 return {
-  -- Your other plugins...
-
-  {
-    "ydkulks/cursor-dark.nvim",
-    lazy = false,
-    priority = 1000,
+    "ayu-theme/ayu-vim",
+    priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
-      require("cursor-dark").setup({
-        -- For theme
-        style = "dark-midnight",
-        -- For a transparent background
-        transparent = true,
-      })
-      vim.cmd.colorscheme("cursor-dark")
-    end,
-  },
+        vim.cmd [[
+        let ayucolor="dark"   " for dark version of theme
+        colorscheme ayu
+        ]]
+    end
 }

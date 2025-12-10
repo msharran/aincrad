@@ -19,6 +19,8 @@
   "ui_font_family": "SauceCodePro Nerd Font",
   "ui_font_size": 13,
   "buffer_font_size": 12,
+  "agent_ui_font_size": 14,
+  "agent_buffer_font_size": 12,
   "pane_split_direction_vertical": "right",
   "scrollbar": {
     "show": "never"
@@ -27,35 +29,20 @@
     "show": true
   },
   "agent": {
-    "always_allow_tool_actions": true,
-    "profiles": {
-      "plan": {
-        "name": "Plan",
-        "tools": {
-          "diagnostics": true,
-          "fetch": true,
-          "find_path": true,
-          "grep": true,
-          "list_directory": true,
-          "now": true,
-          "open": true,
-          "project_notifications": true,
-          "read_file": true,
-          "terminal": true,
-          "thinking": true
-        },
-        "enable_all_context_servers": false,
-        "context_servers": {}
-      }
-    },
+    "use_modifier_to_send": true,
+    "always_allow_tool_actions": false,
     "default_model": {
-      "provider": "openai",
-      "model": "gpt-5"
+      "provider": "anthropic",
+      "model": "claude-4.5-sonnet"
     },
     "default_profile": "write",
-    "inline_assistant_model": {
-      "provider": "openai",
-      "model": "claude-4-sonnet"
+    "commit_message_model": {
+      "provider": "anthropic",
+      "model": "claude-4.5-haiku"
+    },
+    "thread_summary_model": {
+      "provider": "anthropic",
+      "model": "claude-4.5-haiku"
     },
     "model_parameters": []
   },
@@ -77,7 +64,7 @@
   "search": {
     "regex": true
   },
-  "theme": "Cursor Dark",
+  "theme": "Github Dark",
   "vim_mode": true,
   "relative_line_numbers": "enabled",
   "ssh_connections": [
@@ -107,19 +94,34 @@
     "edit_prediction_provider": "copilot"
   },
   "language_models": {
-    "anthropic": {
-      "api_url": "https://api.labs.dreamplug.net/anthropic",
+    "google": {
+      "api_url": "https://api.labs.dreamplug.net",
       "available_models": [
         {
-          "name": "claude-sonnet-4-20250514",
-          "display_name": "Claude 4 Sonnet (CRED)",
+          "name": "gemini-3-pro",
+          "display_name": "Gemini 3 Pro (CRED)",
+          "max_tokens": 1000000
+        }
+      ]
+    },
+    "anthropic": {
+      "api_url": "http://localhost:42069/anthropic",
+      "available_models": [
+        {
+          "name": "claude-4.5-haiku",
+          "display_name": "Claude 4.5 Haiku (CRED)",
           "max_tokens": 200000
         },
         {
-          "name": "claude-sonnet-4-5-20250929",
+          "name": "claude-4.5-sonnet",
           "display_name": "Claude 4.5 Sonnet (CRED)",
           "max_tokens": 200000
         }
+        // {
+        //   "name": "claude-opus-4-5-20251101",
+        //   "display_name": "Claude 4.5 Opus (CRED)",
+        //   "max_tokens": 200000
+        // }
       ]
     },
     "openai": {
@@ -138,6 +140,11 @@
         {
           "name": "gpt-5",
           "display_name": "GPT-5 (CRED)",
+          "max_tokens": 1000000
+        },
+        {
+          "name": "gpt-5.1",
+          "display_name": "GPT-5.1 (CRED)",
           "max_tokens": 1000000
         }
       ]
