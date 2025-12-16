@@ -4,3 +4,5 @@
 name = "Sharran"
 email = "sharran.murali@gmail.com"
 
+[ui]
+diff-editor = ["nvim", "-c", "DiffEditor $left $right $output"]

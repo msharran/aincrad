@@ -2,12 +2,6 @@
 
 > /tmp/kitty-sessioniser.log
 
-grepprg=rg
-if !command -v "$grepprg" &>/dev/null; then
-    echo "Cannot find 'rg', fallback to grep" >&2
-    grepprg=grep
-fi
-
 list_projects() {
     fd . $HOME -d 1 -t d -H
     fd . $HOME/root -d 1 -t d -H
@@ -60,14 +54,31 @@ echo "Selected project name: $RESULT" >> /tmp/kitty-sessioniser.log
 
 ABBR_PATH=$(abbreviate_path "$RESULT")
 
-echo "Selected session title: $ABBR_PATH" >> /tmp/kitty-sessioniser.log
+echo "Selected session title (abbr path): $ABBR_PATH" >> /tmp/kitty-sessioniser.log
 
 # Check if kitty window already exists using aerospace
-hit=$(aerospace list-windows --monitor all --app-bundle-id net.kovidgoyal.kitty | $grepprg -e "$ABBR_PATH\$")
+windows=$(aerospace list-windows --monitor all --app-bundle-id net.kovidgoyal.kitty)
+echo "Aerospace all kitty OS windows:" >> /tmp/kitty-sessioniser.log
+aerospace list-windows --monitor all --app-bundle-id net.kovidgoyal.kitty >> /tmp/kitty-sessioniser.log
+echo "Current PWD: $(pwd)" >> /tmp/kitty-sessioniser.log
+
+hit=$(aerospace list-windows --monitor all --app-bundle-id net.kovidgoyal.kitty | grep -e "$ABBR_PATH\$")
+echo "search hit 1 for $ABBR_PATH\$ is $hit" >> /tmp/kitty-sessioniser.log
 if [[ -z $hit ]]; then
     # if the abbr path is not in window name, check for the project name. Some programs
     # like gemini-cli follow this pattern
-    hit=$(aerospace list-windows --monitor all --app-bundle-id net.kovidgoyal.kitty | $grepprg -e "$(basename $ABBR_PATH)\$")
+    basename="$(basename $ABBR_PATH)\$"
+    hit=$(aerospace list-windows --monitor all --app-bundle-id net.kovidgoyal.kitty | grep -e "$basename")
+    echo "search hit 2 for $basename is $hit" >> /tmp/kitty-sessioniser.log
+
+    if [[ -z $hit ]]; then
+        # if it matches current pwd, then do nothing.
+        current_pwd=$(pwd)/
+        if [[ "$current_pwd" == "$RESULT" ]]; then
+            echo "Already in target directory, no action needed" >> /tmp/kitty-sessioniser.log
+            exit 0
+        fi
+    fi
 fi
 aerospace_window_id=$(echo $hit | head -n 1 | awk '{print $1}')
 
