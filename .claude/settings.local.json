@@ -52,7 +52,11 @@
       "WebSearch",
       "WebFetch(domain:starship.rs)",
       "WebFetch(domain:raw.githubusercontent.com)",
-      "Bash(kitty @ ls:*)"
+      "Bash(kitty @ ls:*)",
+      "WebFetch(domain:dreamplug.atlassian.net)",
+      "Bash(jira comment --help:*)",
+      "Bash(jira comment add --help:*)",
+      "Bash(jira:*)"
     ],
     "deny": []
   },
