@@ -4,7 +4,7 @@ return {
     event = 'VeryLazy',
     opts = {
         options = {
-            theme = 'onehalfdark',
+            theme = 'auto',
             component_separators = '',
             section_separators = '',
             disabled_filetypes = {

@@ -18,7 +18,7 @@ keymap('n', '<C-d>', '<C-d>zz', { desc = "Scroll down and center" })
 keymap('n', '<C-u>', '<C-u>zz', { desc = "Scroll up and center" })
 
 -- Date and time
-keymap('n', '<leader>D', 'ms:r !date "+%%d-%%m-%%Y"<CR>dW<Esc>`sp', { desc = "Insert date", noremap = false })
+keymap('n', '<leader>D', 'ms:r !date "+\\%d-\\%m-\\%Y"<CR>dW<Esc>`sp', { desc = "Insert date", noremap = false })
 keymap('n', '<leader>T', 'ms:r !date "+%%d-%%m-%%Y %%H:%%M %%p %%Z"<CR>dW<Esc>`sp', { desc = "Insert date and time", noremap = false })
 
 -- Window resizing
