@@ -7,91 +7,123 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "context_servers": {
-    "mcp-server-context7": {
-      "enabled": true,
-      "settings": {
-        "default_minimum_tokens": "10000"
-      }
-    }
+  "git_panel": {
+    "tree_view": false,
   },
-  "buffer_font_family": "SauceCodePro Nerd Font",
-  "ui_font_family": "SauceCodePro Nerd Font",
-  "ui_font_size": 13,
-  "buffer_font_size": 12,
+  "sticky_scroll": {
+    "enabled": true,
+  },
+  "context_servers": {
+    "mcp-agent-athena": {
+      "settings": {},
+
+      "url": "http://mcp-athena.central.dreamplug.net/mcp",
+      "headers": {},
+    },
+  },
+  "base_keymap": "VSCode",
+  "redact_private_values": true,
+  "ui_font_size": 14,
+  "buffer_font_size": 13,
   "agent_ui_font_size": 14,
-  "agent_buffer_font_size": 12,
+  "agent_buffer_font_size": 13,
   "pane_split_direction_vertical": "right",
   "scrollbar": {
-    "show": "never"
+    "show": "never",
   },
   "tab_bar": {
-    "show": true
+    "show": true,
   },
   "agent": {
+    "profiles": {
+      "ask-athena": {
+        "default_model": {
+          "provider": "anthropic",
+          "model": "claude-4.5-sonnet",
+        },
+        "name": "Ask Athena",
+        "tools": {
+          "diagnostics": true,
+          "fetch": true,
+          "list_directory": true,
+          "project_notifications": false,
+          "now": true,
+          "find_path": true,
+          "read_file": true,
+          "open": true,
+          "grep": true,
+          "thinking": true,
+          "web_search": true,
+        },
+        "enable_all_context_servers": false,
+        "context_servers": {
+          "mcp-agent-athena": {
+            "tools": {
+              "athena": true,
+            },
+          },
+        },
+      },
+    },
+    "inline_assistant_model": {
+      "provider": "anthropic",
+      "model": "claude-4.5-haiku",
+    },
     "use_modifier_to_send": true,
-    "always_allow_tool_actions": false,
+    "always_allow_tool_actions": true,
     "default_model": {
       "provider": "anthropic",
-      "model": "claude-4.5-sonnet"
+      "model": "claude-opus-4-5-20251101",
     },
     "default_profile": "write",
     "commit_message_model": {
       "provider": "anthropic",
-      "model": "claude-4.5-haiku"
+      "model": "claude-4.5-haiku",
     },
     "thread_summary_model": {
       "provider": "anthropic",
-      "model": "claude-4.5-haiku"
+      "model": "claude-4.5-haiku",
     },
-    "model_parameters": []
+    "model_parameters": [],
   },
   "auto_update_extensions": {
-    "go-snippets": false
+    "go-snippets": false,
   },
   "project_panel": {
-    "hide_gitignore": false
+    "hide_gitignore": false,
   },
   "edit_predictions": {
-    "mode": "subtle",
-    "enabled_in_text_threads": false
+    "mode": "eager",
+    "enabled_in_text_threads": false,
   },
   "terminal": {
     "shell": "system",
     "copy_on_select": true,
-    "cursor_shape": "bar"
+    "cursor_shape": "bar",
   },
   "search": {
-    "regex": true
+    "regex": true,
   },
-  "theme": "Github Dark",
+  "theme": "One Dark",
   "vim_mode": true,
   "relative_line_numbers": "enabled",
   "ssh_connections": [
     {
       "host": "vm",
       "projects": [],
-      "nickname": "vm"
+      "nickname": "vm",
     },
     {
       "host": "github.work",
-      "projects": []
-    }
+      "projects": [],
+    },
   ],
-  "languages": {
-    "Python": {
-      "language_servers": ["pyright", "!pylsp", "..."]
-    }
-  },
-  "title_bar": {
-    "show_branch_icon": true
-  },
   "file_types": {
     "Dockerfile": ["Dockerfile*"],
-    "Shell Script": [".env*"]
+    "Shell Script": [".env*"],
   },
   "features": {
-    "edit_prediction_provider": "copilot"
+    "edit_prediction_provider": "copilot",
   },
   "language_models": {
     "google": {
@@ -100,29 +132,29 @@
         {
           "name": "gemini-3-pro",
           "display_name": "Gemini 3 Pro (CRED)",
-          "max_tokens": 1000000
-        }
-      ]
+          "max_tokens": 1000000,
+        },
+      ],
     },
     "anthropic": {
-      "api_url": "http://localhost:42069/anthropic",
+      "api_url": "https://api.labs.dreamplug.net/anthropic",
       "available_models": [
         {
           "name": "claude-4.5-haiku",
           "display_name": "Claude 4.5 Haiku (CRED)",
-          "max_tokens": 200000
+          "max_tokens": 200000,
         },
         {
           "name": "claude-4.5-sonnet",
           "display_name": "Claude 4.5 Sonnet (CRED)",
-          "max_tokens": 200000
-        }
-        // {
-        //   "name": "claude-opus-4-5-20251101",
-        //   "display_name": "Claude 4.5 Opus (CRED)",
-        //   "max_tokens": 200000
-        // }
-      ]
+          "max_tokens": 200000,
+        },
+        {
+          "name": "claude-opus-4-5-20251101",
+          "display_name": "Claude 4.5 Opus (CRED)",
+          "max_tokens": 200000,
+        },
+      ],
     },
     "openai": {
       "api_url": "https://api.labs.dreamplug.net",
@@ -130,24 +162,24 @@
         {
           "name": "gpt-4.1",
           "display_name": "GPT-4.1 (CRED)",
-          "max_tokens": 1000000
+          "max_tokens": 1000000,
         },
         {
           "name": "gpt-4o",
           "display_name": "GPT-4o (CRED)",
-          "max_tokens": 1000000
+          "max_tokens": 1000000,
         },
         {
           "name": "gpt-5",
           "display_name": "GPT-5 (CRED)",
-          "max_tokens": 1000000
+          "max_tokens": 1000000,
         },
         {
           "name": "gpt-5.1",
           "display_name": "GPT-5.1 (CRED)",
-          "max_tokens": 1000000
-        }
-      ]
-    }
-  }
+          "max_tokens": 1000000,
+        },
+      ],
+    },
+  },
 }

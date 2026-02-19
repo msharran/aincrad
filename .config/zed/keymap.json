@@ -9,8 +9,8 @@
   {
     "context": "Workspace",
     "bindings": {
-      "cmd-shift-space": ["task::Spawn", { "task_name": "zed-sessioniser" }]
-    }
+      "cmd-shift-space": ["task::Spawn", { "task_name": "zed-sessioniser" }],
+    },
   },
   {
     "bindings": {
@@ -23,15 +23,15 @@
       "ctrl-shift-h": "vim::ResizePaneLeft",
       "ctrl-shift-l": "vim::ResizePaneRight",
       "ctrl-shift-k": "vim::ResizePaneUp",
-      "ctrl-shift-j": "vim::ResizePaneDown"
-    }
+      "ctrl-shift-j": "vim::ResizePaneDown",
+    },
   },
   {
     "context": "Terminal",
     "bindings": {
-      "ctrl-b space": "terminal::ToggleViMode"
+      "ctrl-b space": "terminal::ToggleViMode",
       // "cmd-k cmd-k": ["terminal::SendKeystroke", "cmd-l"]
-    }
+    },
   },
   {
     // Vim normal and visual mode
@@ -42,7 +42,7 @@
       "B": "vim::PreviousSubwordStart",
       "E": "vim::NextSubwordEnd",
       "s": "vim::PushSneak",
-      "S": "vim::PushSneakBackward"
-    }
-  }
+      "S": "vim::PushSneakBackward",
+    },
+  },
 ]
