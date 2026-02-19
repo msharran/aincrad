@@ -11,6 +11,7 @@ list_projects() {
     $HOME/root \
     $HOME/root/work \
     $HOME/root/play \
+    $HOME/root/chats \
     --min-depth 1 --max-depth 1 --type d
     fd . \
     $HOME/root/play/codingchallenges.fyi \
